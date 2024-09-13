@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,100;9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,1000&family=Gabarito:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Kumbh+Sans:wght@400;700&family=Lato:wght@100;300;400;700;900&family=League+Spartan:wght@500;600;700&family=Manrope:wght@800&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@100;300;400;500;700;900&family=Overpass:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,800&family=Raleway:wght@100;200;300;500;600;700;800&family=Roboto:wght@400;700&family=Rubik:wght@400;500;700&family=Sora:wght@100;200;300;400;500;600;700;800&family=Ubuntu:wght@400;500;700&family=Work+Sans:wght@100;200;300;400;500;700;800&display=swap");
 /*
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,100;9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,1000&family=Gabarito:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Kumbh+Sans:wght@400;700&family=Lato:wght@100;300;400;700;900&family=League+Spartan:wght@500;600;700&family=Manrope:wght@800&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@100;300;400;500;700;900&family=Overpass:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,800&family=Raleway:wght@100;200;300;500;600;700;800&family=Roboto:wght@400;700&family=Rubik:wght@400;500;700&family=Sora:wght@100;200;300;400;500;600;700;800&family=Ubuntu:wght@400;500;700&family=Work+Sans:wght@100;200;300;400;500;700;800&display=swap");
+
 font-family: 'Bebas Neue', sans-serif;
 font-family: 'DM Sans', sans-serif;
 font-family: 'Gabarito', sans-serif;
@@ -22,6 +23,20 @@ font-family: 'Ubuntu', sans-serif;
 font-family: 'Work Sans', sans-serif;
 */
 
+@font-face {
+  font-family: 'Anton';
+  src: url('../fonts/Anton-Regular.ttf');
+  font-weight: normal; 
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../fonts/Helvetica.ttf');
+  font-weight: normal; 
+  font-style: normal;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -33,9 +48,9 @@ font-family: 'Work Sans', sans-serif;
 
 body {
   overflow-x: hidden;
-  font-family: "Gabarito", sans-serif;
+  font-family: Helvetica;
   background-color: #f9f6f0;
-  color: #0b0b0b;
+  color: #111111;
   cursor: crosshair;
 }
 
@@ -50,6 +65,10 @@ a {
   padding: 0.5em 1em;
   border-radius: 50px;
   transition: 0.3s;
+}
+
+a::after {
+  content: " \2197";
 }
 
 a:hover {
@@ -102,7 +121,7 @@ a:hover {
 .panel {
   width: 100vw;
   height: 100%;
-  padding: 100px;
+  padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,7 +138,7 @@ a:hover {
 }
 
 .panel:nth-of-type(1) {
-  background-color: #000000;
+  background-color: #0a0a0a;
 }
 
 .panel:nth-of-type(2) {
@@ -182,3 +201,111 @@ a:hover {
     gap: 0 !important;
   }
 }
+
+.strokeme
+{
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
+
+.huge {
+  font-size: 9.5rem;
+}
+@media (min-width: 1200px) {
+  .huge {
+    font-size: 9.5rem;
+  }
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-family: "Anton"
+}
+
+h1, .h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+@media (min-width: 1200px) {
+  h1, .h1 {
+    font-size: 2.5rem;
+  }
+}
+
+h2, .h2 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+@media (min-width: 1200px) {
+  h2, .h2 {
+    font-size: 2rem;
+  }
+}
+
+h3, .h3 {
+  font-size: calc(1.3rem + 0.6vw);
+}
+@media (min-width: 1200px) {
+  h3, .h3 {
+    font-size: 1.75rem;
+  }
+}
+
+h4, .h4 {
+  font-size: calc(1.275rem + 0.3vw);
+}
+@media (min-width: 1200px) {
+  h4, .h4 {
+    font-size: 1.5rem;
+  }
+}
+
+h5, .h5 {
+  font-size: 1.25rem;
+}
+
+h6, .h6 {
+  font-size: 1rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/*cards
+
+.content-card {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 300ms;
+  background-color: antiquewhite;
+}
+
+.content-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.content-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-card .content {
+  box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  padding: 30px 20px 20px 20px;
+  height: auto;
+  bottom: 0;
+}
+*/

@@ -29,3 +29,18 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf);
+
+
+// Array of titles to rotate
+const titles = ["Welcome to My Website", "Check Out My Projects", "Stay Tuned for More!", "Contact Me Today"];
+    
+let index = 0; // Start from the first title
+
+// Function to change the title
+function changeTitle() {
+  document.title = titles[index];
+  index = (index + 1) % titles.length; // Loop through the array
+}
+
+// Change the title every 3 seconds (3000 milliseconds)
+setInterval(changeTitle, 3000);
