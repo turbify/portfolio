@@ -2029,6 +2029,13 @@ html {
 .card-img {
   width: 100%;
   border-radius: 1.3rem;
+  transition: 0.5s;
+}
+
+.card-img:hover {
+  scale: 1.05;
+  transition: 0.5s;
+  z-index: 100;
 }
 
 .card-img-top {
@@ -2058,6 +2065,10 @@ html {
   column-count: 1;
 }
 
+.card-col-3 {
+  column-count: 1;
+}
+
 @media (min-width: 576px) {
   .card-deck {
     -ms-flex-flow: row wrap;
@@ -2079,6 +2090,10 @@ html {
 
   .card-col-2 {
     column-count: 2;
+  }
+
+  .card-col-3 {
+    column-count: 3;
   }
 }
 
