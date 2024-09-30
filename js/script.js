@@ -76,11 +76,19 @@ setInterval(changeTitle, 3000);
     /**
      * Add smooth scroll on <a> with custom class
      */
-    const customClassLinks = select('.tocontact', true); // Select all links with class 'custom-class'
-    customClassLinks.forEach(link => {
+    const contactClassLinks = select('.tocontact', true); // Select all links with class 'custom-class'
+    contactClassLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault(); // Prevent the default anchor behavior
         scrollto('#section1'); // Scroll to the element with id 'section1'
+      });
+    });
+
+    const backClassLinks = select('.totop', true); // Select all links with class 'custom-class'
+    backClassLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent the default anchor behavior
+        scrollto('#section0'); // Scroll to the element with id 'section1'
       });
     });
   
