@@ -44,3 +44,46 @@ function changeTitle() {
 
 // Change the title every 3 seconds (3000 milliseconds)
 setInterval(changeTitle, 3000);
+
+
+// scrollto
+(function() {
+    "use strict";
+  
+    /**
+     * Easy selector helper function
+     */
+    const select = (el, all = false) => {
+      el = el.trim();
+      if (all) {
+        return [...document.querySelectorAll(el)];
+      } else {
+        return document.querySelector(el);
+      }
+    }
+  
+    /**
+     * Scroll to an element with smooth scroll
+     */
+    const scrollto = (el) => {
+      let elementPos = select(el).offsetTop;
+      window.scrollTo({
+        top: elementPos,
+        behavior: 'smooth' // Enable smooth scrolling
+      });
+    }
+  
+    /**
+     * Add smooth scroll on <a> with custom class
+     */
+    const customClassLinks = select('.tocontact', true); // Select all links with class 'custom-class'
+    customClassLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent the default anchor behavior
+        scrollto('#section1'); // Scroll to the element with id 'section1'
+      });
+    });
+  
+  })();
+  
+  
