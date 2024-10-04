@@ -32,7 +32,7 @@ requestAnimationFrame(raf);
 
 
 // Array of titles to rotate
-const titles = ["Welcome to My Website", "Check Out My Projects", "Stay Tuned for More!", "Contact Me Today"];
+const titles = ["Thank You For Visiting", "Check Out My Projects", "Contact Me Today", "Hi I'm Eryk Sobczak"];
     
 let index = 0; // Start from the first title
 
