@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leafly — Mateusz Kowalski</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #f0f5f0; color: #1a1a1a; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+:root { --accent: #16a34a; --ph: rgba(22,163,74,0.06); --ph-b: rgba(22,163,74,0.2); --ph-text: rgba(22,163,74,0.4); }
+
+.hero { position:relative; min-height:340px; display:flex; align-items:flex-end; padding:48px 48px 40px; overflow:hidden; background:#0a1f0e; }
+.hero-leaves { position:absolute; inset:0; opacity:.12; background-image:radial-gradient(ellipse 2px 6px at 15% 30%,rgba(74,222,128,0.8),transparent),radial-gradient(ellipse 2px 6px at 35% 60%,rgba(74,222,128,0.6),transparent),radial-gradient(ellipse 2px 6px at 55% 20%,rgba(74,222,128,0.7),transparent),radial-gradient(ellipse 2px 6px at 75% 70%,rgba(74,222,128,0.5),transparent),radial-gradient(ellipse 2px 6px at 90% 40%,rgba(74,222,128,0.8),transparent); }
+.hero-glow { position:absolute; top:-80px; left:20%; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(22,163,74,0.12),transparent 65%); }
+.hero-content { position:relative; z-index:1; max-width:780px; }
+.hero-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+.tag { font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 12px; border-radius:20px; border:1px solid rgba(74,222,128,0.4); color:#4ade80; background:rgba(74,222,128,0.07); }
+.tag.n { border-color:rgba(255,255,255,0.15); color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.04); }
+h1 { font-size:clamp(36px,5vw,64px); font-weight:900; letter-spacing:-2px; line-height:1; color:#fff; margin-bottom:14px; }
+.hero-sub { font-size:17px; color:rgba(255,255,255,0.5); max-width:520px; }
+
+.body { padding:48px 48px 64px; max-width:900px; }
+.kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:48px; }
+.kpi { background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:14px; padding:18px 20px; }
+.kpi-val { font-size:22px; font-weight:800; color:var(--accent); letter-spacing:-.5px; }
+.kpi-label { font-size:11px; color:#888; margin-top:4px; text-transform:uppercase; letter-spacing:.6px; font-weight:600; }
+h2 { font-size:20px; font-weight:800; color:#1a1a1a; letter-spacing:-.4px; margin-bottom:14px; }
+p { font-size:15px; color:#4a4a4a; line-height:1.8; margin-bottom:28px; }
+.section { margin-bottom:48px; }
+
+/* IMAGE GRID SYSTEM — light theme */
+.img-section-label { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--ph-text); margin-bottom:10px; }
+.img-caption { font-size:12px; color:#aaa; margin-top:8px; margin-bottom:32px; }
+.slot { position:relative; border-radius:14px; overflow:hidden; background:var(--ph); border:1px dashed var(--ph-b); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; }
+.slot img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.slot img[src=""] { display:none; }
+.slot-icon { width:28px; height:28px; opacity:.35; flex-shrink:0; stroke:#16a34a; }
+.slot-hint { font-size:11px; color:var(--ph-text); font-weight:600; letter-spacing:.3px; text-align:center; padding:0 16px; line-height:1.5; }
+/* Banner desktop */
+.img-banner { width:100%; aspect-ratio:16/9; }
+/* Mobile portrait row */
+.img-grid-mobile { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+.img-grid-mobile .slot { aspect-ratio:9/16; }
+/* 2-col */
+.img-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.img-grid-2 .slot { aspect-ratio:4/3; }
+/* 3-col */
+.img-grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+.img-grid-3 .slot { aspect-ratio:4/3; }
+/* Feature */
+.img-grid-feature { display:grid; grid-template-columns:2fr 1fr; gap:12px; }
+.img-grid-feature .slot-main { aspect-ratio:16/9; border-radius:14px; background:var(--ph); border:1px dashed var(--ph-b); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; overflow:hidden; position:relative; }
+.img-grid-feature .slot-main img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.img-grid-feature .slot-main img[src=""] { display:none; }
+.slot-stack { display:flex; flex-direction:column; gap:12px; }
+.slot-stack .slot { aspect-ratio:4/3; }
+
+.ux-principles { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.principle { background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:14px; padding:20px; }
+.principle-dot { width:8px; height:8px; border-radius:50%; background:var(--accent); margin-bottom:10px; }
+.principle-name { font-size:14px; font-weight:800; color:#1a1a1a; margin-bottom:6px; }
+.principle-desc { font-size:13px; color:#777; line-height:1.6; }
+.tools-list { display:flex; flex-wrap:wrap; gap:8px; }
+.tool { font-size:13px; font-weight:600; padding:6px 14px; border-radius:20px; background:#fff; border:1px solid rgba(0,0,0,0.1); color:#4a4a4a; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding:13px 28px; border-radius:40px; font-size:14px; font-weight:700; cursor:pointer; text-decoration:none; border:none; background:var(--accent); color:#fff; transition:opacity .2s,transform .2s; }
+.btn:hover { opacity:.88; transform:translateY(-1px); }
+.btn-ghost { background:transparent; color:#666; border:1px solid rgba(0,0,0,0.15); }
+.btn-ghost:hover { color:#1a1a1a; }
+.cta-row { display:flex; gap:12px; margin-top:40px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-leaves"></div><div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tags">
+      <span class="tag">UI/UX Design</span><span class="tag">Figma</span><span class="tag">Design System</span>
+      <span class="tag n">Startup · Warszawa · 2024</span>
+    </div>
+    <h1>Leafly</h1>
+    <p class="hero-sub">Aplikacja mobilna do pielęgnacji roślin domowych — od badań użytkowników przez design system po gotowe handoffy dla developera.</p>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-val">12 tyg.</div><div class="kpi-label">Projekt</div></div>
+    <div class="kpi"><div class="kpi-val">48 scr.</div><div class="kpi-label">Ekranów</div></div>
+    <div class="kpi"><div class="kpi-val">+38%</div><div class="kpi-label">Retencja (beta)</div></div>
+    <div class="kpi"><div class="kpi-val">4.8★</div><div class="kpi-label">Usability test</div></div>
+  </div>
+
+  <!-- BANER — desktop overview / Figma screenshot -->
+  <div class="section">
+    <div class="img-section-label">Overview projektu w Figma</div>
+    <div class="slot img-banner">
+      <img src="" alt="Leafly — Figma overview">
+      <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span class="slot-hint">Screenshot z Figmy — overview ekranów · 16:9<br>np. wszystkie główne widoki obok siebie</span>
+    </div>
+    <div class="img-caption">Overview projektu — główne ekrany w Figma</div>
+  </div>
+
+  <div class="section">
+    <h2>Rola i zakres</h2>
+    <p>Leafly to warsztatowy startup tworzony przez dwóch deweloperów — potrzebowali projektanta, który przeprowadzi cały UX process od zera do handoffu. Moją rolą był user research, architecture informacji, wireframing, prototypowanie i finalny UI z pełnym design systemem.</p>
+    <p>Produkt rozwiązuje konkretny problem: większość aplikacji ogrodniczych jest albo zbyt skomplikowana, albo zbyt infantylna. Leafly celuje w "pierwsze mieszkanie z roślinami" — millennial z 3-5 roślinami, zero botanicznej wiedzy.</p>
+  </div>
+
+  <!-- GRID MOBILE — 4 ekrany portretowe -->
+  <div class="section">
+    <div class="img-section-label">Kluczowe ekrany aplikacji</div>
+    <div class="img-grid-mobile">
+      <div class="slot">
+        <img src="" alt="Onboarding">
+        <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">Onboarding · 9:16</span>
+      </div>
+      <div class="slot">
+        <img src="" alt="Dashboard">
+        <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">Dashboard · 9:16</span>
+      </div>
+      <div class="slot">
+        <img src="" alt="Karta rośliny">
+        <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">Karta rośliny · 9:16</span>
+      </div>
+      <div class="slot">
+        <img src="" alt="Przypomnienia">
+        <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">Przypomnienia · 9:16</span>
+      </div>
+    </div>
+    <div class="img-caption">Onboarding · dashboard · karta rośliny · przypomnienia — screenshoty portretowe</div>
+  </div>
+
+  <div class="section">
+    <h2>Zasady UX</h2>
+    <div class="ux-principles">
+      <div class="principle"><div class="principle-dot"></div><div class="principle-name">Jedno zadanie na raz</div><div class="principle-desc">Każdy ekran ma jeden primary action. Użytkownik z ziemią na rękach nie może walczyć z UI.</div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-name">Kontekstowe przypomnienia</div><div class="principle-desc">Powiadomienia bazują na historii podlewania, wilgotności powietrza (API) i ekspozycji słonecznej.</div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-name">Wizualne wskaźniki zdrowia</div><div class="principle-desc">Roślina "rośnie" w UI gdy jest zdrowa, "więdnie" gdy zaniedbana. Brak cyfr — tylko stany wizualne.</div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-name">Błąd jako nauczyciel</div><div class="principle-desc">Gdy roślina ginie, aplikacja pokazuje co poszło nie tak — bez osądzania, z konkretną radą.</div></div>
+    </div>
+  </div>
+
+  <!-- GRID FEATURE — design system -->
+  <div class="section">
+    <div class="img-section-label">Design system i komponenty</div>
+    <div class="img-grid-feature">
+      <div class="slot-main">
+        <img src="" alt="Design system — komponenty">
+        <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">Biblioteka komponentów Figma · 16:9</span>
+      </div>
+      <div class="slot-stack">
+        <div class="slot">
+          <img src="" alt="Paleta kolorów">
+          <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span class="slot-hint">Paleta kolorów · 4:3</span>
+        </div>
+        <div class="slot">
+          <img src="" alt="Typografia">
+          <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span class="slot-hint">Typografia · 4:3</span>
+        </div>
+      </div>
+    </div>
+    <div class="img-caption">Biblioteka komponentów (lewo) · paleta i typografia (prawo)</div>
+  </div>
+
+  <!-- GRID 3 — user journey i wireframes -->
+  <div class="section">
+    <div class="img-section-label">Proces projektowy</div>
+    <div class="img-grid-3">
+      <div class="slot">
+        <img src="" alt="User journey map">
+        <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">User journey map · 4:3</span>
+      </div>
+      <div class="slot">
+        <img src="" alt="Wireframes">
+        <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">Wireframes · 4:3</span>
+      </div>
+      <div class="slot">
+        <img src="" alt="Usability testing">
+        <svg class="slot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">Wyniki testów · 4:3</span>
+      </div>
+    </div>
+    <div class="img-caption">User journey · wireframes · wyniki usability testów</div>
+  </div>
+
+  <div class="section">
+    <h2>Narzędzia</h2>
+    <div class="tools-list">
+      <span class="tool">Figma (design + prototyp)</span><span class="tool">FigJam (user journey)</span><span class="tool">Maze (usability testing)</span><span class="tool">Notion (dokumentacja)</span><span class="tool">Plus Jakarta Sans</span><span class="tool">Lottie (animacje)</span>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <a href="#" class="btn">Figma prototype <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a href="#" class="btn btn-ghost">Case study</a>
+  </div>
+
+</div>
+</body>
+</html>

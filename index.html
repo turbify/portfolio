@@ -1,451 +1,491 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This is a simple example of Horizontal Scroll built with GSAP!">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/lenis.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.css">
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    <title>Hi I'm Eryk Sobczak</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eryk Sobczak - Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── PROJECT MODAL ─────────────────────────────────────── */
+    .proj-modal-overlay {
+      position: fixed; inset: 0; z-index: 900;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1);
+    }
+    .proj-modal-overlay.open {
+      opacity: 1; pointer-events: all;
+    }
+    .proj-modal {
+      position: relative;
+      width: calc(100vw - 48px);
+      max-width: 1200px;
+      height: calc(100vh - 80px);
+      max-height: 860px;
+      border-radius: 20px;
+      overflow: hidden;
+      transform: translateY(32px) scale(0.97);
+      transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+      background: #0d0d0d;
+    }
+    .proj-modal-overlay.open .proj-modal {
+      transform: translateY(0) scale(1);
+    }
+    .proj-modal iframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+    .proj-modal-close {
+      position: absolute; top: 16px; right: 16px; z-index: 10;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .proj-modal-close:hover {
+      background: rgba(0,0,0,0.8);
+      transform: scale(1.08);
+    }
+    .proj-modal-loader {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: #0d0d0d; z-index: 1;
+      transition: opacity 0.3s;
+    }
+    .proj-modal-loader.hidden { opacity: 0; pointer-events: none; }
+    .loader-spinner {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.1);
+      border-top-color: rgba(255,255,255,0.6);
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
 </head>
-<body>
+<body class="mode-game">
 
-    <header class="hero" id="section0">
-        <div class='description'>
-            <h1>HELLO, I'M</h1>
-            <h1 class="huge">ERYK SOBCZAK</h1>
-            <p>GAME DEVELOPER / GRAPHIC DESIGNER</p>
-            <div class="justify-content-center flexbox"><img src="assets/scrolldown.svg" class="floating" style="max-width: 15vh;"></div>
-        </div>
-        <div class='credits'>
-            <a class="card-link">Back to links (WIP)</a>
-            <div style="display: flex">
-                <a class="card-link tocontact">Contact me</a>
-            </div>
-        </div>
-    </header>
+<!-- ── BACKGROUND ─────────────────────────────────────────── -->
+<div class="bg-canvas"></div>
+<div class="bg-image"></div>
+<canvas id="unity-bg" class="unity-bg-canvas"></canvas>
 
-    <div class="container">
-
-        <div class="panel">
-            <div class="container-bootstrap">
-                <div class="row">
-                    <div class="col-md-2 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/me.png">
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h3 class="card-title">EXPERIENCE</h3>
-                                <h4>+1 YEAR</h4>
-                                <p class="card-text">Commercial experience in Unity-based Sandbox Game Maker</p>
-                                <h4>+6 YEARS</h4>
-                                <p class="card-text">Working with Unity on game jams and personal projects.</p>
-                                <h4>+5 YEARS</h4>
-                                <p class="card-text">Experience in graphic design, logos, advertising materials and websites</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h3 class="card-title">COMMERCIAL PROJECTS</h3>
-                                <div class="flexbox justify-content-start">
-                                    <a class="card-link areversed">The Traverse</a>
-                                    <a class="card-link areversed">The C.U.B.E</a>
-                                </div><br>
-                                <h3 class="card-title">NON-COMMERCIAL PROJECTS</h3>
-                                <div class="flexbox justify-content-start">
-                                    <a class="card-link">Deadlock</a>
-                                    <a class="card-link">No pain no gain</a>
-                                    <a class="card-link">Dice Master</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <a class="card-link  areversed tocontact" style="display: flex;">Contact Me</a><br>
-                                <a href="https://github.com/turbify" target="_blank" class="card-link" style="display: flex;">Github</a><br>
-                                <a class="card-link" style="display: flex;">Other links (WIP)</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title">TOOLS</h3>
-                                <div class="flexbox justify-content-start">
-                                    <a class="card-link areversed">Unity 3D</a>
-                                    <a class="card-link">Github</a>
-                                    <a class="card-link">Photoshop</a>
-                                    <a class="card-link">Illustrator</a>
-                                    <a class="card-link">Premiere Pro</a>
-                                    <a class="card-link">Blender</a>
-                                    <a class="card-link">Blockbench</a>
-                                    <a class="card-link">Aseprite</a>
-                                    <a class="card-link">Figma</a>
-                                </div><br>
-                                <h3 class="card-title">LANGUAGES</h3>
-                                <div class="flexbox justify-content-start">
-                                    <a class="card-link areversed">C#</a>
-                                    <a class="card-link areversed">HTML</a>
-                                    <a class="card-link areversed">CSS</a>
-                                    <a class="card-link areversed">LUA</a>
-                                    <a class="card-link areversed">C++</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title">ABOUT ME</h3>
-                                <p class="card-text card-col-3">
-                                    I am a game developer and graphic designer based in Poland, passionate about creating immersive spaces where people can explore, connect and have fun.<br><br>
-                                    I am currently a student at Merito University in Poznan majoring in Computer Science with a&nbsp;specialization in Graphics and Multimedia. I&nbsp;graduated from the Technical School with a&nbsp;major in Digital Graphics and Printing, passing the AU.54 and AU.55 professional exams.<br><br>
-                                    As a freelance game developer, graphic designer and participant in various game jams, I continue to develop my skills in these areas.
-                                    Constantly working on a wide variety of projects is a lot of fun because it gives you the opportunity to interact with new technologies, collaborate with different teams, and continuously grow and learn.                                    
-                                    </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='panel'>
-            <div class="container-bootstrap">
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/dge_logo.png">
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-body">
-                              <h2 class="card-title">DUMMY'S GREAT ESCAPE</h2>
-                              <h6>ENGINEERING DIPLOMA THESIS</h6>
-                              <p class="card-text card-col-2">Dummy's Great Escape is a&nbsp;unique physics-based game developed as part of an Engineering diploma thesis project. Take control of Dummy, a&nbsp;quirky ragdoll character, and navigate sticky surfaces, tricky obstacles, and challenging puzzles by individually maneuvering each limb. Built in Unity 3D with WebGL support, the game offers a&nbsp;fresh take on precision and strategy, inspired by the growing popularity of high-difficulty action-puzzle games like Human Fall Flat and Chained Together.</p>
-                              <div style="display: flex">
-                                <!--<a href="https://youtu.be/vZg81uJ6vXo" target="_blank" class="card-link">Trailer</a>-->
-                                <a href="https://mikosusek.itch.io/dummys-great-escape" target="_blank" class="card-link areversed">Game</a>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/dge1.png">
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/dge2.png">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/dge3.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel">
-            <div class="container-bootstrap">
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/traverse.svg">
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-body">
-                              <h2 class="card-title">THE TRAVERSE</h2>
-                              <h6>GAMERHASH</h6>
-                              <p class="card-text card-col-2">Traverse is the most dynamic and compelling storytelling experience that can be played in The Sandbox. A story-driven adventure platform game, it follows the journey of plucky explorer Astro whose spaceship crash lands on Mars. There, he finds a&nbsp;sinister society of reptilians led by the evil Melon X. 
-                                <br><br>While working on this project, I&nbsp;took care of the mechanics aspects of the game, such as objects that the player can interact with, doors, devices. I&nbsp;created puzzle mechanics for quests, boss fights and the quest line itself along with dialogues. I&nbsp;also worked with artists to help implement models into the game.</p>
-                              <div style="display: flex; flex-wrap: wrap;">
-                                <a href="https://gamerhash.com/traverse/" target="_blank" class="card-link">Website</a>
-                                <a href="https://www.youtube.com/watch?v=X_uJprXWzBw&ab_channel=GamerHash" target="_blank" class="card-link">Trailer</a>
-                                <a href="https://www.sandbox.game/en/experiences/traverse:_mars_is_mine_part_1/7831f764-a234-4d28-b52d-7ea1321d11a2/page/" target="_blank" class="card-link areversed">Part 1</a>
-                                <a href="https://www.sandbox.game/en/experiences/Traverse:%20Mars%20is%20Mine%20Part%202/002e6115-94ac-466c-a10f-5e4038c66cfa/page/" target="_blank" class="card-link areversed">Part 2</a>
-                                <a href="https://www.sandbox.game/en/experiences/Traverse:%20Mars%20is%20Mine%20Part%203/9a4a1b7a-1204-4731-a3f7-d2d4fd5a7cf1/page/" target="_blank" class="card-link areversed">Part 3</a>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/traverse_part1.png">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/traverse_part2.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel">
-            <div class="container-bootstrap">
-                <div class="row mb-4">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                              <h2 class="card-title">PROCEDURALLY GENERATED MAP</h2>
-                              <h6>PROTOTYPE</h6>
-                              <p class="card-text card-col-3">This Unity 3D project features a procedurally generated map inspired by the map structure in Darkest Dungeon 2.<br><br>
-                                The design emphasizes clean separation of data and user interface by using a modular design approach. The map data is managed in a dedicated Assembly definition, which stores all the basic information about the generated map, including node types, connections and board structure. This assembly communicates with a UI assembly that handles the graphical representation of the map, providing a clear distinction between data processing and UI rendering. This setup increases scalability, ease of maintenance, and improves testing and updating of individual components.</p>
-                              <div style="display: flex">
-                                <a href="https://youtu.be/xa_zhPRa-8Q?si=S8SSwZoXAJgJqkAg&t=785" target="_blank" class="card-link">Reference</a>
-                                <a href="https://github.com/turbify/procedurally-generated-map-dd2" target="_blank" class="card-link areversed">Github</a>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/pgm1.png">
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/pgm2.png">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/pgm3.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel">
-            <div class="container-bootstrap">
-                <div class="row mb-4">
-                    <div class="col-md-2">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/cube_logo.svg" >
-                        </div>
-                    </div>
-                    <div class="col-md-8 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                              <h2 class="card-title">THE CUBE</h2>
-                              <h6>GAMERHASH</h6>
-                              <p class="card-text card-col-2">C.U.B.E, the latest work from GamerHash studio, introduces players to a space training camp unlike anything they've encountered before. Taking place in the vast Sandbox universe, the game puts participants through a series of immersive and varied tasks, from solving puzzles to testing reflexes.<br><br>As in “The Traverse” project, I worked on the implementation of the game's mechanics, gameplay variety system.</p>
-                              <div style="display: flex">
-                                <a href="https://medium.com/we-are-the-gamerhash/gamerhash-studio-is-back-with-c-u-b-e-a7fff7eaac86" target="_blank" class="card-link">Read more</a>
-                                <a href="https://www.youtube.com/watch?v=okKVRO--_vk&ab_channel=GamerHash" target="_blank" class="card-link">Trailer</a>
-                                <a href="https://www.sandbox.game/en/experiences/_/bac63bbf-1695-433d-b9c6-010fe5d13574/page/" target="_blank" class="card-link areversed">Game</a>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/cube3.jpg" >
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/cube1.png">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/cube2.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='panel'>
-            <div class="container-bootstrap">
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/deadlock_logo.png">
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-body">
-                              <h2 class="card-title">DEADLOCK</h2>
-                              <h6>32BIT GAME JAM</h6>
-                              <p class="card-text card-col-2">Deadlock will take you through enemy lines to defeat their boss and put an end to all the trouble the locals are facing. Show your enemies that there is no one who can stop you from reaching your destination.<br><br>
-                                The game was created in collaboration with Mikołaj Górowski during 32 bit Game Jam. During the short event, we created a&nbsp;short story through which we guide the player in a retro Playstation styled fps game. I worked on player-related mechanics and weapon models.</p>
-                              <div style="display: flex">
-                                <a href="https://youtu.be/vZg81uJ6vXo" target="_blank" class="card-link">Trailer</a>
-                                <a href="https://esmg-games.itch.io/deadlock" target="_blank" class="card-link areversed">Game</a>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/deadlock1.png">
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/deadlock2.png">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/deadlock3.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='panel'>
-            <div class="container-bootstrap">
-                <div class="row mb-4">
-                    <div class="col-md-3 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/nopain.png">
-                        </div>
-                    </div>
-                    <div class="col-md-5 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                              <h2 class="card-title">NO PAIN NO GAIN</h2>
-                              <h6>GMTK GAME JAM 2023</h6>
-                              <p class="card-text card-col-2">No pain no gain is a platform game with the theme “Roles Reversed” developed during GMTK Game Jam 2023 with a group of friends who had no prior experience with the Unity engine. Pain is the only thing that preserves the integrity of the body. Avoid medical kits because they will kill you. Spikes and razor blades are more your idea of fun.<br><br>
-                                I worked on player-related mechanics, obstacle models and the main menu interface during this project.</p>
-                              <div style="display: flex">
-                                <a href="https://esmg-games.itch.io/no-pain-no-gain" target="_blank" class="card-link areversed">Game</a>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/nopain1.png">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-md-3 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/dicemaster.png">
-                        </div>
-                    </div>
-                    <div class="col-md-5 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                              <h2 class="card-title">DICE MASTER</h2>
-                              <h6>GMTK GAME JAM 2022</h6>
-                              <p class="card-text card-col-2">Dice Master is a “Roll of the Dice” themed puzzle game developed during GMTK Game Jam 2022 and involves positioning yourself on the map to destroy enemy cubes and score points.<br><br>
-                                It was created in collaboration with Mikołaj Górowski, my role in the project was to create all the logical aspects, moving the dice around the board and destroying enemies.</p>
-                              <div style="display: flex">
-                                <a href="https://mikosusek.itch.io/dicemaster" target="_blank" class="card-link areversed">Game</a>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/dicemaster1.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class='panel'>
-            <div class="container-bootstrap">
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/container.png">
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="card blank">
-                            <img class="card-img" src="assets/chameleon.png">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h2 class="card-title">3D MODELS</h2>
-                                <h6>BLOCKBENCH</h6>
-                                <p class="card-text">Here are sample models that I created in the blockbench software.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- ── PROJECT MODAL ──────────────────────────────────────── -->
+<div class="proj-modal-overlay" id="proj-modal-overlay">
+  <div class="proj-modal" id="proj-modal">
+    <div class="proj-modal-loader" id="proj-modal-loader">
+      <div class="loader-spinner"></div>
     </div>
+    <button class="proj-modal-close" id="proj-modal-close" aria-label="Zamknij">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <iframe id="proj-modal-iframe" src="" title="Projekt" sandbox="allow-scripts allow-same-origin"></iframe>
+  </div>
+</div>
 
-    <footer class="footer" id="section1">
-        <div class='description'>
-            <h1 class="huge" style="text-align: center;">GET IN TOUCH</h1>
-            <div class="container-bootstrap">
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h1>ERYK SOBCZAK</h1><br>
-                                <h4>EMAIL</h4>
-                                <p>Send me a message at</p>
-                                <div class="flexbox justify-content-start">
-                                    <a class="card-link areversed">esobczk@gmail.com</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <a href="https://www.linkedin.com/in/eryk-sobczak-7a38a92a8/" target="_blank" class="card-link" style="display: flex;">Linkedin</a><br>
-                                <a href="https://github.com/turbify" target="_blank" class="card-link" style="display: flex;">Github</a><br>
-                                <a href="https://yampayyy.itch.io/" target="_blank" class="card-link" style="display: flex;">Itchio</a><br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ── NAVIGATION ─────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" id="hero-logo-g">esob<span>.pl</span></a>
+    <a href="#" class="nav-logo" id="hero-logo-a"><img src="assets/logo_b.svg" style="height:50px;"></a>
+    <div class="nav-links">
+      <a href="#projekty" class="nav-link">Projekty</a>
+      <a href="#o-mnie"   class="nav-link">O mnie</a>
+      <a href="#kontakt"  class="nav-link">Kontakt</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MODE TOGGLE ────────────────────────────────────────── -->
+<div class="toggle-wrap">
+  <div class="toggle-inner glass">
+    <div class="toggle-pill" id="pill"></div>
+    <button class="tbtn tbtn-game" onclick="setMode('game')">Game Dev</button>
+    <button class="tbtn tbtn-art"  onclick="setMode('art')">Grafika</button>
+  </div>
+</div>
+
+<!-- ── PAGE CONTENT ───────────────────────────────────────── -->
+<div id="transition-wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="avail entry">
+          <span class="avail-dot"></span>Dostępny do pracy - 2026
         </div>
-        <div class='credits justify-content-end'>
-            <div style="display: flex">
-                <a class="card-link totop">Back to top</a>
-            </div>
+        <h1 class="hero-name entry" id="hero-name-g">
+          Eryk Sobczak
+        </h1>
+        <h1 class="hero-name entry" id="hero-name-a">
+          Daj się<span class="hero-name-last">rozpoznać</span>
+        </h1>
+        <p class="hero-title entry" id="hero-title-g">
+          Tworzę <strong>gry i interaktywne doświadczenia</strong>, które ludzie pamiętają.
+        </p>
+        <p class="hero-title entry" id="hero-title-a" style="display:none">
+          Zaprojektuję do Ciebie <strong>identyfikacje wizualną</strong>, która przyciągnie uwagę odbiorców.
+        </p>
+        <div class="hero-cta entry">
+          <a href="#projekty" class="btn-primary">
+            Zobacz projekty
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="#kontakt" class="btn-ghost glass">Napisz do mnie</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSEQUENCES (art mode only) -->
+  <section class="cons-section" id="consequences" style="display:none">
+    <div class="container">
+      <div class="section-header reveal">
+        <h3 class="sec-title">Czym grozi słaba identyfikacja wizualna?</h3><br>
+      </div>
+      <div class="cons-headline glass reveal">
+        <div class="cons-num">73%</div>
+        <p class="cons-headline-text">
+          konsumentów <strong>ocenia wiarygodność firmy</strong> na podstawie jej identyfikacji wizualnej -
+          jeszcze zanim przeczytają choćby jedno słowo.
+        </p>
+      </div>
+      <div class="cons-grid">
+        <div class="cons-card glass reveal">
+          <div class="cons-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="cons-title">Utrata zaufania</div>
+          <div class="cons-desc">Niespójny branding sygnalizuje brak profesjonalizmu. Klienci odchodzą do konkurencji, która wygląda poważniej.</div>
+          <div class="cons-verdict">↓ konwersja, ↓ retencja</div>
+        </div>
+        <div class="cons-card glass reveal" style="transition-delay:.08s">
+          <div class="cons-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <div class="cons-title">Wyższy koszt pozyskania klienta</div>
+          <div class="cons-desc">Słaba identyfikacja zwiększa koszt reklamy. Ten sam budżet przynosi wielokrotnie gorsze wyniki.</div>
+          <div class="cons-verdict">↑ CAC, ↑ CPM</div>
+        </div>
+        <div class="cons-card glass reveal" style="transition-delay:.24s">
+          <div class="cons-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8l4 4-4 4" opacity=".5"/></svg></div>
+          <div class="cons-title">Niewidzialność na rynku</div>
+          <div class="cons-desc">W morzu contentu wygrywają marki z wyrazistą estetyką. Bez niej jesteś kolejną nazwą, której nikt nie zapamięta.</div>
+          <div class="cons-verdict">↓ brand recall</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projekty">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="sec-title">Projekty, z których<br>jestem dumny.</h2><br>
+      </div>
+
+      <!-- GAME projects -->
+      <div class="proj-grid" id="gprojects">
+        <div class="proj-card glass featured reveal" data-project="projects/voidrift.html">
+          <div class="proj-thumb">
+            <div class="proj-thumb-bg" style="background:#050c07;"></div>
+            <span class="proj-thumb-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="rgba(110,231,183,0.8)" stroke-width="1.5"><circle cx="24" cy="24" r="18" opacity=".3"/><circle cx="24" cy="24" r="10"/><path d="M24 6v4M24 38v4M6 24h4M38 24h4" opacity=".5"/><circle cx="24" cy="24" r="3" fill="rgba(110,231,183,0.6)" stroke="none"/></svg>
+            </span>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="ptag acc">Unity</span><span class="ptag">C#</span><span class="ptag">Procedural</span><span class="ptag">Steam</span>
+              </div>
+              <h3 class="proj-name">Voidrift - Roguelike Space Crawler</h3>
+              <p class="proj-desc">Proceduralnie generowana gra akcji osadzona w umierającym wszechświecie. System generowania poziomów, fizyka grawitacji i shader atmosferyczny napisane od zera.</p>
+            </div>
+            <div class="proj-foot">
+              <span class="proj-meta">2024 · Solo dev · Steam</span>
+              <button class="proj-link glass proj-open-btn">
+                Sprawdź
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card glass reveal" data-project="projects/mossgrave.html">
+          <div class="proj-thumb">
+            <div class="proj-thumb-bg" style="background:#040b05;"></div>
+            <span class="proj-thumb-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="rgba(110,231,183,0.8)" stroke-width="1.5"><path d="M24 8c-2 4-8 8-8 16s6 12 8 16c2-4 8-8 8-16S26 12 24 8z" opacity=".4"/><path d="M24 8c-2 4-8 8-8 16s6 12 8 16c2-4 8-8 8-16S26 12 24 8z"/><path d="M17 20c3 1 7 3 7 8" opacity=".5"/></svg>
+            </span>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="ptag acc">Unreal 5</span><span class="ptag">Blueprints</span><span class="ptag">Lumen</span>
+              </div>
+              <h3 class="proj-name">Mossgrave</h3>
+              <p class="proj-desc">Atmosferyczna gra eksploracyjna. Nagroda Best Atmosphere na Global Game Jam 2024.</p>
+            </div>
+            <div class="proj-foot">
+              <span class="proj-meta">2024 · itch.io</span>
+              <button class="proj-link glass proj-open-btn">
+                Sprawdź
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card glass reveal" data-project="projects/emberrun.html">
+          <div class="proj-thumb">
+            <div class="proj-thumb-bg" style="background:#0c0400;"></div>
+            <span class="proj-thumb-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="rgba(251,146,60,0.85)" stroke-width="1.5"><path d="M24 36c0-8 6-14 6-20a6 6 0 0 0-12 0c0 6 6 12 6 20z" opacity=".5"/><path d="M18 30c-3-2-5-6-5-10a11 11 0 0 1 22 0c0 4-2 8-5 10"/><circle cx="24" cy="34" r="3" fill="rgba(251,146,60,0.5)" stroke="none"/></svg>
+            </span>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="ptag acc">Unity</span><span class="ptag">DOTS</span><span class="ptag">Mobile</span>
+              </div>
+              <h3 class="proj-name">Ember Run</h3>
+              <p class="proj-desc">Mobilny endless runner z mechaniką ognia i wiatru. 340k pobrań w pierwszym kwartale po premierze.</p>
+            </div>
+            <div class="proj-foot">
+              <span class="proj-meta">2023 · iOS &amp; Android</span>
+              <button class="proj-link glass proj-open-btn">
+                Sprawdź
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ART projects -->
+      <div class="proj-grid" id="aprojects" style="display:none">
+        <div class="proj-card glass featured reveal" data-project="projects/noctua.html">
+          <div class="proj-thumb">
+            <div class="proj-thumb-bg" style="background:#120a00;"></div>
+            <span class="proj-thumb-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="rgba(252,211,77,0.8)" stroke-width="1.5"><circle cx="24" cy="20" r="10"/><path d="M12 40c0-6.6 5.4-12 12-12s12 5.4 12 12" opacity=".5"/><path d="M20 20l-3-3m6 3l3-3" opacity=".6"/></svg>
+            </span>
+          </div>
+          <div class="proj-overlay">
+            <h3 class="proj-overlay-name">Noctua Records - Rebrand</h3>
+            <button class="btn-primary proj-open-btn">
+              Sprawdź
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="proj-card glass reveal" data-project="projects/glebia.html">
+          <div class="proj-thumb">
+            <div class="proj-thumb-bg" style="background:#0d0900;"></div>
+            <span class="proj-thumb-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="rgba(252,211,77,0.8)" stroke-width="1.5"><path d="M8 36c4-8 8-12 16-12s12 4 16 12"/><path d="M14 26c3-6 5-12 10-18 5 6 7 12 10 18" opacity=".5"/><circle cx="24" cy="12" r="3" fill="rgba(252,211,77,0.4)" stroke="none"/></svg>
+            </span>
+          </div>
+          <div class="proj-overlay">
+            <h3 class="proj-overlay-name">Głębia - Okładka powieści</h3>
+            <button class="btn-primary proj-open-btn">
+              Sprawdź
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="proj-card glass reveal" data-project="projects/leafly.html">
+          <div class="proj-thumb">
+            <div class="proj-thumb-bg" style="background:#0a0700;"></div>
+            <span class="proj-thumb-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="rgba(252,211,77,0.8)" stroke-width="1.5"><rect x="10" y="8" width="28" height="32" rx="3" opacity=".4"/><path d="M16 20h16M16 26h10"/><circle cx="32" cy="32" r="6" fill="#0a0700" stroke="rgba(252,211,77,0.8)"/><path d="M30 32h4M32 30v4"/></svg>
+            </span>
+          </div>
+          <div class="proj-overlay">
+            <h3 class="proj-overlay-name">Leafly - Aplikacja ogrodnicza</h3>
+            <button class="btn-primary proj-open-btn">
+              Sprawdź
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- ABOUT -->
+  <section class="section" id="o-mnie">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="sec-title">Człowiek za projektami.</h2><br>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p id="about-p-g" class="reveal">Cześć - jestem Eryk. <strong>Unity Game developer</strong> z Wielkopolski. Robię gry od 2015 roku - od małych dodatków do gier, po tytuły na Steam.</p>
+          <p id="about-p-a" class="reveal" style="display:none">Cześć - jestem Eryk. <strong>Graphic designer i ilustrator</strong> z Ostrowa Wielkopolskiego. Projektuję od 2017 roku - od małych zleceń po długoterminowe współprace z działalnościami z całej Polski.</p>
+          <p class="reveal">Wierzę, że <strong>najlepsze projekty rodzą się na przecięciu technologii i estetyki.</strong> Nie wystarczy, żeby działało - musi też coś czuć.</p>
+          <blockquote class="pull-quote reveal">
+            Każdy projekt to pytanie: <strong>jak sprawić, żeby ktoś poczuł coś prawdziwego?</strong>
+          </blockquote>
+          <div class="skills-grid" id="skills-g">
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="13" rx="3"/><path d="M8 12h2m1-1v2M16.5 12h.01M18 11.5h.01"/></svg></div><div><div class="skill-name">Unity</div><div class="skill-lvl">+7 lat - Zaawansowany</div></div></div>
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9l3 3-3 3M13 15h3"/></svg></div><div><div class="skill-name">Język C#</div><div class="skill-lvl">Zaawansowany</div></div></div>
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l1.5 4.5h4.5l-3.5 2.5 1.5 4.5L12 12l-4 2.5 1.5-4.5L6 7.5h4.5z"/><circle cx="12" cy="12" r="9" opacity=".3"/></svg></div><div><div class="skill-name">Adobe Creative Cloud</div><div class="skill-lvl">Obróbka graficzna</div></div></div>
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg></div><div><div class="skill-name">Blockbench</div><div class="skill-lvl">Modelowanie</div></div></div>
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polygon points="12 2 22 19 2 19"/><path d="M12 9v5M12 17h.01"/></svg></div><div><div class="skill-name">Github, Azure</div><div class="skill-lvl">Kontrola wersji</div></div></div>
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><div><div class="skill-name">Reaper</div><div class="skill-lvl">Obróbka dźwięku</div></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="timeline reveal" id="tl1-g">
+            <div class="tl-item">
+              <div class="tl-year">2023 - dziś</div>
+              <div class="tl-title">Freelance Game Developer</div>
+              <div class="tl-where">Solo &amp; projekty zdalne</div>
+              <div class="tl-desc">Własne tytuły, kontrakty z indie studiami, klienci z całej Europy.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2021 - 2023</div>
+              <div class="tl-title">Junior Game Developer</div>
+              <div class="tl-where">Pixel Storm Games - Warszawa</div>
+              <div class="tl-desc">Pipeline produkcyjny, praca zespołowa, pierwsze wydane projekty.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2019 - 2021</div>
+              <div class="tl-title">Studia &amp; pierwsze projekty</div>
+              <div class="tl-where">AGH Kraków - Informatyka</div>
+              <div class="tl-desc">Game jamy, pierwsze zlecenia, budowanie portfolio od zera.</div>
+            </div>
+          </div>
+          <div class="skills-grid" id="skills-a" style="display:none">
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><div class="skill-name">Figma</div><div class="skill-lvl">UI/UX, Design Systems</div></div></div>
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div><div><div class="skill-name">Illustrator</div><div class="skill-lvl">Wektory, branding</div></div></div>
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div><div class="skill-name">Photoshop</div><div class="skill-lvl">Photo, compositing</div></div></div>
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div><div class="skill-name">Procreate</div><div class="skill-lvl">Ilustracja cyfrowa</div></div></div>
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div><div class="skill-name">After Effects</div><div class="skill-lvl">Motion design</div></div></div>
+            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h10M4 17h6"/></svg></div><div><div class="skill-name">Typografia</div><div class="skill-lvl">Zaawansowana</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- CONTACT -->
+  <section class="section" id="kontakt">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="sec-title">Porozmawiajmy.</h2>
+        <p class="sec-sub">Masz projekt, pytanie albo chcesz pogadać? Odpisuję w ciągu 24 godzin.</p>
+      </div>
+      <div class="contact-links reveal">
+        <div href="mailto:kontakt@mkowalski.dev" class="c-link glass">
+          <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="c-link-label">E-mail</div><div class="c-link-val">kontakt@mkowalski.dev</div></div>
+        </div>
+        <a href="#" class="c-link glass">
+          <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="c-link-label">LinkedIn</div><div class="c-link-val">linkedin.com/in/mkowalski</div></div>
+        </a>
+        <a href="#" class="c-link glass">
+          <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+          <div><div class="c-link-label">GitHub</div><div class="c-link-val">github.com/mkowalski</div></div>
+        </a>
+        <a href="#" class="c-link glass" id="cl-game">
+          <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="13" rx="3"/><path d="M8 12h2m1-1v2M16.5 12h.01M18 11.5h.01"/></svg></div>
+          <div><div class="c-link-label">itch.io</div><div class="c-link-val">mkowalski.itch.io</div></div>
+        </a>
+        <a href="#" class="c-link glass" id="cl-art" style="display:none">
+          <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/><path d="M12 8v8M8 12h8" opacity=".4"/></svg></div>
+          <div><div class="c-link-label">Behance</div><div class="c-link-val">behance.net/mkowalski</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <footer>
+      <span>&copy; 2025 Mateusz Kowalski</span>
+      <span>Zbudowane z &hearts; w Krakowie</span>
     </footer>
-    
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
-    <script src="js/script.js"></script>
+</div><!-- /#transition-wrap -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="main.js"></script>
+<script>
+// ── PROJECT MODAL ────────────────────────────────────────────
+(function() {
+  var overlay  = document.getElementById('proj-modal-overlay');
+  var iframe   = document.getElementById('proj-modal-iframe');
+  var loader   = document.getElementById('proj-modal-loader');
+  var closeBtn = document.getElementById('proj-modal-close');
+
+  function openModal(src) {
+    loader.classList.remove('hidden');
+    iframe.src = '';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // slight delay so animation is visible before iframe starts loading
+    setTimeout(function() { iframe.src = src; }, 80);
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function() {
+      iframe.src = '';
+    }, 380);
+  }
+
+  // Hide loader once iframe loaded
+  iframe.addEventListener('load', function() {
+    loader.classList.add('hidden');
+  });
+
+  // Wire up all project cards
+  document.addEventListener('click', function(e) {
+    // Button inside card OR the card itself (but not nav links etc.)
+    var btn  = e.target.closest('.proj-open-btn');
+    var card = e.target.closest('.proj-card[data-project]');
+
+    if (btn && card) {
+      e.preventDefault();
+      openModal(card.dataset.project);
+      return;
+    }
+    // Clicking anywhere on the card (not a button) also opens
+    if (card && !e.target.closest('a') && !e.target.closest('button')) {
+      openModal(card.dataset.project);
+    }
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+
+  // Click outside modal box
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  // Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
+</script>
 </body>
 </html>
