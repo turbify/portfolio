@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dice Master — Mateusz Kowalski</title>
+<link rel="stylesheet" href="projects.css">
+<style>
+  body { background: #0d0700; }
+  :root {
+    --accent: #fbbf24;
+    --accent-dim: rgba(251,191,36,0.12);
+    --ph:      rgba(251,191,36,0.05);
+    --ph-b:    rgba(251,191,36,0.18);
+    --ph-text: rgba(251,191,36,0.32);
+    --bg:      #0d0700;
+    --bg-hero: #0b0600;
+  }
+  .hero-grid {
+    opacity: .1;
+    background-image:
+      linear-gradient(rgba(251,191,36,.15) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(251,191,36,.15) 1px,transparent 1px);
+    background-size: 36px 36px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow tl" style="width:480px;height:480px;top:-100px;left:-80px;background:radial-gradient(circle,rgba(251,191,36,0.13),transparent 65%);"></div>
+  <div class="hero-glow br" style="width:300px;height:300px;bottom:-80px;right:-40px;background:radial-gradient(circle,rgba(251,191,36,0.07),transparent 65%);"></div>
+  <div class="hero-content">
+    <div class="hero-tags">
+      <span class="tag">Godot 4</span><span class="tag">GDScript</span><span class="tag">Deckbuilder</span>
+      <span class="tag n">PC · 48h Jam · 2024</span>
+      <span class="tag award">🎲 Best Mechanic — PolyJam</span>
+    </div>
+    <h1>Dice Master</h1>
+    <p class="hero-sub">Deckbuilder, w którym kartami są kości. Buduj kombinacje rzutów, odkrywaj synergię i pokona bossa zanim wyczerpią się twoje kości.</p>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="award-banner">
+    <div class="award-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 21h8M12 17v4M7 4v8a5 5 0 0 0 10 0V4H7z"/><path d="M7 8H4a2 2 0 0 0 0 4h3M17 8h3a2 2 0 0 1 0 4h-3"/></svg>
+    </div>
+    <div>
+      <div class="award-text">Best Mechanic Award</div>
+      <div class="award-sub">PolyJam 2024 — Wrocław — spośród 22 drużyn</div>
+    </div>
+  </div>
+
+  <div class="stats-row cols-4">
+    <div class="stat"><div class="stat-val">48h</div><div class="stat-label">Produkcja</div></div>
+    <div class="stat"><div class="stat-val">2 os.</div><div class="stat-label">Zespół</div></div>
+    <div class="stat"><div class="stat-val">24</div><div class="stat-label">Kości/kart</div></div>
+    <div class="stat"><div class="stat-val">5</div><div class="stat-label">Bossów</div></div>
+  </div>
+
+  <!-- BANER -->
+  <div class="section">
+    <div class="img-section-label">Widok planszy</div>
+    <div class="slot img-banner">
+      <img src="gameimages/dicemaster.png" alt="Dice Master — plansza">
+      <svg class="ph-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span class="slot-hint">Plansza walki · 16:9</span>
+    </div>
+    <div class="img-caption">Widok planszy — talia kości po lewej, obszar walki pośrodku, boss po prawej</div>
+  </div>
+
+  <div class="section">
+    <h2>O projekcie</h2>
+    <p>Dice Master powstał podczas 48-godzinnego PolyJam 2024 na temat "Chaos". Zamiast typowej talii kart, gracz buduje kolekcję kości — każda ma własne ścianki z efektami, które możesz ulepszać między rundami. Rzut kośćmi jest losowy, ale wybór kości do talii i kolejność rzutów tworzą głęboką strategię.</p>
+    <p>Jako jedyny programista zaimplementowałem cały system mechaniki w GDScript w Godot 4 — od fizyki kości 3D, przez deckbuilding UI, po logikę bossów. Artysta odpowiadał za cały visual design. Nagrodę Best Mechanic otrzymaliśmy za nowatorskie połączenie deckbuildera z mechaniką rzutu.</p>
+  </div>
+
+  <div class="section">
+    <h2>Mechaniki</h2>
+    <div class="mechanic-list">
+      <div class="mechanic">
+        <div class="mechanic-dot"></div>
+        <div>
+          <div class="mechanic-name">Kości jako karty</div>
+          <div class="mechanic-desc">Każda kość ma 6 ścianek z różnymi efektami. Rzut określa efekt, ale gracz wybiera które kości rzucać i w jakiej kolejności.</div>
+        </div>
+      </div>
+      <div class="mechanic">
+        <div class="mechanic-dot"></div>
+        <div>
+          <div class="mechanic-name">System synergii</div>
+          <div class="mechanic-desc">Łączenie wyników kości z tej samej "szkoły" aktywuje kombocyfry. Np. trzy szóstki z ognia robią wybuch obszarowy.</div>
+        </div>
+      </div>
+      <div class="mechanic">
+        <div class="mechanic-dot"></div>
+        <div>
+          <div class="mechanic-name">Ulepszanie kości (Forge)</div>
+          <div class="mechanic-desc">Po każdej walce możesz "wykuć" kość — podmienić jedną ściankę na lepszy efekt. Trwały postęp między bossami.</div>
+        </div>
+      </div>
+      <div class="mechanic">
+        <div class="mechanic-dot"></div>
+        <div>
+          <div class="mechanic-name">Boss Patterns</div>
+          <div class="mechanic-desc">Każdy boss ma widoczny pattern ataków — gracz może planować odpowiedź, ale losowość rzutów komplikuje plan.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID FEATURE -->
+  <div class="section">
+    <div class="img-section-label">Detale UI i kości</div>
+    <div class="img-grid-feature">
+      <div class="slot-main">
+        <img src="gameimages/dicemaster1.png" alt="Dice Master — kości 3D">
+        <svg class="ph-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">Kości 3D z efektami · 16:9</span>
+      </div>
+      <div class="slot-stack">
+        <div class="slot">
+          <img src="" alt="">
+          <svg class="ph-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span class="slot-hint">Ekran Forge · 16:9</span>
+        </div>
+        <div class="slot">
+          <img src="" alt="">
+          <svg class="ph-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span class="slot-hint">Boss fight · 16:9</span>
+        </div>
+      </div>
+    </div>
+    <div class="img-caption">Kości 3D z animacją rzutu (lewo) · ekran Forge i walka z bossem (prawo)</div>
+  </div>
+
+  <div class="section">
+    <h2>Stack technologiczny</h2>
+    <div class="tech-list">
+      <span class="tech">Godot 4.2</span>
+      <span class="tech">GDScript</span>
+      <span class="tech">Jolt Physics</span>
+      <span class="tech">Shader VisualScript</span>
+      <span class="tech">Tween API</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Czego się nauczyłem</h2>
+    <p>Godot 4 to przyjemne środowisko do prototypowania — sceny i sygnały pozwoliły mi zbudować cały system mechaniki w kilkanaście godzin. Game jamy uczą też jednej ważnej rzeczy: doprowadzaj jedną mechnikę do perfekcji, zamiast robić pięć przeciętnych. Nagroda Best Mechanic to potwierdzenie tej strategii.</p>
+  </div>
+
+  <div class="cta-row">
+    <a href="#" class="btn">Zagraj na itch.io <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a href="#" class="btn btn-ghost">Kod na GitHub</a>
+  </div>
+
+</div>
+</body>
+</html>

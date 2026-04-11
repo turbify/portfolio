@@ -88,7 +88,7 @@
         <path d="M18 6L6 18M6 6l12 12"/>
       </svg>
     </button>
-    <iframe id="proj-modal-iframe" src="" title="Projekt" sandbox="allow-scripts allow-same-origin"></iframe>
+    <iframe id="proj-modal-iframe" src="" title="Projekt" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
   </div>
 </div>
 
@@ -131,7 +131,7 @@
           Daj się<span class="hero-name-last">rozpoznać</span>
         </h1>
         <p class="hero-title entry" id="hero-title-g">
-          Tworzę <strong>gry i interaktywne doświadczenia</strong>, które ludzie pamiętają.
+          Tworzę <strong>gry i interaktywne doświadczenia</strong>, które zostają w pamięci.
         </p>
         <p class="hero-title entry" id="hero-title-a" style="display:none">
           Zaprojektuję do Ciebie <strong>identyfikacje wizualną</strong>, która przyciągnie uwagę odbiorców.
@@ -194,23 +194,20 @@
 
       <!-- GAME projects -->
       <div class="proj-grid" id="gprojects">
-        <div class="proj-card glass featured reveal" data-project="projects/voidrift.html">
+        <div class="proj-card glass featured reveal" data-project="projects/hourglass.html">
           <div class="proj-thumb">
-            <div class="proj-thumb-bg" style="background:#050c07;"></div>
-            <span class="proj-thumb-icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="rgba(110,231,183,0.8)" stroke-width="1.5"><circle cx="24" cy="24" r="18" opacity=".3"/><circle cx="24" cy="24" r="10"/><path d="M24 6v4M24 38v4M6 24h4M38 24h4" opacity=".5"/><circle cx="24" cy="24" r="3" fill="rgba(110,231,183,0.6)" stroke="none"/></svg>
-            </span>
+            <img class="proj-thumb-bg" src="projects/gameimages/hs1.jpg"></img>
           </div>
           <div class="proj-body">
             <div>
               <div class="proj-tags">
-                <span class="ptag acc">Unity</span><span class="ptag">C#</span><span class="ptag">Procedural</span><span class="ptag">Steam</span>
+                <span class="ptag acc">Unity</span><span class="ptag">C#</span><span class="ptag">Steam</span>
               </div>
-              <h3 class="proj-name">Voidrift - Roguelike Space Crawler</h3>
-              <p class="proj-desc">Proceduralnie generowana gra akcji osadzona w umierającym wszechświecie. System generowania poziomów, fizyka grawitacji i shader atmosferyczny napisane od zera.</p>
+              <h3 class="proj-name">Hourglass Sanatorium</h3>
+              <p class="proj-desc">Gra przygodowo-horrorowa, w której będziesz eksplorować nawiedzone labirynty, spotykać dziwne postacie i udać się do tajemniczego alternatywnego świata, by spotkać się ze swoim zmarłym ojcem. Gra oparta jest na twórczości surrealistycznego pisarza i artysty plastyka Bruno Schulza.</p>
             </div>
             <div class="proj-foot">
-              <span class="proj-meta">2024 · Solo dev · Steam</span>
+              <span class="proj-meta">2025 · TheBooke Studio · Steam</span>
               <button class="proj-link glass proj-open-btn">
                 Sprawdź
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -219,23 +216,20 @@
           </div>
         </div>
 
-        <div class="proj-card glass reveal" data-project="projects/mossgrave.html">
+        <div class="proj-card glass reveal" onclick="window.open('https://esmg-games.itch.io/no-pain-no-gain', '_blank')">
           <div class="proj-thumb">
-            <div class="proj-thumb-bg" style="background:#040b05;"></div>
-            <span class="proj-thumb-icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="rgba(110,231,183,0.8)" stroke-width="1.5"><path d="M24 8c-2 4-8 8-8 16s6 12 8 16c2-4 8-8 8-16S26 12 24 8z" opacity=".4"/><path d="M24 8c-2 4-8 8-8 16s6 12 8 16c2-4 8-8 8-16S26 12 24 8z"/><path d="M17 20c3 1 7 3 7 8" opacity=".5"/></svg>
-            </span>
+            <img class="proj-thumb-bg" src="projects/gameimages/nopain2.jpg"></img>
           </div>
           <div class="proj-body">
             <div>
               <div class="proj-tags">
-                <span class="ptag acc">Unreal 5</span><span class="ptag">Blueprints</span><span class="ptag">Lumen</span>
+                <span class="ptag acc">Unity</span><span class="ptag">C#</span>
               </div>
-              <h3 class="proj-name">Mossgrave</h3>
-              <p class="proj-desc">Atmosferyczna gra eksploracyjna. Nagroda Best Atmosphere na Global Game Jam 2024.</p>
+              <h3 class="proj-name">No pain no gain</h3>
+              <p class="proj-desc">Gra platformowa o tematyce „Odwrócone role”, stworzona podczas GMTK Game Jam 2023 wraz z grupą znajomych, którzy nie mieli wcześniejszego doświadczenia z silnikiem Unity. </p>
             </div>
             <div class="proj-foot">
-              <span class="proj-meta">2024 · itch.io</span>
+              <span class="proj-meta">2023 · GMTK Game Jam · itch.io</span>
               <button class="proj-link glass proj-open-btn">
                 Sprawdź
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -244,23 +238,20 @@
           </div>
         </div>
 
-        <div class="proj-card glass reveal" data-project="projects/emberrun.html">
+        <div class="proj-card glass reveal" data-project="projects/dge.html">
           <div class="proj-thumb">
-            <div class="proj-thumb-bg" style="background:#0c0400;"></div>
-            <span class="proj-thumb-icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="rgba(251,146,60,0.85)" stroke-width="1.5"><path d="M24 36c0-8 6-14 6-20a6 6 0 0 0-12 0c0 6 6 12 6 20z" opacity=".5"/><path d="M18 30c-3-2-5-6-5-10a11 11 0 0 1 22 0c0 4-2 8-5 10"/><circle cx="24" cy="34" r="3" fill="rgba(251,146,60,0.5)" stroke="none"/></svg>
-            </span>
+            <img class="proj-thumb-bg" src="projects/gameimages/dge4.jpg"></img>
           </div>
           <div class="proj-body">
             <div>
               <div class="proj-tags">
-                <span class="ptag acc">Unity</span><span class="ptag">DOTS</span><span class="ptag">Mobile</span>
+                <span class="ptag acc">Unity</span><span class="ptag">C#</span><span class="ptag">WebGL</span>
               </div>
-              <h3 class="proj-name">Ember Run</h3>
-              <p class="proj-desc">Mobilny endless runner z mechaniką ognia i wiatru. 340k pobrań w pierwszym kwartale po premierze.</p>
+              <h3 class="proj-name">Dummy's great escape</h3>
+              <p class="proj-desc">Gra oferuje świeże spojrzenie na precyzję i strategię, inspirowane rosnącą popularnością trudnych gier akcji-logicznych, takich jak Human Fall Flat i Chained Together.</p>
             </div>
             <div class="proj-foot">
-              <span class="proj-meta">2023 · iOS &amp; Android</span>
+              <span class="proj-meta">2024 · Praca inżynierska · itch.io</span>
               <button class="proj-link glass proj-open-btn">
                 Sprawdź
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -268,6 +259,117 @@
             </div>
           </div>
         </div>
+
+        <div class="proj-card glass featured reveal" data-project="projects/traverse.html">
+          <div class="proj-thumb">
+            <img class="proj-thumb-bg" src="projects/gameimages/traverse_part1_2.png"></img>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="ptag acc">The Sandbox</span><span class="ptag">Web3</span>
+              </div>
+              <h3 class="proj-name">The Traverse</h3>
+              <p class="proj-desc">Gra osadzona na platformie The Sandbox, w której odkrywasz marsjańskie spiski, spotykasz przywódców tajemniczych kultów, demaskujesz impostorów i wcielasz się w rolę prawdziwego bohatera.</p>
+            </div>
+            <div class="proj-foot">
+              <span class="proj-meta">2024 · Gamerhash studio · The Sandbox</span>
+              <button class="proj-link glass proj-open-btn">
+                Sprawdź
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card glass reveal" onclick="window.open('https://www.sandbox.game/en/users/gamercoin/?tab=Experiences', '_blank')">
+          <div class="proj-thumb">
+            <img class="proj-thumb-bg" src="projects/gameimages/cube1.png"></img>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="ptag acc">The Sandbox</span><span class="ptag">Web3</span>
+              </div>
+              <h3 class="proj-name">C.U.B.E</h3>
+              <p class="proj-desc">Gra zabiera graczy do kosmicznego obozu szkoleniowego, jakiego jeszcze nie znają. Akcja gry toczy się w rozległym uniwersum Sandbox, a uczestnicy muszą zmierzyć się z szeregiem wciągających i różnorodnych zadań.</p>
+            </div>
+            <div class="proj-foot">
+              <span class="proj-meta">2024 · Gamerhash studio · The Sandbox</span>
+              <button class="proj-link glass proj-open-btn">
+                Sprawdź
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card glass reveal" onclick="window.open('https://esmg-games.itch.io/deadlock', '_blank')">
+          <div class="proj-thumb">
+            <img class="proj-thumb-bg" src="projects/gameimages/deadlock4.jpg"></img>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="ptag acc">Unity</span><span class="ptag">C#</span>
+              </div>
+              <h3 class="proj-name">Deadlock</h3>
+              <p class="proj-desc">Gra powstała we współpracy z Mikołajem Górowskim. Podczas krótkiego wydarzenia stworzyliśmy krótką historię, przez którą prowadzimy gracza w strzelance FPS w stylu retro na konsolę Playstation.</p>
+            </div>
+            <div class="proj-foot">
+              <span class="proj-meta">2022 · 32 bit Game Jam · itch.io</span>
+              <button class="proj-link glass proj-open-btn">
+                Sprawdź
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="proj-card glass reveal" onclick="window.open('https://mikosusek.itch.io/dicemaster', '_blank')">
+          <div class="proj-thumb">
+            <img class="proj-thumb-bg" src="projects/gameimages/dicemaster.jpg"></img>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="ptag acc">Unity</span><span class="ptag">C#</span>
+              </div>
+              <h3 class="proj-name">Dice master</h3>
+              <p class="proj-desc">gra logiczna o tematyce „rzutu kostką”, opracowana podczas GMTK Game Jam 2022, polegająca na zajmowaniu odpowiednich pozycji na planszy w celu niszczenia wrogich kostek i zdobywania punktów.</p>
+            </div>
+            <div class="proj-foot">
+              <span class="proj-meta">2022 · GMTK Game Jam · itch.io</span>
+              <button class="proj-link glass proj-open-btn">
+                Sprawdź
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card glass reveal" data-project="projects/assets.html">
+          <div class="proj-thumb">
+            <img class="proj-thumb-bg" src="projects/gameimages/workshop1.png"></img>
+          </div>
+          <div class="proj-body">
+            <div>
+              <div class="proj-tags">
+                <span class="ptag acc">Illustrator</span><span class="ptag">Photoshop</span><span class="ptag">Blockbench</span><span class="ptag">CS workshop tools</span>
+              </div>
+              <h3 class="proj-name">Assety do gier</h3>
+              <p class="proj-desc">Zbiór wybranych assetów z różnych projektów.</p>
+            </div>
+            <div class="proj-foot">
+              <span class="proj-meta">2020 - Teraz</span>
+              <button class="proj-link glass proj-open-btn">
+                Sprawdź
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- ART projects -->

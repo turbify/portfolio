@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hourglass Sanatorium — Eryk Sobczak</title>
+<link rel="stylesheet" href="projects.css">
+<style>
+  body { background: #0d0700; }
+  :root {
+    --accent: #fbbf24;
+    --accent-dim: rgba(251,191,36,0.12);
+    --ph:      rgba(251,191,36,0.05);
+    --ph-b:    rgba(251,191,36,0.18);
+    --ph-text: rgba(251,191,36,0.32);
+    --bg:      #0d0700;
+    --bg-hero: #0b0600;
+  }
+  .hero-grid {
+    opacity: .1;
+    background-image:
+      linear-gradient(rgba(251,191,36,.15) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(251,191,36,.15) 1px,transparent 1px);
+    background-size: 36px 36px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-glow tl" style="width:480px;height:480px;top:-100px;left:-80px;background:radial-gradient(circle,rgba(251,191,36,0.13),transparent 65%);"></div>
+  <div class="hero-glow br" style="width:300px;height:300px;bottom:-80px;right:-40px;background:radial-gradient(circle,rgba(251,191,36,0.07),transparent 65%);"></div>
+  <div class="hero-content">
+    <div class="hero-tags">
+      <span class="tag">Unity</span><span class="tag">C#</span>
+      <span class="tag n">2025 · TheBooke Studio · Steam</span>
+      <span class="tag award">Tytuł finansowany z programu wsparcia CRPK</span>
+    </div>
+    <h1>Hourglass Sanatorium</h1>
+    <p class="hero-sub">Gra przygodowo-horrorowa, w której będziesz eksplorować nawiedzone labirynty, spotykać dziwne postacie i udać się do tajemniczego alternatywnego świata, by spotkać się ze swoim zmarłym ojcem. Gra oparta jest na twórczości surrealistycznego pisarza i artysty plastyka Bruno Schulza.</p>
+    <div class="cta-row">
+    <a href="https://store.steampowered.com/app/4122420/Hourglass_Sanatorium/" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn">
+   Strona Steam
+   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+      <path d="M3 8h10M9 4l4 4-4 4"/>
+   </svg>
+</a>
+  </div>
+  </div>
+</div>
+
+<div class="body">
+
+  <!--
+  <div class="award-banner">
+    <div class="award-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 21h8M12 17v4M7 4v8a5 5 0 0 0 10 0V4H7z"/><path d="M7 8H4a2 2 0 0 0 0 4h3M17 8h3a2 2 0 0 1 0 4h-3"/></svg>
+    </div>
+    <div>
+      <div class="award-text">Best Mechanic Award</div>
+      <div class="award-sub">PolyJam 2024 — Wrocław — spośród 22 drużyn</div>
+    </div>
+  </div>-->
+
+  <div class="stats-row cols-4">
+    <div class="stat"><div class="stat-val">1 rok</div><div class="stat-label">Produkcja</div></div>
+    <div class="stat"><div class="stat-val">6 os.</div><div class="stat-label">Zespół</div></div>
+  </div>
+
+  <!-- BANER -->
+  <div class="section">
+    <div class="img-section-label">Zrzut ekranu z rozgrywki</div>
+    <div class="slot img-banner">
+      <img src="gameimages/hs2.jpg">
+    </div>
+    <div class="img-caption">Widok pierwszego poziomu — stare wnętrza wagonów</div>
+  </div>
+
+  <div class="section">
+    <h2>O projekcie</h2>
+    <p>Hourglass Sanatorium to gra przygodowo-horrorowa, w której będziesz eksplorować nawiedzone labirynty, spotykać dziwne postacie i udać się do tajemniczego alternatywnego świata, by spotkać się ze swoim zmarłym ojcem. Gra oparta jest na twórczości surrealistycznego pisarza i artysty plastyka Bruno Schulza.</p>
+    <p>Współpraca z dwójką bardzo rozpoznawalnych aktorów głosowych do głównych ról w polskim dubbingu<br>
+Ojciec - Tomasz Grochoczyński (Arktos z Tabalugi, Torbjorn z Overwatcha, Vlad z Hotelu Transylwania, Mefisto z Diablo)<br>
+Józef - Jarosław Domin (Legendarny głos Obi Wana z Gwiezdnych Wojen, Pinokio ze Shreka)</p>
+    <p>Byłem odpowiedzialny za całą architekturę gry Hourglass Sanatorium od pierwszej linii kodu. Zaprojektowałem i zbudowałem strukturę kodu, mechaniki rozgrywki oraz UI. </p>
+  </div>
+
+  <div class="section">
+    <h2>Mechaniki</h2>
+    <div class="mechanic-list">
+      <div class="mechanic">
+        <div class="mechanic-dot"></div>
+        <div>
+          <div class="mechanic-name">Nieeuklidesowe pomieszczenia (Non-Euclidean)</div>
+          <div class="mechanic-desc">System bezszwowego przemieszczania gracza wraz z widokiem kamery aby tworzyć niemożliwe labirynty.</div>
+        </div>
+      </div>
+      <div class="mechanic">
+        <div class="mechanic-dot"></div>
+        <div>
+          <div class="mechanic-name">Zagadki</div>
+          <div class="mechanic-desc">System najróżniejszych minigier i zagadek rozwiązywanych przez gracza zintegrowany ze światem gry</div>
+        </div>
+      </div>
+      <div class="mechanic">
+        <div class="mechanic-dot"></div>
+        <div>
+          <div class="mechanic-name">System gry przygodowej</div>
+          <div class="mechanic-desc">Klasyczne dzienniki, ekwipunek, dialogi, napisy itp.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID FEATURE -->
+  <div class="section">
+    <div class="img-section-label">Zrzuty ekranu z rozgrywki</div>
+    <div class="img-grid-feature">
+      <div class="slot-main">
+        <img src="gameimages/hs3.jpg">
+      </div>
+      <div class="slot-stack">
+        <div class="slot">
+          <img src="gameimages/hs4.png">
+        </div>
+        <div class="slot">
+          <img src="gameimages/hs5.png">
+        </div>
+      </div>
+    </div>
+    <div class="img-caption">Wybrane klatki ekranu z gry</div>
+  </div>
+
+  <div class="section">
+    <h2>Stack technologiczny</h2>
+    <div class="tech-list">
+      <span class="tech">Unity</span>
+      <span class="tech">C#</span>
+      <span class="tech">Adventure creator</span>
+      <span class="tech">Unity Face Capture</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Czego się nauczyłem</h2>
+    <p>Projektowania i implementacji architektury gry w Unity (C#), tworzenia złożonych mechanik (w tym systemów nieeuklidesowych i zagadek), budowy systemów UI oraz pracy zespołowej przy produkcji gry z elementami narracyjnymi i dubbingiem.</p>
+  </div>
+
+  <div class="cta-row">
+    <a href="https://store.steampowered.com/app/4122420/Hourglass_Sanatorium/" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn">
+   Strona Steam
+   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+      <path d="M3 8h10M9 4l4 4-4 4"/>
+   </svg>
+</a>
+  </div>
+
+</div>
+</body>
+</html>

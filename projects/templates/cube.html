@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CubeShift — Mateusz Kowalski</title>
+<link rel="stylesheet" href="projects.css">
+<style>
+  body { background: #06080f; }
+  :root {
+    --accent: #818cf8;
+    --accent-dim: rgba(129,140,248,0.12);
+    --ph:     rgba(129,140,248,0.05);
+    --ph-b:   rgba(129,140,248,0.18);
+    --ph-text:rgba(129,140,248,0.35);
+    --bg:     #06080f;
+    --bg-hero:#050710;
+  }
+  .hero-glow.tl { background: radial-gradient(circle,rgba(129,140,248,0.14),transparent 65%); }
+  .hero-grid { opacity: .14;
+    background-image:
+      linear-gradient(rgba(129,140,248,.15) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(129,140,248,.15) 1px,transparent 1px);
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow tl" style="width:520px;height:520px;top:-140px;left:-100px;"></div>
+  <div class="hero-content">
+    <div class="hero-tags">
+      <span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Puzzle</span>
+      <span class="tag n">PC &amp; Mac · 2024</span><span class="tag n">Solo dev</span>
+    </div>
+    <h1>CubeShift</h1>
+    <p class="hero-sub">Minimalistyczna gra logiczna w 3D — obracaj i łącz sześciany, żeby wypełnić każdą przestrzeń. 60 poziomów, nieskończone możliwości.</p>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="stats-row cols-4">
+    <div class="stat"><div class="stat-val">60</div><div class="stat-label">Poziomów</div></div>
+    <div class="stat"><div class="stat-val">7 mies.</div><div class="stat-label">Produkcja</div></div>
+    <div class="stat"><div class="stat-val">Solo</div><div class="stat-label">Zespół</div></div>
+    <div class="stat"><div class="stat-val">PC/Mac</div><div class="stat-label">Platforma</div></div>
+  </div>
+
+  <!-- BANER -->
+  <div class="section">
+    <div class="img-section-label">Widok główny</div>
+    <div class="slot img-banner">
+      <img src="gameimages/cube0.png" alt="CubeShift — gameplay">
+      <svg class="ph-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span class="slot-hint">Główny widok rozgrywki · 16:9</span>
+    </div>
+    <div class="img-caption">Scena rozgrywki — siatka przestrzenna z aktywnymi sześcianami</div>
+  </div>
+
+  <div class="section">
+    <h2>O projekcie</h2>
+    <p>CubeShift to gra logiczna, która powstała z jednego prostego pytania: co się stanie, jeśli Tetris zyska trzeci wymiar i własną fizykę obrotu? Gracz manipuluje sześcianami na izometrycznej siatce, łącząc je w przestrzenne konfiguracje wymagane przez każdy poziom.</p>
+    <p>Projekt był eksperymentem z czystą mechaniką — zero fabuły, zero dialogów. Tylko przestrzeń, logika i minimalistyczna estetyka inspirowana grami Devolver Digital i Zach Gage. Każdy z 60 poziomów projektowałem ręcznie, testując na grupie 12 zewnętrznych graczy.</p>
+  </div>
+
+  <!-- GRID 2 -->
+  <div class="section">
+    <div class="img-section-label">Screenshoty z poziomów</div>
+    <div class="img-grid-2">
+      <div class="slot">
+        <img src="gameimages/cube1.png" alt="CubeShift — poziom 1">
+        <svg class="ph-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">Poziom wczesny · 16:9</span>
+      </div>
+      <div class="slot">
+        <img src="gameimages/cube2.png" alt="CubeShift — poziom 2">
+        <svg class="ph-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">Poziom zaawansowany · 16:9</span>
+      </div>
+    </div>
+    <div class="img-caption">Wczesny poziom (lewo) · zaawansowana konfiguracja przestrzenna (prawo)</div>
+  </div>
+
+  <div class="section">
+    <h2>Kluczowe systemy</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+        <div class="feature-name">System obrotu 3D</div>
+        <div class="feature-desc">Quaternion-based rotation z interpolacją SLERP. Płynne obroty bez gimbal lock na każdej osi.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+        <div class="feature-name">Walidacja dopasowania</div>
+        <div class="feature-desc">Algorytm sprawdzający poprawność ułożenia w czasie O(n) — natychmiastowy feedback bez lagów.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div>
+        <div class="feature-name">Proceduralny edytor poziomów</div>
+        <div class="feature-desc">Wewnętrzne narzędzie do projektowania poziomów z podglądem na żywo i eksportem JSON.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <div class="feature-name">Dynamiczne oświetlenie</div>
+        <div class="feature-desc">Shader cel-shading z fake GI. Każdy kolor sześcianu wpływa na oświetlenie sąsiednich klocków.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID FEATURE -->
+  <div class="section">
+    <div class="img-section-label">Detale wizualne</div>
+    <div class="img-grid-feature">
+      <div class="slot-main">
+        <img src="gameimages/cube3.png" alt="CubeShift — cel shading">
+        <svg class="ph-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span class="slot-hint">Detale cel-shadingu · 16:9</span>
+      </div>
+      <div class="slot-stack">
+        <div class="slot">
+          <img src="" alt="">
+          <svg class="ph-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span class="slot-hint">UI / HUD · 16:9</span>
+        </div>
+        <div class="slot">
+          <img src="" alt="">
+          <svg class="ph-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span class="slot-hint">Ekran końca poziomu · 16:9</span>
+        </div>
+      </div>
+    </div>
+    <div class="img-caption">Shader cel-shading z dynamicznym oświetleniem (lewo) · UI i ekran wygranej (prawo)</div>
+  </div>
+
+  <div class="section">
+    <h2>Stack technologiczny</h2>
+    <div class="tech-list">
+      <span class="tech">Unity 2023 LTS</span>
+      <span class="tech">C#</span>
+      <span class="tech">URP + Shader Graph</span>
+      <span class="tech">Cinemachine</span>
+      <span class="tech">TextMeshPro</span>
+      <span class="tech">Unity Input System</span>
+      <span class="tech">DOTween</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Czego się nauczyłem</h2>
+    <p>Pierwszy raz pracowałem z estetyką, w której mniej znaczy więcej — każdy piksel musiał mieć powód, żeby istnieć. Nauczyłem się projektować poziomy z myślą o krzywej trudności i zbierać użyteczny feedback od playtesterów. Technicznie — praca z quaternionami i własnym systemem cofania ruchów (undo stack).</p>
+  </div>
+
+  <div class="cta-row">
+    <a href="#" class="btn">Zagraj na itch.io <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a href="#" class="btn btn-ghost">Kod na GitHub</a>
+  </div>
+
+</div>
+</body>
+</html>
