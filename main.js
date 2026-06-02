@@ -8,7 +8,7 @@ var currentMode = null;
 
 // Element IDs that belong to each mode
 var gameEls = [
-  'hero-tag-g', 'hero-logo-g', 'hero-name-g', 'hero-title-g', 'hero-desc-g', 'proj-sub-g',
+  'hero-tag-g', 'hero-logo-g', 'hero-name-g', 'hero-title-g', 'hero-desc-g', 'hero-github', 'proj-sub-g',
   'gprojects', 'tl1-g', 'tl2-g', 'tl2-where-g', 'about-p-g',
   'skills-g', 'cl-game', 'cl-game2'
 ];
