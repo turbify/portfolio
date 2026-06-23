@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pushout: Demolition Derby - Eryk Sobczak</title>
+<link rel="stylesheet" href="projects.css">
+<style>
+  body { background: #121212; }
+  :root {
+    --accent: #fbbf24;
+    --accent-dim: rgba(251, 191, 36, 0.12);
+    --ph:      rgba(251, 191, 36, 0.05);
+    --ph-b:    rgba(251, 191, 36, 0.18);
+    --ph-text: rgba(251, 191, 36, 0.32);
+    --bg:      #121212;
+    --bg-hero: #0a0a0a;
+  }
+  .hero-grid {
+    opacity: .07;
+    background-image:
+      linear-gradient(rgba(251, 191, 36, .15) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(251, 191, 36, .15) 1px,transparent 1px);
+    background-size: 36px 36px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-glow tl" style="width:480px;height:480px;top:-100px;left:-80px;background:radial-gradient(circle,rgba(251, 191, 36,0.1),transparent 65%);"></div>
+  <div class="hero-glow br" style="width:300px;height:300px;bottom:-80px;right:-40px;background:radial-gradient(circle,rgba(251, 191, 36,0.05),transparent 65%);"></div>
+  <div class="hero-content">
+    <div class="hero-tags">
+      <span class="tag">Source 2</span><span class="tag">C#</span>
+      <span class="tag n">2026 · welded · s&box</span>
+      <span class="tag award">Gra multiplayer • Beta</span>
+    </div>
+    <h1>Pushout: Demolition Derby</h1>
+    <p class="hero-sub">Dynamiczna gra multiplayer typu vehicle combat. Celem jest utrzymanie się na arenie przez 240 sekund i wypychanie przeciwników poza platformę. Inspiracją były klasyczne tryby Demolition Derby i Sumo z SA:MP oraz MTA.</p>
+    <div class="cta-row">
+    <a href="https://sbox.game/weld/pushout" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn">
+   Strona s&box
+   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+      <path d="M3 8h10M9 4l4 4-4 4"/>
+   </svg>
+</a>
+  </div>
+  </div>
+</div>
+
+<div class="body">
+  <div class="img-section-label">Wyniki pierwszego tygodnia</div>
+  <div class="stats-row cols-4">
+    <div class="stat"><div class="stat-val">848</div><div class="stat-label">Graczy łącznie (w miesiąc)</div></div>
+    <div class="stat"><div class="stat-val">972</div><div class="stat-label">Sesji w ostatni tydzień</div></div>
+    <div class="stat"><div class="stat-val">189</div><div class="stat-label">Rekord graczy jednego dnia</div></div>
+    <div class="stat"><div class="stat-val">155</div><div class="stat-label">Godzin łącznego czasu gry graczy</div></div>
+  </div>
+
+  <!-- BANER -->
+  <div class="section">
+    <div class="img-section-label">Zrzut ekranu z rozgrywki</div>
+    <div class="slot img-banner">
+      <img src="gameimages/pushout1.png">
+    </div>
+    <div class="img-caption">Widok na dynamiczne starcie na arenie</div>
+  </div>
+
+  <div class="section">
+    <h2>O projekcie</h2>
+    <p>Pushout: Demolition Derby to autorski projekt dynamicznej gry zręcznościowej online nastawionej na fizykę i rywalizację. Gra wskrzesza mechanikę znaną z kultowych modyfikacji do GTA San Andreas (SA:MP/MTA), przenosząc ją w nowoczesne realia silnika Source 2. Projekt znajduje się w fazie otwartej bety, stale gromadząc zaangażowaną społeczność graczy na platformie s&box.</p>
+    <p>Byłem odpowiedzialny za pełny cykl produkcyjny - od projektu mechanik po architekturę kodu, sieciową synchronizację fizyki, wdrożenie UI oraz analitykę popularności tytułu.</p>
+  </div>
+
+  <div class="section">
+    <h2>Główne mechaniki i cechy gry</h2>
+    <div class="mechanic-list">
+      <div class="mechanic">
+        <div class="mechanic-dot"></div>
+        <div>
+          <div class="mechanic-name">Walka pojazdami oparta na zaawansowanej fizyce</div>
+          <div class="mechanic-desc">System naliczania pędu, masy i prędkości. Gracze eliminują się poprzez taranowanie i wypychanie z platformy, gdzie kluczowe jest wyczucie timingu.</div>
+        </div>
+      </div>
+      <div class="mechanic">
+        <div class="mechanic-dot"></div>
+        <div>
+          <div class="mechanic-name">Rozgrywka multiplayer w trybie "Sumo"</div>
+          <div class="mechanic-desc">Dynamiczne i nieprzewidywalne starcia z 16-minutowym limitem czasu meczu oraz systemem szybkiego odradzania się (respawn po 10 sekundach).</div>
+        </div>
+      </div>
+      <div class="mechanic">
+        <div class="mechanic-dot"></div>
+        <div>
+          <div class="mechanic-name">Skill-based gameplay</div>
+          <div class="mechanic-desc">Projekt premiuje taktyczne pozycjonowanie na arenie, świadomość otoczenia oraz kontrolowanie własnego pędu, rezygnując z bezmyślnej, szybkiej jazdy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID FEATURE -->
+  <div class="section">
+    <div class="img-section-label">Zrzuty ekranu z rozgrywki</div>
+    <div class="img-grid-feature">
+      <div class="slot-main">
+        <img src="gameimages/pushout2.png">
+      </div>
+      <div class="slot-stack">
+        <div class="slot">
+          <img src="gameimages/pushout3.png">
+        </div>
+        <div class="slot">
+          <img src="gameimages/pushout4.png">
+        </div>
+      </div>
+    </div>
+    <div class="img-caption">Wybrane klatki z dynamicznych starć w grze</div>
+  </div>
+
+  <div class="section">
+    <h2>Stack technologiczny</h2>
+    <div class="tech-list">
+      <span class="tech">S&box</span>
+      <span class="tech">C#</span>
+      <span class="tech">Multiplayer Architecture</span>
+      <span class="tech">Rigidbody Physics</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Czego się nauczyłem</h2>
+    <p>Projekt rozwinął moje umiejętności optymalizacji kodu pod kątem rozgrywki wieloosobowej oraz pracy z systemem fizyki silnika Source 2 i s&box. Ponad 1200 rozegranych sesji i setki unikalnych graczy w krótkim czasie pozwoliły mi na zbieranie feedbacku live, analizowanie błędów w środowisku produkcyjnym i wdrażanie szybkich zmian balansu (LiveOps), co udowodniło przydatność mojej architektury w realnych warunkach rynkowych.</p>
+  </div>
+
+  <div class="cta-row">
+    <a href="https://sbox.game/weld/pushout" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="btn">
+   Strona s&box
+   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+      <path d="M3 8h10M9 4l4 4-4 4"/>
+   </svg>
+</a>
+  </div>
+
+</div>
+</body>
+</html>
