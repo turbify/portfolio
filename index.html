@@ -1,703 +1,470 @@
-<!DOCTYPE html>
-<html lang="pl">
+<!doctype html>
+<html lang="pl" data-mode="game">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eryk Sobczak - Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* ── PROJECT MODAL ─────────────────────────────────────── */
-    .proj-modal-overlay {
-      position: fixed; inset: 0; z-index: 900;
-      background: rgba(0,0,0,0.72);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.35s cubic-bezier(0.23,1,0.32,1);
-    }
-    .proj-modal-overlay.open {
-      opacity: 1; pointer-events: all;
-    }
-    .proj-modal {
-      position: relative;
-      width: calc(100vw - 48px);
-      max-width: 1200px;
-      height: calc(100vh - 80px);
-      max-height: 860px;
-      border-radius: 20px;
-      overflow: hidden;
-      transform: translateY(32px) scale(0.97);
-      transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
-      box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
-      background: #0d0d0d;
-    }
-    .proj-modal-overlay.open .proj-modal {
-      transform: translateY(0) scale(1);
-    }
-    .proj-modal iframe {
-      width: 100%; height: 100%;
-      border: none; display: block;
-    }
-    .proj-modal-close {
-      position: absolute; top: 16px; right: 16px; z-index: 10;
-      width: 40px; height: 40px; border-radius: 50%;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.9);
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .proj-modal-close:hover {
-      background: rgba(0,0,0,0.8);
-      transform: scale(1.08);
-    }
-    .proj-modal-loader {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      background: #0d0d0d; z-index: 1;
-      transition: opacity 0.3s;
-    }
-    .proj-modal-loader.hidden { opacity: 0; pointer-events: none; }
-    .loader-spinner {
-      width: 36px; height: 36px; border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.1);
-      border-top-color: rgba(255,255,255,0.6);
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eryk Sobczak — Unity developer i grafik</title>
+  <meta name="description" content="Portfolio Eryka Sobczaka: Unity / C# developer (Hourglass Sanatorium na Steam, Komputronik Biznes, GamerHash) i projektant identyfikacji wizualnych.">
+  <meta property="og:title" content="Eryk Sobczak — Unity developer i grafik">
+  <meta property="og:description" content="Gry w Unity i C#, od game jamów po Steam. Do tego branding i identyfikacje wizualne.">
+  <meta property="og:image" content="projects/gameimages/hs1.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#f8f7f3">
+  <link rel="icon" href="assets/favicon.ico">
+
+  <!-- Resolve mode before first paint: #gry / #grafika in URL > saved choice > game. -->
+  <script>
+    (function () {
+      var hash = location.hash;
+      var mode = null;
+      if (/^#(grafika|art|graphics)$/.test(hash)) mode = 'art';
+      else if (/^#(gry|game)$/.test(hash)) mode = 'game';
+      else { try { mode = localStorage.getItem('portfolio-mode'); } catch (e) {} }
+      document.documentElement.dataset.mode = mode === 'art' ? 'art' : 'game';
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/sections.css">
+  <link rel="stylesheet" href="styles/utilities.css">
+  <script src="scripts/main.js" defer></script>
 </head>
-<body class="mode-game">
+<body>
 
-<!-- ── BACKGROUND ─────────────────────────────────────────── -->
-<div class="bg-canvas"></div>
-<div class="bg-image"></div>
-<canvas id="unity-bg" class="unity-bg-canvas"></canvas>
+<!-- Icon sprite -->
+<svg class="visually-hidden" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></symbol>
+  <symbol id="i-itch" viewBox="0 0 24 24"><path fill="currentColor" d="M3.13 1.34C2.08 1.97.02 4.35 0 4.97v1.04c0 1.31 1.23 2.47 2.35 2.47 1.34 0 2.46-1.11 2.46-2.43 0 1.32 1.08 2.43 2.43 2.43 1.34 0 2.38-1.11 2.38-2.43 0 1.32 1.15 2.43 2.49 2.43h.02c1.35 0 2.5-1.11 2.5-2.43 0 1.32 1.03 2.43 2.37 2.43s2.43-1.11 2.43-2.43c0 1.32 1.12 2.43 2.46 2.43 1.12 0 2.35-1.16 2.35-2.47V4.97c-.02-.62-2.08-3-3.13-3.63-3.27-.12-5.53-.14-8.87-.14-3.33 0-7.88.05-8.87.14Zm6.33 6.43a2.8 2.8 0 0 1-4.8 0 2.8 2.8 0 0 1-2.4 1.35c-.3 0-.62-.07-.87-.16-.35 3.66-.24 6.43.19 11.02 1.46 1.62 7.38 1.63 10.42 1.63 3.03 0 8.95-.01 10.42-1.63.43-4.59.54-7.36.19-11.02-.25.09-.57.16-.87.16a2.8 2.8 0 0 1-2.4-1.35 2.8 2.8 0 0 1-4.8 0 2.8 2.8 0 0 1-2.39 1.35h-.08a2.8 2.8 0 0 1-2.4-1.35Zm-1.89 3.02c1.18 0 2.23 0 3.52 1.42 1.02-.1 2.08-.16 3.15-.16 1.07 0 2.13.05 3.15.16 1.3-1.42 2.35-1.42 3.52-1.42.56 0 2.78 0 4.33 4.37l1.67 6c1.23 4.46-.4 4.57-2.44 4.58-3.02-.11-4.7-2.31-4.7-4.51-1.67.27-3.62.41-5.53.41s-3.86-.14-5.53-.41c0 2.2-1.68 4.4-4.7 4.51-2.04-.01-3.67-.12-2.44-4.58l1.67-6c1.55-4.37 3.77-4.37 4.33-4.37ZM12 13.2s-3.2 2.95-3.78 3.99l2.1-.08v1.83c0 .09.84.05 1.68.01.84.04 1.68.08 1.68-.01v-1.83l2.1.08C15.2 16.14 12 13.2 12 13.2Z"/></symbol>
+</svg>
 
-<!-- ── PROJECT MODAL ──────────────────────────────────────── -->
-<div class="proj-modal-overlay" id="proj-modal-overlay">
-  <div class="proj-modal" id="proj-modal">
-    <div class="proj-modal-loader" id="proj-modal-loader">
-      <div class="loader-spinner"></div>
+<a class="skip-link" href="#main">Przejdź do treści</a>
+
+<!-- ── HEADER ───────────────────────────────────────────── -->
+<header class="site-header" data-nav>
+  <div class="site-header__inner">
+    <a class="logo-burst" href="#top" aria-label="Eryk Sobczak — na górę strony">
+      <span aria-hidden="true">esob</span>
+    </a>
+
+    <div class="mode-switch" role="group" aria-label="Które portfolio pokazać">
+      <button class="mode-switch__option" type="button" data-mode-set="game" aria-pressed="true">Gry</button>
+      <button class="mode-switch__option" type="button" data-mode-set="art" aria-pressed="false">Grafika</button>
     </div>
-    <button class="proj-modal-close" id="proj-modal-close" aria-label="Zamknij">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-        <path d="M18 6L6 18M6 6l12 12"/>
-      </svg>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      <span class="visually-hidden">Menu</span>
     </button>
-    <iframe id="proj-modal-iframe" src="" title="Projekt" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+
+    <nav class="site-nav" id="site-nav" aria-label="Główna" data-nav-menu data-state="closed">
+      <ul class="site-nav__list" role="list">
+        <li><a class="site-nav__link" href="#projekty">Projekty</a></li>
+        <li><a class="site-nav__link" href="#o-mnie">O mnie</a></li>
+        <li><a class="site-nav__link" href="#kontakt">Kontakt</a></li>
+        <li><a class="button button--accent button--small" href="mailto:esobczk@gmail.com">Napisz</a></li>
+      </ul>
+    </nav>
   </div>
-</div>
+</header>
 
-<!-- ── NAVIGATION ─────────────────────────────────────────── -->
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo" id="hero-logo-g">esob<span>.pl</span></a>
-    <a href="#" class="nav-logo" id="hero-logo-a"><img src="assets/logo_b.svg" style="height:50px;"></a>
-    <div class="nav-links">
-      <a href="#projekty" class="nav-link">Projekty</a>
-      <a href="#o-mnie"   class="nav-link">O mnie</a>
-      <a href="#kontakt"  class="nav-link">Kontakt</a>
-    </div>
-  </div>
-</nav>
+<main id="main">
 
-<!-- ── MODE TOGGLE ────────────────────────────────────────── -->
-<div class="toggle-wrap">
-  <div class="toggle-inner glass">
-    <div class="toggle-pill" id="pill"></div>
-    <button class="tbtn tbtn-game" onclick="setMode('game')">Game Dev</button>
-    <button class="tbtn tbtn-art"  onclick="setMode('art')">Grafika</button>
-  </div>
-</div>
-
-<!-- ── PAGE CONTENT ───────────────────────────────────────── -->
-<div id="transition-wrap">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-inner">
-        <div class="avail entry">
-          <span class="avail-dot"></span>Dostępny do pracy - 2026
-        </div>
-        <h1 class="hero-name entry" id="hero-name-g">
-          Eryk Sobczak
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__name" data-show="game">Eryk Sobczak</span>
+          <span class="hero__claim" data-show="game">Unity developer, który dowozi gry od prototypu do&nbsp;premiery.</span>
+          <span class="hero__name" data-show="art">Daj się rozpoznać.</span>
+          <span class="hero__claim" data-show="art">Zaprojektuję identyfikację, która przyciągnie Twoich klientów.</span>
         </h1>
-        <h1 class="hero-name entry" id="hero-name-a">
-          Daj się<span class="hero-name-last">rozpoznać</span>
-        </h1>
-        <p class="hero-title entry" id="hero-title-g">
-          Tworzę <strong>gry i interaktywne doświadczenia</strong>, które zostają w pamięci.
-        </p>
-        <p class="hero-title entry" id="hero-title-a" style="display:none">
-          Zaprojektuję do Ciebie <strong>identyfikacje wizualną</strong>, która przyciągnie uwagę odbiorców.
-        </p>
-        <div class="hero-cta entry">
-          <a href="#projekty" class="btn-primary">
+
+        <div class="hero__actions">
+          <a class="button button--primary" href="#projekty">
             Zobacz projekty
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
-          <a href="https://github.com/turbify" class="btn-ghost glass" id="hero-github">Github</a>
-          <a href="#kontakt" class="btn-ghost glass">Napisz do mnie</a>
+          <a class="button button--outline" href="https://github.com/turbify" target="_blank" rel="noopener" data-show="game">
+            GitHub<span class="visually-hidden"> (otwiera się w nowej karcie)</span>
+          </a>
+          <a class="button button--outline" href="mailto:esobczk@gmail.com">Napisz do mnie</a>
         </div>
+
+        <dl class="facts" data-show="game">
+          <div class="facts__item"><dt>Teraz</dt><dd>Unity Developer w Komputronik Biznes</dd></div>
+          <div class="facts__item"><dt>Na Steam</dt><dd>Hourglass Sanatorium: cała architektura moja</dd></div>
+          <div class="facts__item"><dt>Własny multiplayer</dt><dd>Pushout: 848 graczy w&nbsp;1. miesiąc</dd></div>
+        </dl>
+        <dl class="facts" data-show="art">
+          <div class="facts__item"><dt>Doświadczenie</dt><dd>Projektuję od 2017 roku</dd></div>
+          <div class="facts__item"><dt>Specjalizacja</dt><dd>Branding, logo, social media</dd></div>
+          <div class="facts__item"><dt>Klienci</dt><dd>Firmy z całej Polski</dd></div>
+        </dl>
       </div>
+
+      <figure class="hero__media" data-show="game">
+        <a class="hero__media-link" href="projects/hourglass.html" data-viewer="page">
+          <img src="assets/thumbs/hs2.jpg" srcset="assets/thumbs/hs2.jpg 1200w, projects/gameimages/hs2.jpg 1920w" sizes="(width >= 64em) 42vw, 100vw" width="1200" height="675" alt="Hourglass Sanatorium: bohater w cylindrze idzie korytarzem starego wagonu oświetlonego lampami" fetchpriority="high">
+          <span class="visually-hidden">Hourglass Sanatorium — szczegóły projektu</span>
+        </a>
+        <span class="sticker sticker--burst sticker--hero" aria-hidden="true">na Steam!</span>
+        <figcaption class="bubble bubble--caption">Hourglass Sanatorium · 2025</figcaption>
+      </figure>
+      <figure class="hero__media" data-show="art">
+        <a class="hero__media-link" href="projects/gfximages/turbify.png" data-viewer="image" data-viewer-title="Turbify — branding">
+          <img src="assets/thumbs/turbify.jpg" width="1142" height="583" alt="Turbify: prezentacja identyfikacji wizualnej" loading="lazy">
+          <span class="visually-hidden">Turbify — powiększ projekt</span>
+        </a>
+        <span class="sticker sticker--burst sticker--hero" aria-hidden="true">branding!</span>
+        <figcaption class="bubble bubble--caption">Turbify · branding</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- CONSEQUENCES (art mode only) -->
-  <section class="cons-section" id="consequences" style="display:none">
+  <!-- ── PROJECTS ─────────────────────────────────────────── -->
+  <section class="panel" id="projekty" aria-labelledby="projects-title">
     <div class="container">
-      <div class="section-header reveal">
-        <h3 class="sec-title">Czym grozi słaba identyfikacja wizualna?</h3><br>
-      </div>
-      <div class="cons-headline glass reveal">
-        <div class="cons-num">73%</div>
-        <p class="cons-headline-text">
-          konsumentów <strong>ocenia wiarygodność firmy</strong> na podstawie jej identyfikacji wizualnej -
-          jeszcze zanim przeczytają choćby jedno słowo.
+      <header class="section-head">
+        <p class="bubble bubble--on-panel">wybrane projekty</p>
+        <h2 class="section-head__title" id="projects-title">Projekty, z których jestem dumny.</h2>
+      </header>
+
+      <!-- Game dev -->
+      <ul class="project-grid" role="list" data-show="game">
+        <li class="project-card project-card--featured">
+          <div class="project-card__media">
+            <img src="assets/thumbs/hs1.jpg" width="1200" height="675" alt="" loading="lazy">
+            <span class="sticker sticker--tag sticker--crimson" aria-hidden="true">Steam</span>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__meta">2025 · TheBooke Studio · Steam</p>
+            <h3 class="project-card__title"><a class="project-card__link" href="projects/hourglass.html" data-viewer="page">Hourglass Sanatorium</a></h3>
+            <p class="project-card__desc">Przygodowy horror inspirowany twórczością Brunona Schulza: nieeuklidesowe labirynty, zagadki i podróż do alternatywnego świata. <strong>Zbudowałem całą architekturę gry od pierwszej linii kodu, mechaniki i UI.</strong></p>
+            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Steam</li></ul>
+          </div>
+          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
+        </li>
+
+        <li class="project-card project-card--featured">
+          <div class="project-card__media">
+            <img src="assets/thumbs/pushout.jpg" width="1200" height="675" alt="" loading="lazy">
+            <span class="sticker sticker--tag sticker--yellow" aria-hidden="true">848 graczy!</span>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__meta">2026 · Otwarta beta · s&amp;box</p>
+            <h3 class="project-card__title"><a class="project-card__link" href="projects/pushout.html" data-viewer="page">Pushout: Demolition Derby</a></h3>
+            <p class="project-card__desc">Multiplayerowy vehicle combat: spychasz rywali z areny, zanim oni zepchną ciebie. <strong>Cały cykl produkcji jest mój: mechaniki, sieciowa fizyka, UI i analityka.</strong> 848 graczy w pierwszym miesiącu bety.</p>
+            <ul class="tag-list" role="list"><li>Source 2</li><li>s&amp;box</li><li>C#</li></ul>
+          </div>
+          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
+        </li>
+
+        <li class="project-card">
+          <div class="project-card__media"><img src="assets/thumbs/dge4.jpg" width="960" height="540" alt="" loading="lazy"></div>
+          <div class="project-card__body">
+            <p class="project-card__meta">2024 · Praca inżynierska · itch.io</p>
+            <h3 class="project-card__title"><a class="project-card__link" href="projects/dge.html" data-viewer="page">Dummy's Great Escape</a></h3>
+            <p class="project-card__desc">Gra fizyczna, w której sterujesz każdą kończyną ragdolla osobno. Precyzja i strategia w duchu Human Fall Flat.</p>
+            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>WebGL</li></ul>
+          </div>
+          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
+        </li>
+
+        <li class="project-card">
+          <div class="project-card__media"><img src="assets/thumbs/traverse_part1_2.jpg" width="963" height="540" alt="" loading="lazy"></div>
+          <div class="project-card__body">
+            <p class="project-card__meta">2024 · GamerHash · The Sandbox</p>
+            <h3 class="project-card__title"><a class="project-card__link" href="projects/traverse.html" data-viewer="page">The Traverse</a></h3>
+            <p class="project-card__desc">Fabularna platformówka o rozbitku na Marsie. Zrobiłem mechaniki interakcji, zagadki, walki z bossami oraz fabułę z dialogami.</p>
+            <ul class="tag-list" role="list"><li>The Sandbox</li><li>Web3</li></ul>
+          </div>
+          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
+        </li>
+
+        <li class="project-card">
+          <div class="project-card__media"><img src="assets/thumbs/cube1.jpg" width="1200" height="675" alt="" loading="lazy"></div>
+          <div class="project-card__body">
+            <p class="project-card__meta">2024 · GamerHash · The Sandbox</p>
+            <h3 class="project-card__title"><a class="project-card__link" href="https://www.sandbox.game/en/users/gamercoin/?tab=Experiences" target="_blank" rel="noopener">C.U.B.E<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h3>
+            <p class="project-card__desc">Kosmiczny obóz szkoleniowy w uniwersum The Sandbox: seria różnorodnych zadań, które trzeba zaliczyć, żeby przejść dalej.</p>
+            <ul class="tag-list" role="list"><li>The Sandbox</li><li>Web3</li></ul>
+          </div>
+          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
+        </li>
+
+        <li class="project-card">
+          <div class="project-card__media"><img src="assets/thumbs/movement.jpg" width="632" height="350" alt="" loading="lazy"></div>
+          <div class="project-card__body">
+            <p class="project-card__meta">2026 · Open source · GitHub</p>
+            <h3 class="project-card__title"><a class="project-card__link" href="https://github.com/turbify/unity-character-controller-demo" target="_blank" rel="noopener">Physics-Based FPP Movement<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h3>
+            <p class="project-card__desc">Kontroler postaci z perspektywy pierwszej osoby oparty na fizyce, zbudowany na czytelnej maszynie stanów.</p>
+            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>State machine</li></ul>
+          </div>
+          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
+        </li>
+
+        <li class="project-card">
+          <div class="project-card__media"><img src="assets/thumbs/nopain2.jpg" width="960" height="540" alt="" loading="lazy"></div>
+          <div class="project-card__body">
+            <p class="project-card__meta">2023 · GMTK Game Jam · itch.io</p>
+            <h3 class="project-card__title"><a class="project-card__link" href="https://esmg-games.itch.io/no-pain-no-gain" target="_blank" rel="noopener">No Pain No Gain<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h3>
+            <p class="project-card__desc">Platformówka na temat „Odwrócone role”, zrobiona z ekipą, która wcześniej nie pracowała w Unity.</p>
+            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Game jam</li></ul>
+          </div>
+          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
+        </li>
+
+        <li class="project-card">
+          <div class="project-card__media"><img src="assets/thumbs/deadlock4.jpg" width="960" height="540" alt="" loading="lazy"></div>
+          <div class="project-card__body">
+            <p class="project-card__meta">2022 · 32 bit Game Jam · itch.io</p>
+            <h3 class="project-card__title"><a class="project-card__link" href="https://esmg-games.itch.io/deadlock" target="_blank" rel="noopener">Deadlock<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h3>
+            <p class="project-card__desc">Retro FPS w stylistyce pierwszego PlayStation, zrobiony w duecie z Mikołajem Górowskim.</p>
+            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Game jam</li></ul>
+          </div>
+          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
+        </li>
+
+        <li class="project-card">
+          <div class="project-card__media"><img src="assets/thumbs/dicemaster.jpg" width="960" height="540" alt="" loading="lazy"></div>
+          <div class="project-card__body">
+            <p class="project-card__meta">2022 · GMTK Game Jam · itch.io</p>
+            <h3 class="project-card__title"><a class="project-card__link" href="https://mikosusek.itch.io/dicemaster" target="_blank" rel="noopener">Dice Master<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h3>
+            <p class="project-card__desc">Gra logiczna na temat „rzut kostką”: zajmujesz pola na planszy, niszczysz wrogie kostki i zbierasz punkty.</p>
+            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Game jam</li></ul>
+          </div>
+          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
+        </li>
+
+        <li class="project-card">
+          <div class="project-card__media"><img src="assets/thumbs/blockbench4.jpg" width="1200" height="673" alt="" loading="lazy"></div>
+          <div class="project-card__body">
+            <p class="project-card__meta">2020 — dziś · różne projekty</p>
+            <h3 class="project-card__title"><a class="project-card__link" href="projects/assets.html" data-viewer="page">Assety do gier</a></h3>
+            <p class="project-card__desc">Wybrane modele, tekstury i grafiki, które zrobiłem do własnych i cudzych gier.</p>
+            <ul class="tag-list" role="list"><li>Blockbench</li><li>Photoshop</li><li>Illustrator</li><li>CS Workshop</li></ul>
+          </div>
+          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
+        </li>
+      </ul>
+
+      <!-- Graphic design -->
+      <ul class="gallery" role="list" data-show="art">
+        <li class="gallery__item">
+          <a class="gallery__link" href="projects/gfximages/turbify.png" data-viewer="image" data-viewer-title="Turbify — branding">
+            <img src="assets/thumbs/turbify.jpg" width="1142" height="583" alt="" loading="lazy">
+            <span class="gallery__caption"><strong>Turbify</strong> branding</span>
+          </a>
+        </li>
+        <li class="gallery__item">
+          <a class="gallery__link" href="projects/gfximages/mackoFolie.png" data-viewer="image" data-viewer-title="Maćko Folie — rebranding">
+            <img src="assets/thumbs/mackoFolie.jpg" width="891" height="893" alt="" loading="lazy">
+            <span class="gallery__caption"><strong>Maćko Folie</strong> rebranding</span>
+          </a>
+        </li>
+        <li class="gallery__item">
+          <a class="gallery__link" href="projects/gfximages/edk2.png" data-viewer="image" data-viewer-title="EDK — branding">
+            <img src="assets/thumbs/edk2.jpg" width="750" height="1125" alt="" loading="lazy">
+            <span class="gallery__caption"><strong>EDK</strong> branding</span>
+          </a>
+        </li>
+        <li class="gallery__item">
+          <a class="gallery__link" href="projects/gfximages/clicknclean.png" data-viewer="image" data-viewer-title="Click and Clean — branding">
+            <img src="assets/thumbs/clicknclean.jpg" width="940" height="480" alt="" loading="lazy">
+            <span class="gallery__caption"><strong>Click and Clean</strong> branding</span>
+          </a>
+        </li>
+        <li class="gallery__item">
+          <a class="gallery__link" href="projects/gfximages/pkawalko.png" data-viewer="image" data-viewer-title="PKawałko — branding i strona internetowa">
+            <img src="assets/thumbs/pkawalko.jpg" width="1200" height="612" alt="" loading="lazy">
+            <span class="gallery__caption"><strong>PKawałko</strong> branding i strona www</span>
+          </a>
+        </li>
+        <li class="gallery__item">
+          <a class="gallery__link" href="projects/gfximages/dietaposwojemu1.png" data-viewer="image" data-viewer-title="Dieta po swojemu — branding">
+            <img src="assets/thumbs/dietaposwojemu1.jpg" width="990" height="990" alt="" loading="lazy">
+            <span class="gallery__caption"><strong>Dieta po swojemu</strong> branding</span>
+          </a>
+        </li>
+        <li class="gallery__item">
+          <a class="gallery__link" href="projects/gfximages/swiadomaskora.png" data-viewer="image" data-viewer-title="Świadoma Skóra — social media">
+            <img src="assets/thumbs/swiadomaskora.jpg" width="1200" height="612" alt="" loading="lazy">
+            <span class="gallery__caption"><strong>Świadoma Skóra</strong> social media</span>
+          </a>
+        </li>
+        <li class="gallery__item">
+          <a class="gallery__link" href="projects/gfximages/zgadami.png" data-viewer="image" data-viewer-title="Urodziny z gadami — logo">
+            <img src="assets/thumbs/zgadami.jpg" width="1027" height="524" alt="" loading="lazy">
+            <span class="gallery__caption"><strong>Urodziny z gadami</strong> logo</span>
+          </a>
+        </li>
+        <li class="gallery__item">
+          <a class="gallery__link" href="projects/gfximages/pomysl.png" data-viewer="image" data-viewer-title="Pomysł — karta drinków">
+            <img src="assets/thumbs/pomysl.jpg" width="1200" height="612" alt="" loading="lazy">
+            <span class="gallery__caption"><strong>Pomysł</strong> karta drinków</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ────────────────────────────────────────────── -->
+  <section class="section about" id="o-mnie" aria-labelledby="about-title">
+    <div class="container about__grid">
+      <div class="about__intro">
+        <p class="bubble">o mnie</p>
+        <h2 class="section-head__title" id="about-title">Człowiek za projektami.</h2>
+        <p class="about__text" data-show="game">
+          Cześć, jestem Eryk, <strong>Unity developer z Wielkopolski</strong>. Robię gry od 2015 roku,
+          od game jamów po premierę na Steam. W zespole biorę na siebie architekturę kodu, mechaniki
+          i UI, które dobrze leżą w rękach gracza.
         </p>
-      </div>
-      <div class="cons-grid">
-        <div class="cons-card glass reveal">
-          <div class="cons-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div class="cons-title">Utrata zaufania</div>
-          <div class="cons-desc">Niespójny branding sygnalizuje brak profesjonalizmu. Klienci odchodzą do konkurencji, która wygląda poważniej.</div>
-          <div class="cons-verdict">↓ konwersja, ↓ retencja</div>
-        </div>
-        <div class="cons-card glass reveal" style="transition-delay:.08s">
-          <div class="cons-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-          <div class="cons-title">Wyższy koszt pozyskania klienta</div>
-          <div class="cons-desc">Słaba identyfikacja zwiększa koszt reklamy. Ten sam budżet przynosi wielokrotnie gorsze wyniki.</div>
-          <div class="cons-verdict">↑ CAC, ↑ CPM</div>
-        </div>
-        <div class="cons-card glass reveal" style="transition-delay:.24s">
-          <div class="cons-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8l4 4-4 4" opacity=".5"/></svg></div>
-          <div class="cons-title">Niewidzialność na rynku</div>
-          <div class="cons-desc">W morzu contentu wygrywają marki z wyrazistą estetyką. Bez niej jesteś kolejną nazwą, której nikt nie zapamięta.</div>
-          <div class="cons-verdict">↓ brand recall</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="container"><div class="divider"></div></div>
-
-  <!-- PROJECTS -->
-  <section class="section" id="projekty">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2 class="sec-title">Projekty, z których<br>jestem dumny.</h2><br>
+        <p class="about__text" data-show="art">
+          Cześć, jestem Eryk, <strong>graphic designer i ilustrator</strong> z Ostrowa Wielkopolskiego.
+          Projektuję od 2017 roku: od małych zleceń po długoterminowe współprace z firmami z całej Polski.
+        </p>
+        <blockquote class="quote">
+          <p>Najlepsze projekty rodzą się na przecięciu <mark class="quote__mark">technologii</mark> i&nbsp;<mark class="quote__mark">estetyki</mark>.</p>
+        </blockquote>
       </div>
 
-      <!-- GAME projects -->
-      <div class="proj-grid" id="gprojects">
-        <div class="proj-card glass featured reveal" data-project="projects/hourglass.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gameimages/hs1.jpg"></img>
-          </div>
-          <div class="proj-body">
-            <div>
-              <div class="proj-tags">
-                <span class="ptag acc">Unity</span><span class="ptag">C#</span><span class="ptag">Steam</span>
+      <div class="about__details">
+        <section class="about__block" aria-labelledby="exp-title" data-show="game">
+          <h3 class="about__heading" id="exp-title">Doświadczenie</h3>
+          <ol class="timeline" role="list">
+            <li class="timeline__item">
+              <p class="timeline__when">2025 — dziś</p>
+              <div>
+                <p class="timeline__role">Unity Developer <span class="timeline__where">Komputronik Biznes</span></p>
+                <p class="timeline__desc">Rozwijam aplikację w Unity dla totemu stojącego: interfejs, optymalizacja i testy jakościowe zgodnie z wymaganiami klienta.</p>
               </div>
-              <h3 class="proj-name">Hourglass Sanatorium</h3>
-              <p class="proj-desc">Gra przygodowo-horrorowa, w której będziesz eksplorować nawiedzone labirynty, spotykać dziwne postacie i udać się do tajemniczego alternatywnego świata, by spotkać się ze swoim zmarłym ojcem. Gra oparta jest na twórczości surrealistycznego pisarza i artysty plastyka Bruno Schulza.</p>
-            </div>
-            <div class="proj-foot">
-              <span class="proj-meta">2025 · TheBooke Studio · Steam</span>
-              <button class="proj-link glass proj-open-btn">
-                Sprawdź
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card glass featured reveal" data-project="projects/pushout.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gameimages/pushout.png"></img>
-          </div>
-          <div class="proj-body">
-            <div>
-              <div class="proj-tags">
-                <span class="ptag acc">Source 2</span><span class="ptag">S&box</span><span class="ptag">C#</span>
+            </li>
+            <li class="timeline__item">
+              <p class="timeline__when">2023, 2025</p>
+              <div>
+                <p class="timeline__role">Unity Developer <span class="timeline__where">TheBooke Studio</span></p>
+                <p class="timeline__desc">Cała architektura gry Hourglass Sanatorium od pierwszej linii kodu: struktura projektu, mechaniki rozgrywki i UI.</p>
               </div>
-              <h3 class="proj-name">Pushout: Demolition Derby</h3>
-              <p class="proj-desc">Gra multiplayer, gdzie gracze próbują zepchnąć przeciwników poza platformę lub zniszczyć ich pojazdy. Wygrywa ostatni kierowca, który utrzyma się na arenie i zachowa sprawny samochód. </p>
-            </div>
-            <div class="proj-foot">
-              <span class="proj-meta">2026 · Work in progress · S&box</span>
-              <button class="proj-link glass proj-open-btn">
-                Sprawdź
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" data-project="projects/dge.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gameimages/dge4.jpg"></img>
-          </div>
-          <div class="proj-body">
-            <div>
-              <div class="proj-tags">
-                <span class="ptag acc">Unity</span><span class="ptag">C#</span><span class="ptag">WebGL</span>
+            </li>
+            <li class="timeline__item">
+              <p class="timeline__when">2023 — 2024</p>
+              <div>
+                <p class="timeline__role">Game Developer <span class="timeline__where">GamerHash, Poznań</span></p>
+                <p class="timeline__desc">Mechaniki i efekty wizualne w Sandbox Game Makerze (Unity), integracja modeli 3D z artystami. Wydane: C.U.B.E i The Traverse.</p>
               </div>
-              <h3 class="proj-name">Dummy's great escape</h3>
-              <p class="proj-desc">Gra oferuje świeże spojrzenie na precyzję i strategię, inspirowane rosnącą popularnością trudnych gier akcji-logicznych, takich jak Human Fall Flat i Chained Together.</p>
-            </div>
-            <div class="proj-foot">
-              <span class="proj-meta">2024 · Praca inżynierska · itch.io</span>
-              <button class="proj-link glass proj-open-btn">
-                Sprawdź
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
+            </li>
+          </ol>
+        </section>
 
-        <div class="proj-card glass reveal" onclick="window.open('https://esmg-games.itch.io/no-pain-no-gain', '_blank')">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gameimages/nopain2.jpg"></img>
-          </div>
-          <div class="proj-body">
-            <div>
-              <div class="proj-tags">
-                <span class="ptag acc">Unity</span><span class="ptag">C#</span>
-              </div>
-              <h3 class="proj-name">No pain no gain</h3>
-              <p class="proj-desc">Gra platformowa o tematyce „Odwrócone role”, stworzona podczas GMTK Game Jam 2023 wraz z grupą znajomych, którzy nie mieli wcześniejszego doświadczenia z silnikiem Unity. </p>
-            </div>
-            <div class="proj-foot">
-              <span class="proj-meta">2023 · GMTK Game Jam · itch.io</span>
-              <button class="proj-link glass proj-open-btn">
-                Sprawdź
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" onclick="window.open('https://github.com/turbify/unity-character-controller-demo', '_blank')">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gameimages/movement.png"></img>
-          </div>
-          <div class="proj-body">
-            <div>
-              <div class="proj-tags">
-                <span class="ptag acc">Unity</span><span class="ptag">C#</span>
-              </div>
-              <h3 class="proj-name">First-Person Physics-Based Movement</h3>
-              <p class="proj-desc">Kontroler postaci z perspektywy pierwszej osoby, oparty na fizyce, stworzony w silniku Unity, wykorzystujący przejrzysty wzorzec state machine.</p>
-            </div>
-            <div class="proj-foot">
-              <span class="proj-meta">2026 · github.com</span>
-              <button class="proj-link glass proj-open-btn">
-                Sprawdź
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" data-project="projects/traverse.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gameimages/traverse_part1_2.png"></img>
-          </div>
-          <div class="proj-body">
-            <div>
-              <div class="proj-tags">
-                <span class="ptag acc">The Sandbox</span><span class="ptag">Web3</span>
-              </div>
-              <h3 class="proj-name">The Traverse</h3>
-              <p class="proj-desc">Gra osadzona na platformie The Sandbox, w której odkrywasz marsjańskie spiski, spotykasz przywódców tajemniczych kultów, demaskujesz impostorów i wcielasz się w rolę prawdziwego bohatera.</p>
-            </div>
-            <div class="proj-foot">
-              <span class="proj-meta">2024 · Gamerhash studio · The Sandbox</span>
-              <button class="proj-link glass proj-open-btn">
-                Sprawdź
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" onclick="window.open('https://www.sandbox.game/en/users/gamercoin/?tab=Experiences', '_blank')">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gameimages/cube1.png"></img>
-          </div>
-          <div class="proj-body">
-            <div>
-              <div class="proj-tags">
-                <span class="ptag acc">The Sandbox</span><span class="ptag">Web3</span>
-              </div>
-              <h3 class="proj-name">C.U.B.E</h3>
-              <p class="proj-desc">Gra zabiera graczy do kosmicznego obozu szkoleniowego, jakiego jeszcze nie znają. Akcja gry toczy się w rozległym uniwersum Sandbox, a uczestnicy muszą zmierzyć się z szeregiem wciągających i różnorodnych zadań.</p>
-            </div>
-            <div class="proj-foot">
-              <span class="proj-meta">2024 · Gamerhash studio · The Sandbox</span>
-              <button class="proj-link glass proj-open-btn">
-                Sprawdź
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" onclick="window.open('https://esmg-games.itch.io/deadlock', '_blank')">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gameimages/deadlock4.jpg"></img>
-          </div>
-          <div class="proj-body">
-            <div>
-              <div class="proj-tags">
-                <span class="ptag acc">Unity</span><span class="ptag">C#</span>
-              </div>
-              <h3 class="proj-name">Deadlock</h3>
-              <p class="proj-desc">Gra powstała we współpracy z Mikołajem Górowskim. Podczas krótkiego wydarzenia stworzyliśmy krótką historię, przez którą prowadzimy gracza w strzelance FPS w stylu retro na konsolę Playstation.</p>
-            </div>
-            <div class="proj-foot">
-              <span class="proj-meta">2022 · 32 bit Game Jam · itch.io</span>
-              <button class="proj-link glass proj-open-btn">
-                Sprawdź
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <div class="proj-card glass reveal" onclick="window.open('https://mikosusek.itch.io/dicemaster', '_blank')">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gameimages/dicemaster.jpg"></img>
-          </div>
-          <div class="proj-body">
-            <div>
-              <div class="proj-tags">
-                <span class="ptag acc">Unity</span><span class="ptag">C#</span>
-              </div>
-              <h3 class="proj-name">Dice master</h3>
-              <p class="proj-desc">gra logiczna o tematyce „rzutu kostką”, opracowana podczas GMTK Game Jam 2022, polegająca na zajmowaniu odpowiednich pozycji na planszy w celu niszczenia wrogich kostek i zdobywania punktów.</p>
-            </div>
-            <div class="proj-foot">
-              <span class="proj-meta">2022 · GMTK Game Jam · itch.io</span>
-              <button class="proj-link glass proj-open-btn">
-                Sprawdź
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" data-project="projects/assets.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gameimages/blockbench4.png"></img>
-          </div>
-          <div class="proj-body">
-            <div>
-              <div class="proj-tags">
-                <span class="ptag acc">Illustrator</span><span class="ptag">Photoshop</span><span class="ptag">Blockbench</span><span class="ptag">CS workshop tools</span>
-              </div>
-              <h3 class="proj-name">Assety do gier</h3>
-              <p class="proj-desc">Zbiór wybranych assetów z różnych projektów.</p>
-            </div>
-            <div class="proj-foot">
-              <span class="proj-meta">2020 - Teraz</span>
-              <button class="proj-link glass proj-open-btn">
-                Sprawdź
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- ART projects -->
-      <div class="proj-grid" id="aprojects" style="display:none">
-        <div class="proj-card glass featured reveal" data-project="projects/wip.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gfximages/turbify.png"></img>
-          </div>
-          <div class="proj-overlay">
-            <h3 class="proj-overlay-name">Turbify - Branding</h3>
-            <button class="btn-primary proj-open-btn">
-              Sprawdź
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" data-project="projects/wip.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gfximages/mackoFolie.png"></img>
-          </div>
-          <div class="proj-overlay">
-            <h3 class="proj-overlay-name">Maćko Folie - Rebrand</h3>
-            <button class="btn-primary proj-open-btn">
-              Sprawdź
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" data-project="projects/wip.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gfximages/clicknclean.png"></img>
-          </div>
-          <div class="proj-overlay">
-            <h3 class="proj-overlay-name">Click and clean - Branding</h3>
-            <button class="btn-primary proj-open-btn">
-              Sprawdź
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="proj-card glass featured reveal" data-project="projects/wip.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gfximages/pkawalko.png"></img>
-          </div>
-          <div class="proj-overlay">
-            <h3 class="proj-overlay-name">Pkawalko - Branding i strona internetowa</h3>
-            <button class="btn-primary proj-open-btn">
-              Sprawdź
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" data-project="projects/wip.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gfximages/zgadami.png"></img>
-          </div>
-          <div class="proj-overlay">
-            <h3 class="proj-overlay-name">Urodziny z gadami - Logo</h3>
-            <button class="btn-primary proj-open-btn">
-              Sprawdź
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" data-project="projects/wip.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gfximages/edk2.png"></img>
-          </div>
-          <div class="proj-overlay">
-            <h3 class="proj-overlay-name">EDK - Branding</h3>
-            <button class="btn-primary proj-open-btn">
-              Sprawdź
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="proj-card glass featured reveal" data-project="projects/wip.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gfximages/swiadomaskora.png"></img>
-          </div>
-          <div class="proj-overlay">
-            <h3 class="proj-overlay-name">Świadoma skóra - Social media</h3>
-            <button class="btn-primary proj-open-btn">
-              Sprawdź
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" data-project="projects/wip.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gfximages/dietaposwojemu1.png"></img>
-          </div>
-          <div class="proj-overlay">
-            <h3 class="proj-overlay-name">Dieta po swojemu - Branding</h3>
-            <button class="btn-primary proj-open-btn">
-              Sprawdź
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="proj-card glass reveal" data-project="projects/wip.html">
-          <div class="proj-thumb">
-            <img class="proj-thumb-bg" src="projects/gfximages/pomysl.png"></img>
-          </div>
-          <div class="proj-overlay">
-            <h3 class="proj-overlay-name">Pomysł - Karta drinków</h3>
-            <button class="btn-primary proj-open-btn">
-              Sprawdź
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </button>
-          </div>
-        </div>
-
+        <section class="about__block" aria-labelledby="tools-title">
+          <h3 class="about__heading" id="tools-title">Narzędzia</h3>
+          <dl class="skills" data-show="game">
+            <div class="skills__row"><dt>Unity</dt><dd>7+ lat, zaawansowany</dd></div>
+            <div class="skills__row"><dt>C#</dt><dd>zaawansowany</dd></div>
+            <div class="skills__row"><dt>GitHub, Azure DevOps</dt><dd>kontrola wersji</dd></div>
+            <div class="skills__row"><dt>Blockbench</dt><dd>modelowanie</dd></div>
+            <div class="skills__row"><dt>Adobe Creative Cloud</dt><dd>grafika do gier</dd></div>
+            <div class="skills__row"><dt>Reaper</dt><dd>obróbka dźwięku</dd></div>
+          </dl>
+          <dl class="skills" data-show="art">
+            <div class="skills__row"><dt>Illustrator</dt><dd>wektory, branding</dd></div>
+            <div class="skills__row"><dt>Photoshop</dt><dd>obróbka grafiki</dd></div>
+            <div class="skills__row"><dt>Figma</dt><dd>UI/UX, design systemy</dd></div>
+            <div class="skills__row"><dt>InDesign</dt><dd>skład tekstu</dd></div>
+            <div class="skills__row"><dt>Premiere Pro</dt><dd>montaż wideo</dd></div>
+            <div class="skills__row"><dt>Typografia</dt><dd>zaawansowana</dd></div>
+          </dl>
+        </section>
       </div>
     </div>
   </section>
 
-  <div class="container"><div class="divider"></div></div>
+</main>
 
-  <!-- ABOUT -->
-  <section class="section" id="o-mnie">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2 class="sec-title">Człowiek za projektami.</h2><br>
-      </div>
-      <div class="about-grid">
-        <div class="about-text">
-          <p id="about-p-g" class="reveal">Cześć - jestem Eryk. <strong>Unity Game developer</strong> z Wielkopolski. Robię gry od 2015 roku - od małych dodatków do gier, po tytuły na Steam.</p>
-          <p id="about-p-a" class="reveal" style="display:none">Cześć - jestem Eryk. <strong>Graphic designer i ilustrator</strong> z Ostrowa Wielkopolskiego. Projektuję od 2017 roku - od małych zleceń po długoterminowe współprace z działalnościami z całej Polski.</p>
-          <blockquote class="pull-quote reveal">
-            Wierzę, że najlepsze projekty rodzą się na przecięciu technologii i estetyki.
-          </blockquote>
-          <div class="skills-grid" id="skills-g">
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="13" rx="3"/><path d="M8 12h2m1-1v2M16.5 12h.01M18 11.5h.01"/></svg></div><div><div class="skill-name">Unity</div><div class="skill-lvl">+7 lat - Zaawansowany</div></div></div>
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9l3 3-3 3M13 15h3"/></svg></div><div><div class="skill-name">Język C#</div><div class="skill-lvl">Zaawansowany</div></div></div>
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l1.5 4.5h4.5l-3.5 2.5 1.5 4.5L12 12l-4 2.5 1.5-4.5L6 7.5h4.5z"/><circle cx="12" cy="12" r="9" opacity=".3"/></svg></div><div><div class="skill-name">Adobe Creative Cloud</div><div class="skill-lvl">Obróbka graficzna</div></div></div>
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg></div><div><div class="skill-name">Blockbench</div><div class="skill-lvl">Modelowanie</div></div></div>
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polygon points="12 2 22 19 2 19"/><path d="M12 9v5M12 17h.01"/></svg></div><div><div class="skill-name">Github, Azure</div><div class="skill-lvl">Kontrola wersji</div></div></div>
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><div><div class="skill-name">Reaper</div><div class="skill-lvl">Obróbka dźwięku</div></div></div>
-          </div>
-        </div>
-        <div>
-          <div class="timeline reveal" id="tl1-g">
-            <div class="tl-item">
-              <div class="tl-year">2025 — dziś</div>
-              <div class="tl-title">Unity Developer</div>
-              <div class="tl-where">Komputronik Biznes · Polska</div>
-              <div class="tl-desc">Rozwijam aplikację w Unity dla totemu stojącego. Implementuję i optymalizuję interfejs użytkownika zgodnie z wymaganiami klienta oraz prowadzę testy jakościowe. Działam na styku programowania i UX, dbając o spójność i niezawodność produktu.</div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-year">2023 i 2025</div>
-              <div class="tl-title">Unity Developer</div>
-              <div class="tl-where">TheBooke Studio · Polska</div>
-              <div class="tl-desc">Byłem odpowiedzialny za całą architekturę gry Hourglass Sanatorium od pierwszej linii kodu. Zaprojektowałem i zbudowałem strukturę kodu, mechaniki rozgrywki oraz UI.</div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-year">2023 - 2024</div>
-              <div class="tl-title">Game Developer</div>
-              <div class="tl-where">GamerHash · Poznań</div>
-              <div class="tl-desc">Implementowałem mechaniki rozgrywki i efekty wizualne w platformie Sandbox Game Maker opartej na Unity. Współpracowałem z artystami przy integracji modeli 3D oraz brałem udział w projektowaniu doświadczeń dla graczy. Wydane projekty: C.U.B.E i The Traverse.</div>
-            </div>
-          </div>
-          <div class="skills-grid" id="skills-a" style="display:none">
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><div class="skill-name">Figma</div><div class="skill-lvl">UI/UX, Design Systems</div></div></div>
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div><div><div class="skill-name">Illustrator</div><div class="skill-lvl">Wektory, branding</div></div></div>
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div><div class="skill-name">Photoshop</div><div class="skill-lvl">Obróbka graficzna</div></div></div>
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div><div class="skill-name">Premiere Pro</div><div class="skill-lvl">Montaż filmów</div></div></div>
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div><div class="skill-name">Indesign</div><div class="skill-lvl">Składanie tekstu</div></div></div>
-            <div class="skill-item glass reveal"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h10M4 17h6"/></svg></div><div><div class="skill-name">Typografia</div><div class="skill-lvl">Zaawansowana</div></div></div>
-          </div>
-        </div>
-      </div>
+<!-- ── CONTACT / FOOTER ─────────────────────────────────── -->
+<footer class="panel site-footer" id="kontakt" aria-labelledby="contact-title">
+  <h2 class="visually-hidden" id="contact-title">Kontakt</h2>
+  <div class="container site-footer__grid">
+    <div class="site-footer__col">
+      <p class="bubble bubble--on-panel" data-show="game">szukasz developera?</p>
+      <p class="bubble bubble--on-panel" data-show="art">potrzebujesz marki?</p>
+      <p class="site-footer__big" data-show="game">Pogadajmy<br>o Twoim zespole.</p>
+      <p class="site-footer__big" data-show="art">Pogadajmy<br>o Twojej marce.</p>
     </div>
-  </section>
 
-  <div class="container"><div class="divider"></div></div>
-
-  <!-- CONTACT -->
-  <section class="section" id="kontakt">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2 class="sec-title">Porozmawiajmy.</h2>
-        <p class="sec-sub">Masz projekt, pytanie albo chcesz pogadać?</p>
-      </div>
-      <div class="contact-links reveal">
-        <div href="mailto:esobczk@gmail.com" class="c-link glass">
-          <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div><div class="c-link-label">E-mail</div><div class="c-link-val">esobczk@gmail.com</div></div>
-        </div>
-        <a href="https://www.linkedin.com/in/eryksobczak" class="c-link glass">
-          <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
-          <div><div class="c-link-label">LinkedIn</div><div class="c-link-val">linkedin.com/in/eryksobczak</div></div>
-        </a>
-        <a href="https://github.com/turbify" class="c-link glass" id="cl-game2">
-          <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
-          <div><div class="c-link-label">GitHub</div><div class="c-link-val">github.com/turbify</div></div>
-        </a>
-        <a href="https://dyferspaw.itch.io" class="c-link glass" id="cl-game">
-          <div class="c-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="13" rx="3"/><path d="M8 12h2m1-1v2M16.5 12h.01M18 11.5h.01"/></svg></div>
-          <div><div class="c-link-label">itch.io</div><div class="c-link-val">dyferspaw.itch.io</div></div>
-        </a>
-      </div>
+    <div class="site-footer__col">
+      <p class="bubble bubble--on-panel">skąd</p>
+      <p class="site-footer__big">Ostrów Wielkopolski<br>Wielkopolska, PL</p>
+      <a class="scribble-link" href="#projekty">Wróć do projektów</a>
     </div>
-  </section>
 
-  <div class="container">
-    <footer>
-      <span></span>
-      <span>&copy; 2026 Eryk Sobczak</span>
-    </footer>
+    <div class="site-footer__col">
+      <p class="bubble bubble--on-panel">kontakt</p>
+      <p class="site-footer__big">
+        <a class="site-footer__mail" href="mailto:esobczk@gmail.com">esobczk@gmail.com</a><br>
+        <a class="site-footer__mail" href="https://www.linkedin.com/in/eryksobczak" target="_blank" rel="noopener">napisz na LinkedIn*<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a>
+      </p>
+      <p class="site-footer__note" data-show="game">*odpisuję szybciej, niż Unity importuje assety.</p>
+      <p class="site-footer__note" data-show="art">*odpisuję szybciej, niż eksportuje się PDF do druku.</p>
+      <ul class="social" role="list">
+        <li><a class="social__link" href="https://www.linkedin.com/in/eryksobczak" target="_blank" rel="noopener" aria-label="LinkedIn (nowa karta)"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+        <li><a class="social__link" href="https://github.com/turbify" target="_blank" rel="noopener" aria-label="GitHub (nowa karta)"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+        <li><a class="social__link" href="https://dyferspaw.itch.io" target="_blank" rel="noopener" aria-label="itch.io (nowa karta)"><svg class="icon" aria-hidden="true"><use href="#i-itch"/></svg></a></li>
+      </ul>
+    </div>
   </div>
 
-</div><!-- /#transition-wrap -->
+  <div class="wordmark" data-stickers>
+    <p class="wordmark__text" aria-hidden="true">esob</p>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="main.js"></script>
-<script>
-// ── PROJECT MODAL ────────────────────────────────────────────
-(function() {
-  var overlay  = document.getElementById('proj-modal-overlay');
-  var iframe   = document.getElementById('proj-modal-iframe');
-  var loader   = document.getElementById('proj-modal-loader');
-  var closeBtn = document.getElementById('proj-modal-close');
+    <!-- Decorative, draggable stickers -->
+    <span class="sticker sticker--float sticker--gizmo" style="--x: 6%; --y: 12%; --r: -8deg" data-sticker data-show="game" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><circle class="sticker__edge" cx="50" cy="50" r="44"/><circle class="sticker__fill-ink" cx="50" cy="50" r="44"/><path class="sticker__axis sticker__axis--y" d="M50 56V20"/><path class="sticker__axis sticker__axis--x" d="M50 56l30 14"/><path class="sticker__axis sticker__axis--z" d="M50 56 21 71"/><rect class="sticker__fill-cream" x="45" y="51" width="10" height="10" rx="2"/></svg>
+    </span>
+    <span class="sticker sticker--float sticker--burst" style="--x: 28%; --y: 2%; --r: 10deg" data-sticker data-show="game" aria-hidden="true">C#</span>
+    <span class="sticker sticker--float sticker--bubble" style="--x: 52%; --y: 30%; --r: -6deg" data-sticker data-crowd data-show="game" aria-hidden="true">GG!</span>
+    <span class="sticker sticker--float sticker--burst" style="--x: 30%; --y: 8%; --r: -10deg" data-sticker data-show="art" aria-hidden="true">Aa</span>
+    <span class="sticker sticker--float sticker--bubble" style="--x: 55%; --y: 28%; --r: 7deg" data-sticker data-crowd data-show="art" aria-hidden="true">BAM!</span>
+    <span class="sticker sticker--float sticker--swatch" style="--x: 8%; --y: 18%; --r: -12deg" data-sticker data-show="art" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><rect class="sticker__edge" x="8" y="8" width="84" height="84" rx="18"/><rect class="sticker__fill-crimson" x="8" y="8" width="84" height="28" rx="18"/><rect class="sticker__fill-pink" x="8" y="36" width="84" height="28"/><rect class="sticker__fill-blue" x="8" y="64" width="84" height="28" rx="18"/></svg>
+    </span>
+    <span class="sticker sticker--float sticker--heart" style="--x: 72%; --y: 6%; --r: 12deg" data-sticker data-crowd aria-hidden="true">
+      <svg viewBox="0 0 100 100"><path class="sticker__edge" d="M50 86 14 50a20 20 0 0 1 36-28 20 20 0 0 1 36 28Z"/><path class="sticker__fill-plum" d="M50 86 14 50a20 20 0 0 1 36-28 20 20 0 0 1 36 28Z"/><path class="sticker__shine" d="M28 36a8 8 0 0 1 10-5"/></svg>
+    </span>
+    <span class="sticker sticker--float sticker--smiley" style="--x: 86%; --y: 34%; --r: -4deg" data-sticker data-crowd aria-hidden="true">
+      <svg viewBox="0 0 100 100"><circle class="sticker__edge" cx="50" cy="50" r="42"/><circle class="sticker__fill-yellow" cx="50" cy="50" r="42"/><circle class="sticker__fill-ink" cx="38" cy="42" r="5"/><circle class="sticker__fill-ink" cx="62" cy="42" r="5"/><path class="sticker__line" d="M32 58q18 18 36 0"/></svg>
+    </span>
+  </div>
 
-  function openModal(src) {
-    loader.classList.remove('hidden');
-    iframe.src = '';
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    // slight delay so animation is visible before iframe starts loading
-    setTimeout(function() { iframe.src = src; }, 80);
-  }
+  <p class="site-footer__credits">© 2026 Eryk Sobczak</p>
+</footer>
 
-  function closeModal() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(function() {
-      iframe.src = '';
-    }, 380);
-  }
+<!-- ── PROJECT VIEWER ───────────────────────────────────── -->
+<dialog class="viewer" aria-labelledby="viewer-title" data-viewer-dialog>
+  <div class="viewer__bar">
+    <p class="viewer__title" id="viewer-title" data-viewer-heading>Projekt</p>
+    <a class="viewer__open" href="#" target="_blank" rel="noopener" data-viewer-open>Otwórz w nowej karcie<svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+    <button class="viewer__close" type="button" aria-label="Zamknij podgląd" data-viewer-close>
+      <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+  </div>
+  <div class="viewer__stage" data-state="loading" data-viewer-stage>
+    <span class="viewer__loader" aria-hidden="true"></span>
+  </div>
+</dialog>
 
-  // Hide loader once iframe loaded
-  iframe.addEventListener('load', function() {
-    loader.classList.add('hidden');
-  });
-
-  // Wire up all project cards
-  document.addEventListener('click', function(e) {
-    // Button inside card OR the card itself (but not nav links etc.)
-    var btn  = e.target.closest('.proj-open-btn');
-    var card = e.target.closest('.proj-card[data-project]');
-
-    if (btn && card) {
-      e.preventDefault();
-      openModal(card.dataset.project);
-      return;
-    }
-    // Clicking anywhere on the card (not a button) also opens
-    if (card && !e.target.closest('a') && !e.target.closest('button')) {
-      openModal(card.dataset.project);
-    }
-  });
-
-  closeBtn.addEventListener('click', closeModal);
-
-  // Click outside modal box
-  overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) closeModal();
-  });
-
-  // Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-  });
-})();
-</script>
 </body>
 </html>

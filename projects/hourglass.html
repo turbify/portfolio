@@ -1,169 +1,92 @@
-<!DOCTYPE html>
-<html lang="pl">
+<!doctype html>
+<html lang="pl" data-mode="game">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hourglass Sanatorium — Eryk Sobczak</title>
-<link rel="stylesheet" href="projects.css">
-<style>
-  body { background: #0d0700; }
-  :root {
-    --accent: #fbbf24;
-    --accent-dim: rgba(251,191,36,0.12);
-    --ph:      rgba(251,191,36,0.05);
-    --ph-b:    rgba(251,191,36,0.18);
-    --ph-text: rgba(251,191,36,0.32);
-    --bg:      #0d0700;
-    --bg-hero: #0b0600;
-  }
-  .hero-grid {
-    opacity: .1;
-    background-image:
-      linear-gradient(rgba(251,191,36,.15) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(251,191,36,.15) 1px,transparent 1px);
-    background-size: 36px 36px;
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hourglass Sanatorium — Eryk Sobczak</title>
+  <meta name="description" content="Hourglass Sanatorium: przygodowy horror w Unity wydany na Steam. Cała architektura gry, mechaniki i UI: Eryk Sobczak.">
+  <link rel="icon" href="../assets/favicon.ico">
+  <script>if (window.self !== window.top) document.documentElement.dataset.framed = '';</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="projects.css">
+  <link rel="stylesheet" href="../styles/utilities.css">
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-noise"></div>
-  <div class="hero-glow tl" style="width:480px;height:480px;top:-100px;left:-80px;background:radial-gradient(circle,rgba(251,191,36,0.13),transparent 65%);"></div>
-  <div class="hero-glow br" style="width:300px;height:300px;bottom:-80px;right:-40px;background:radial-gradient(circle,rgba(251,191,36,0.07),transparent 65%);"></div>
-  <div class="hero-content">
-    <div class="hero-tags">
-      <span class="tag">Unity</span><span class="tag">C#</span>
-      <span class="tag n">2025 · TheBooke Studio · Steam</span>
-      <span class="tag award">Tytuł finansowany z programu wsparcia CRPK</span>
-    </div>
-    <h1>Hourglass Sanatorium</h1>
-    <p class="hero-sub">Gra przygodowo-horrorowa, w której będziesz eksplorować nawiedzone labirynty, spotykać dziwne postacie i udać się do tajemniczego alternatywnego świata, by spotkać się ze swoim zmarłym ojcem. Gra oparta jest na twórczości surrealistycznego pisarza i artysty plastyka Bruno Schulza.</p>
-    <div class="cta-row">
-    <a href="https://store.steampowered.com/app/4122420/Hourglass_Sanatorium/" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-   Strona Steam
-   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
-      <path d="M3 8h10M9 4l4 4-4 4"/>
-   </svg>
-</a>
-  </div>
-  </div>
-</div>
+<header class="case-bar container">
+  <a class="case-bar__back" href="../index.html#projekty" target="_top">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Wszystkie projekty
+  </a>
+</header>
 
-<div class="body">
-
-  <!--
-  <div class="award-banner">
-    <div class="award-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 21h8M12 17v4M7 4v8a5 5 0 0 0 10 0V4H7z"/><path d="M7 8H4a2 2 0 0 0 0 4h3M17 8h3a2 2 0 0 1 0 4h-3"/></svg>
-    </div>
-    <div>
-      <div class="award-text">Best Mechanic Award</div>
-      <div class="award-sub">PolyJam 2024 — Wrocław — spośród 22 drużyn</div>
-    </div>
-  </div>-->
-
-  <div class="stats-row cols-4">
-    <div class="stat"><div class="stat-val">1 rok</div><div class="stat-label">Produkcja</div></div>
-    <div class="stat"><div class="stat-val">6 os.</div><div class="stat-label">Zespół</div></div>
-  </div>
-
-  <!-- BANER -->
-  <div class="section">
-    <div class="img-section-label">Zrzut ekranu z rozgrywki</div>
-    <div class="slot img-banner">
-      <img src="gameimages/hs2.jpg">
-    </div>
-    <div class="img-caption">Widok pierwszego poziomu — stare wnętrza wagonów</div>
-  </div>
-
-  <div class="section">
-    <h2>O projekcie</h2>
-    <p>Hourglass Sanatorium to gra przygodowo-horrorowa, w której będziesz eksplorować nawiedzone labirynty, spotykać dziwne postacie i udać się do tajemniczego alternatywnego świata, by spotkać się ze swoim zmarłym ojcem. Gra oparta jest na twórczości surrealistycznego pisarza i artysty plastyka Bruno Schulza.</p>
-    <p>Współpraca z dwójką bardzo rozpoznawalnych aktorów głosowych do głównych ról w polskim dubbingu<br>
-Ojciec - Tomasz Grochoczyński (Arktos z Tabalugi, Torbjorn z Overwatcha, Vlad z Hotelu Transylwania, Mefisto z Diablo)<br>
-Józef - Jarosław Domin (Legendarny głos Obi Wana z Gwiezdnych Wojen, Pinokio ze Shreka)</p>
-    <p>Byłem odpowiedzialny za całą architekturę gry Hourglass Sanatorium od pierwszej linii kodu. Zaprojektowałem i zbudowałem strukturę kodu, mechaniki rozgrywki oraz UI. </p>
-  </div>
-
-  <div class="section">
-    <h2>Mechaniki</h2>
-    <div class="mechanic-list">
-      <div class="mechanic">
-        <div class="mechanic-dot"></div>
-        <div>
-          <div class="mechanic-name">Nieeuklidesowe pomieszczenia (Non-Euclidean)</div>
-          <div class="mechanic-desc">System bezszwowego przemieszczania gracza wraz z widokiem kamery aby tworzyć niemożliwe labirynty.</div>
-        </div>
+<main>
+  <section class="panel case-hero" aria-labelledby="case-title">
+    <div class="container case-hero__inner">
+      <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>2025</li><li>TheBooke Studio</li><li>Wsparcie programu CRPK</li></ul>
+      <h1 class="case-hero__title" id="case-title">Hourglass Sanatorium</h1>
+      <p class="case-hero__lead">Przygodowy horror inspirowany twórczością Brunona Schulza: nawiedzone labirynty, dziwne postacie i podróż do alternatywnego świata na spotkanie ze zmarłym ojcem.</p>
+      <div class="case-hero__actions">
+        <a class="button button--light" href="https://store.steampowered.com/app/4122420/Hourglass_Sanatorium/" target="_blank" rel="noopener">
+          Zobacz na Steam<span class="visually-hidden"> (otwiera się w nowej karcie)</span>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
-      <div class="mechanic">
-        <div class="mechanic-dot"></div>
-        <div>
-          <div class="mechanic-name">Zagadki</div>
-          <div class="mechanic-desc">System najróżniejszych minigier i zagadek rozwiązywanych przez gracza zintegrowany ze światem gry</div>
-        </div>
-      </div>
-      <div class="mechanic">
-        <div class="mechanic-dot"></div>
-        <div>
-          <div class="mechanic-name">System gry przygodowej</div>
-          <div class="mechanic-desc">Klasyczne dzienniki, ekwipunek, dialogi, napisy itp.</div>
-        </div>
-      </div>
+      <dl class="case-stats">
+        <div class="case-stats__item"><dt>Moja rola</dt><dd>Architektura</dd></div>
+        <div class="case-stats__item"><dt>Produkcja</dt><dd>1 rok</dd></div>
+        <div class="case-stats__item"><dt>Zespół</dt><dd>6 osób</dd></div>
+      </dl>
     </div>
-  </div>
+  </section>
 
-  <!-- GRID FEATURE -->
-  <div class="section">
-    <div class="img-section-label">Zrzuty ekranu z rozgrywki</div>
-    <div class="img-grid-feature">
-      <div class="slot-main">
-        <img src="gameimages/hs3.jpg">
+  <div class="container case-body">
+    <figure class="case-media">
+      <img src="../assets/case/hs2.jpg" width="1600" height="900" alt="Bohater w cylindrze idzie korytarzem starego wagonu oświetlonego lampami" fetchpriority="high">
+      <figcaption>Pierwszy poziom: wnętrza starych wagonów.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <h2>O projekcie</h2>
+      <p><strong>Odpowiadałem za całą architekturę gry od pierwszej linii kodu:</strong> strukturę projektu, mechaniki rozgrywki i UI.</p>
+      <p>W grze usłyszysz dwa rozpoznawalne głosy polskiego dubbingu: Tomasza Grochoczyńskiego (Ojciec; m.in. Arktos z „Tabalugi”, Torbjörn z „Overwatch”) i Jarosława Domina (Józef; m.in. Obi-Wan z „Gwiezdnych wojen”, Pinokio ze „Shreka”).</p>
+    </section>
+
+    <section class="case-section">
+      <h2>Mechaniki</h2>
+      <ul class="feature-list" role="list">
+        <li class="feature-list__item"><strong>Pomieszczenia nieeuklidesowe</strong><span>Bezszwowe przenoszenie gracza razem z widokiem kamery, które buduje niemożliwe labirynty.</span></li>
+        <li class="feature-list__item"><strong>Zagadki</strong><span>System minigier i łamigłówek wpiętych w świat gry.</span></li>
+        <li class="feature-list__item"><strong>System gry przygodowej</strong><span>Dziennik, ekwipunek, dialogi i napisy.</span></li>
+      </ul>
+    </section>
+
+    <figure class="case-media">
+      <div class="case-media__grid case-media__grid--feature">
+        <img src="../assets/case/hs3.jpg" width="1600" height="891" alt="Postać leżąca na drewnianej podłodze wśród rozrzuconych rycin" loading="lazy">
+        <img src="../assets/case/hs4.jpg" width="951" height="557" alt="Kadr z rozgrywki Hourglass Sanatorium" loading="lazy">
+        <img src="../assets/case/hs5.jpg" width="951" height="557" alt="Kadr z rozgrywki Hourglass Sanatorium" loading="lazy">
       </div>
-      <div class="slot-stack">
-        <div class="slot">
-          <img src="gameimages/hs4.png">
-        </div>
-        <div class="slot">
-          <img src="gameimages/hs5.png">
-        </div>
-      </div>
-    </div>
-    <div class="img-caption">Wybrane klatki ekranu z gry</div>
-  </div>
+      <figcaption>Wybrane kadry z gry.</figcaption>
+    </figure>
 
-  <div class="section">
-    <h2>Stack technologiczny</h2>
-    <div class="tech-list">
-      <span class="tech">Unity</span>
-      <span class="tech">C#</span>
-      <span class="tech">Adventure creator</span>
-      <span class="tech">Unity Face Capture</span>
-    </div>
-  </div>
+    <section class="case-section">
+      <h2>Stack</h2>
+      <ul class="tag-list tag-list--plain" role="list"><li>Unity</li><li>C#</li><li>Adventure Creator</li><li>Unity Face Capture</li></ul>
+    </section>
 
-  <div class="section">
-    <h2>Czego się nauczyłem</h2>
-    <p>Projektowania i implementacji architektury gry w Unity (C#), tworzenia złożonych mechanik (w tym systemów nieeuklidesowych i zagadek), budowy systemów UI oraz pracy zespołowej przy produkcji gry z elementami narracyjnymi i dubbingiem.</p>
+    <section class="case-section">
+      <h2>Czego się nauczyłem</h2>
+      <p>Projektowania architektury gry w Unity (C#) od zera, budowy złożonych mechanik (w tym systemów nieeuklidesowych i zagadek), systemów UI oraz pracy w zespole przy produkcji narracyjnej z dubbingiem.</p>
+    </section>
   </div>
+</main>
 
-  <div class="cta-row">
-    <a href="https://store.steampowered.com/app/4122420/Hourglass_Sanatorium/" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-   Strona Steam
-   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
-      <path d="M3 8h10M9 4l4 4-4 4"/>
-   </svg>
-</a>
-  </div>
-
-</div>
 </body>
 </html>

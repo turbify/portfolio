@@ -1,152 +1,94 @@
-<!DOCTYPE html>
-<html lang="pl">
+<!doctype html>
+<html lang="pl" data-mode="game">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Traverse — Eryk Sobczak</title>
-<link rel="stylesheet" href="projects.css">
-<style>
-  body { background: #030d0a; }
-  :root {
-    --accent: #34d399;
-    --accent-dim: rgba(52,211,153,0.12);
-    --ph:      rgba(52,211,153,0.05);
-    --ph-b:    rgba(52,211,153,0.18);
-    --ph-text: rgba(52,211,153,0.32);
-    --bg:      #030d0a;
-    --bg-hero: #030c09;
-  }
-  .hero-grid {
-    opacity: .15;
-    background-image:
-      linear-gradient(rgba(52,211,153,.15) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(52,211,153,.15) 1px,transparent 1px);
-    background-size: 44px 44px;
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Traverse — Eryk Sobczak</title>
+  <meta name="description" content="The Traverse: fabularna platformówka w The Sandbox dla GamerHash. Mechaniki, zagadki, walki z bossami i fabuła: Eryk Sobczak.">
+  <link rel="icon" href="../assets/favicon.ico">
+  <script>if (window.self !== window.top) document.documentElement.dataset.framed = '';</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="projects.css">
+  <link rel="stylesheet" href="../styles/utilities.css">
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-noise"></div>
-  <div class="hero-glow tl" style="width:540px;height:540px;top:-130px;left:-90px;background:radial-gradient(circle,rgba(52,211,153,0.13),transparent 65%);"></div>
-  <div class="hero-content">
-    <div class="hero-tags">
-      <span class="tag">Sandbox Game Editor</span><span class="tag">Web3</span><span class="tag">Platformer</span>
-      <span class="tag n">PC · 2023–2024</span>
-    </div>
-    <h1>Traverse</h1>
-    <p class="hero-sub">Gra osadzona na platformie The Sandbox, w której odkrywasz marsjańskie spiski, spotykasz przywódców tajemniczych kultów, demaskujesz impostorów i wcielasz się w rolę prawdziwego bohatera.</p>
-    <div class="cta-row">
-    <a href="https://www.sandbox.game/en/users/gamercoin/?tab=Experiences" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-   Sprawdź
-   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
-      <path d="M3 8h10M9 4l4 4-4 4"/>
-   </svg>
-</a>
-<a href="https://bitcoin.pl/gamerhash-sandbox-metaverse" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-   Artykuł Bitcoin.pl
-   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
-      <path d="M3 8h10M9 4l4 4-4 4"/>
-   </svg>
-</a>
-  </div>
-  </div>
-</div>
+<header class="case-bar container">
+  <a class="case-bar__back" href="../index.html#projekty" target="_top">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Wszystkie projekty
+  </a>
+</header>
 
-<div class="body">
-
-  <div class="stats-row cols-4">
-    <div class="stat"><div class="stat-val">18 mies.</div><div class="stat-label">Produkcja</div></div>
-    <div class="stat"><div class="stat-val">6 os.</div><div class="stat-label">Zespół</div></div>
-    <div class="stat"><div class="stat-val">3</div><div class="stat-label">Części</div></div>
-    <div class="stat"><div class="stat-val">PC</div><div class="stat-label">Platforma</div></div>
-  </div>
-
-  <div class="section">
-    <h2>O projekcie</h2>
-    <p>Traverse to najbardziej dynamiczna i wciągająca gra fabularna dostępna w The Sandbox. Ta fabularna platformówka przygodowa opowiada o podróży dzielnego odkrywcy Astro, którego statek kosmiczny rozbija się na Marsie. Tam bohater napotyka złowrogą społeczność gadzich istot, na czele której stoi nikczemny Melon X.</p>
-    <p>Podczas pracy nad tym projektem zajmowałem się mechaniką gry, takimi elementami jak obiekty, z którymi gracz może wchodzić w interakcję, drzwi czy urządzenia. Stworzyłem mechanikę łamigłówek dla zadań, walk z bossami oraz samą linię fabularną wraz z dialogami. Współpracowałem również z grafikami, pomagając w implementacji modeli do gry</p>
-  </div>
-
-  <!-- GRID 2 — biom 1 detale -->
-  <div class="section">
-    <div class="img-section-label">Zrzuty ekrany z gry</div>
-    <div class="img-grid-2">
-      <div class="slot">
-        <img src="gameimages/traverse_part1.png" alt="Traverse — wspinaczka">
+<main>
+  <section class="panel case-hero" aria-labelledby="case-title">
+    <div class="container case-hero__inner">
+      <ul class="tag-list" role="list"><li>Sandbox Game Maker</li><li>Web3</li><li>Platformówka</li><li>2023–2024</li><li>GamerHash</li></ul>
+      <h1 class="case-hero__title" id="case-title">The Traverse</h1>
+      <p class="case-hero__lead">Fabularna platformówka w The Sandbox: odkrywasz marsjańskie spiski, spotykasz przywódców tajemniczych kultów i demaskujesz impostorów.</p>
+      <div class="case-hero__actions">
+        <a class="button button--light" href="https://www.sandbox.game/en/users/gamercoin/?tab=Experiences" target="_blank" rel="noopener">
+          Zobacz w The Sandbox<span class="visually-hidden"> (otwiera się w nowej karcie)</span>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="button button--on-panel" href="https://bitcoin.pl/gamerhash-sandbox-metaverse" target="_blank" rel="noopener">
+          Artykuł na Bitcoin.pl<span class="visually-hidden"> (otwiera się w nowej karcie)</span>
+        </a>
       </div>
-      <div class="slot">
-        <img src="gameimages/traverse_part1_3.jpg" alt="Traverse — las z góry">
+      <dl class="case-stats">
+        <div class="case-stats__item"><dt>Produkcja</dt><dd>18 miesięcy</dd></div>
+        <div class="case-stats__item"><dt>Zespół</dt><dd>6 osób</dd></div>
+        <div class="case-stats__item"><dt>Części</dt><dd>3</dd></div>
+        <div class="case-stats__item"><dt>Platforma</dt><dd>PC</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="container case-body">
+    <section class="case-section">
+      <h2>O projekcie</h2>
+      <p>Fabularna platformówka przygodowa o podróży odkrywcy Astro, którego statek rozbija się na Marsie. Bohater trafia na społeczność gadzich istot, na czele której stoi nikczemny Melon X.</p>
+      <p><strong>Moja rola:</strong> mechaniki gry (obiekty interaktywne, drzwi, urządzenia), łamigłówki do zadań, walki z bossami oraz linia fabularna z dialogami. Pomagałem też grafikom we wdrażaniu modeli do gry.</p>
+    </section>
+
+    <figure class="case-media">
+      <div class="case-media__grid case-media__grid--2">
+        <img src="../assets/case/traverse_part1.jpg" width="861" height="484" alt="Astro wspina się po skalnej ścianie" loading="lazy">
+        <img src="../assets/case/traverse_part1_3.jpg" width="760" height="427" alt="Widok z góry na las" loading="lazy">
       </div>
-    </div>
-    <div class="img-caption">Częśc pierwsza rozgrywki</div>
-  </div>
+      <figcaption>Część pierwsza.</figcaption>
+    </figure>
 
-  <!-- BANER biom 2 -->
-  <div class="section">
-    <div class="img-section-label">Biom drugi — Góry kryształowe</div>
-    <div class="slot img-banner">
-      <img src="gameimages/traverse_part2.png" alt="Traverse — góry kryształowe">
-    </div>
-    <div class="img-caption">Częśc druga rozgrywki</div>
-  </div>
+    <figure class="case-media">
+      <img src="../assets/case/traverse_part2.jpg" width="1024" height="576" alt="Kryształowe góry, drugi biom gry" loading="lazy">
+      <figcaption>Część druga: Góry Kryształowe.</figcaption>
+    </figure>
 
-  <!-- GRID 2 biom 2 + biom 3 -->
-  <div class="section">
-    <div class="img-grid-2">
-      <div class="slot">
-        <img src="gameimages/traverse_part2_2.png">
+    <figure class="case-media">
+      <div class="case-media__grid case-media__grid--2">
+        <img src="../assets/case/traverse_part2_2.jpg" width="972" height="495" alt="Kadr z drugiej części gry" loading="lazy">
+        <img src="../assets/case/traverse_part3.jpg" width="1156" height="880" alt="Kadr z trzeciej części gry" loading="lazy">
       </div>
-      <div class="slot">
-        <img src="gameimages/traverse_part3.jpg">
-      </div>
-    </div>
-    <div class="img-caption">Częśc druga i trzecia rozgrywki</div>
-  </div>
+      <figcaption>Część druga i trzecia.</figcaption>
+    </figure>
 
-  <div class="section">
-    <h2>Stack technologiczny</h2>
-    <div class="tech-list">
-      <span class="tech">Sandbox Game Editor</span>
-      <span class="tech">VoxEdit</span>
-    </div>
-  </div>
+    <section class="case-section">
+      <h2>Stack</h2>
+      <ul class="tag-list tag-list--plain" role="list"><li>The Sandbox Game Maker</li><li>VoxEdit</li></ul>
+    </section>
 
-  <div class="section">
-    <h2>Czego się nauczyłem</h2>
-    <p>Projektowania i implementacji mechanik gameplayowych oraz systemów interakcji w The Sandbox Game Editor, tworzenia questów, zagadek i elementów fabularnych w środowisku opartym na voxelowym pipeline, integracji modeli i assetów oraz pracy zespołowej przy dużym projekcie narracyjnym obejmującym level design i implementację rozgrywki.</p>
+    <section class="case-section">
+      <h2>Czego się nauczyłem</h2>
+      <p>Projektowania mechanik i systemów interakcji w Sandbox Game Makerze, tworzenia questów, zagadek i elementów fabularnych w voxelowym pipelinie, integracji modeli i assetów oraz pracy w zespole przy dużym projekcie narracyjnym.</p>
+    </section>
   </div>
+</main>
 
-  <div class="cta-row">
-    <a href="https://www.sandbox.game/en/users/gamercoin/?tab=Experiences" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-   Sprawdź
-   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
-      <path d="M3 8h10M9 4l4 4-4 4"/>
-   </svg>
-</a>
-<a href="https://bitcoin.pl/gamerhash-sandbox-metaverse" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-   Artykuł Bitcoin.pl
-   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
-      <path d="M3 8h10M9 4l4 4-4 4"/>
-   </svg>
-</a>
-  </div>
-
-</div>
 </body>
 </html>

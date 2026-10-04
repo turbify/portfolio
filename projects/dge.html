@@ -1,114 +1,77 @@
-<!DOCTYPE html>
-<html lang="pl">
+<!doctype html>
+<html lang="pl" data-mode="game">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DGE - Eryk Sobczak</title>
-<link rel="stylesheet" href="projects.css">
-<style>
-  body { background: #04080d; }
-  :root {
-    --accent: #38bdf8;
-    --accent-dim: rgba(56,189,248,0.12);
-    --ph:      rgba(56,189,248,0.05);
-    --ph-b:    rgba(56,189,248,0.18);
-    --ph-text: rgba(56,189,248,0.32);
-    --bg:      #04080d;
-    --bg-hero: #030710;
-  }
-  .hero-grid {
-    opacity: .12;
-    background-image:
-      linear-gradient(rgba(56,189,248,.15) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(56,189,248,.15) 1px,transparent 1px);
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dummy's Great Escape — Eryk Sobczak</title>
+  <meta name="description" content="Dummy's Great Escape: gra fizyczna z postacią ragdoll w Unity (WebGL), projekt inżynierski.">
+  <link rel="icon" href="../assets/favicon.ico">
+  <script>if (window.self !== window.top) document.documentElement.dataset.framed = '';</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="projects.css">
+  <link rel="stylesheet" href="../styles/utilities.css">
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-dots"></div>
-  <div class="hero-glow tr" style="width:550px;height:550px;top:-80px;right:-100px;background:radial-gradient(circle,rgba(56,189,248,0.12),transparent 65%);"></div>
-  <div class="hero-content">
-    <div class="hero-tags">
-      <span class="tag">Unity</span><span class="tag">C#</span><span class="tag">WebGL</span>
-      <span class="tag n">2024 · Praca inżynierska · itch.io</span>
-    </div>
-    <h1>Dummy's great escape</h1>
-    <p class="hero-sub">Gra oparta na fizyce, stworzona w ramach projektu pracy inżynierskiej.</p>
-    <div class="cta-row">
-    <a href="https://mikosusek.itch.io/dummys-great-escape" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-   Sprawdź
-   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
-      <path d="M3 8h10M9 4l4 4-4 4"/>
-   </svg>
-</a>
-  </div>
-  </div>
-</div>
+<header class="case-bar container">
+  <a class="case-bar__back" href="../index.html#projekty" target="_top">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Wszystkie projekty
+  </a>
+</header>
 
-<div class="body">
-
-  <div class="stats-row cols-4">
-    <div class="stat"><div class="stat-val">6 miesięcy</div><div class="stat-label">Produkcja</div></div>
-    <div class="stat"><div class="stat-val">2 os.</div><div class="stat-label">Zespół</div></div>
-  </div>
-
-  <div class="section">
-    <h2>O projekcie</h2>
-    <p>Wciel się w Dummy'ego, ekscentryczną postać typu ragdoll, i pokonuj lepkie powierzchnie, podstępne przeszkody oraz wymagające łamigłówki, indywidualnie sterując każdą kończyną. Gra, stworzona w silniku Unity 3D z obsługą WebGL, oferuje świeże spojrzenie na precyzję i strategię, inspirowane rosnącą popularnością trudnych gier akcji-logicznych, takich jak Human Fall Flat i Chained Together.</p>
-  </div>
-
-  <!-- GRID FEATURE -->
-  <div class="section">
-    <div class="img-section-label">Zrzuty ekrany z gry</div>
-    <div class="img-grid-feature">
-      <div class="slot-main">
-        <img src="gameimages/dge3.png" alt="DGE — shader debug">
+<main>
+  <section class="panel case-hero" aria-labelledby="case-title">
+    <div class="container case-hero__inner">
+      <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>WebGL</li><li>2024</li><li>Praca inżynierska</li></ul>
+      <h1 class="case-hero__title" id="case-title">Dummy's Great Escape</h1>
+      <p class="case-hero__lead">Gra oparta na fizyce, w której sterujesz każdą kończyną ragdolla osobno. Powstała jako projekt pracy inżynierskiej.</p>
+      <div class="case-hero__actions">
+        <a class="button button--light" href="https://mikosusek.itch.io/dummys-great-escape" target="_blank" rel="noopener">
+          Zagraj na itch.io<span class="visually-hidden"> (otwiera się w nowej karcie)</span>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
-      <div class="slot-stack">
-        <div class="slot">
-          <img src="gameimages/dge2.png" alt="">
-        </div>
-        <div class="slot">
-          <img src="gameimages/dge1.png" alt="">
-        </div>
+      <dl class="case-stats">
+        <div class="case-stats__item"><dt>Produkcja</dt><dd>6 miesięcy</dd></div>
+        <div class="case-stats__item"><dt>Zespół</dt><dd>2 osoby</dd></div>
+        <div class="case-stats__item"><dt>Platforma</dt><dd>WebGL</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="container case-body">
+    <section class="case-section">
+      <h2>O projekcie</h2>
+      <p>Wciel się w Dummy'ego, ekscentryczną postać typu ragdoll, i pokonuj lepkie powierzchnie, podstępne przeszkody i łamigłówki, sterując każdą kończyną osobno. Gra w Unity z obsługą WebGL stawia na precyzję i strategię, w duchu Human Fall Flat i Chained Together.</p>
+    </section>
+
+    <figure class="case-media">
+      <div class="case-media__grid case-media__grid--feature">
+        <img src="../assets/case/dge3.jpg" width="956" height="597" alt="Plansza z przeszkodami i postacią ragdoll" loading="lazy">
+        <img src="../assets/case/dge2.jpg" width="957" height="599" alt="Kadr z rozgrywki Dummy's Great Escape" loading="lazy">
+        <img src="../assets/case/dge1.jpg" width="957" height="597" alt="Kadr z rozgrywki Dummy's Great Escape" loading="lazy">
       </div>
-    </div>
-    <div class="img-caption">Widok planszy i gracza pokonującego przeszkody</div>
+      <figcaption>Plansze i gracz pokonujący przeszkody.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <h2>Stack</h2>
+      <ul class="tag-list tag-list--plain" role="list"><li>Unity</li><li>C#</li><li>WebGL</li></ul>
+    </section>
+
+    <section class="case-section">
+      <h2>Czego się nauczyłem</h2>
+      <p>Projektowania i implementacji systemu fizyki ragdoll w Unity, precyzyjnego sterowania postacią przez kontrolę poszczególnych kończyn, optymalizacji interakcji fizycznych i projektowania poziomów opartych na fizyce i zagadkach.</p>
+    </section>
   </div>
+</main>
 
-  <div class="section">
-    <h2>Stack technologiczny</h2>
-    <div class="tech-list">
-      <span class="tech">Unity</span>
-      <span class="tech">c#</span>
-
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Czego się nauczyłem</h2>
-    <p>Projektowania i implementacji zaawansowanego systemu fizyki ragdoll w Unity, tworzenia precyzyjnego sterowania postacią poprzez kontrolę poszczególnych kończyn, optymalizacji interakcji fizycznych oraz projektowania poziomów opartych na mechanikach fizycznych i zagadkach logicznych.</p>
-  </div>
-
-  <div class="cta-row">
-    <a href="https://mikosusek.itch.io/dummys-great-escape" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-   Sprawdź
-   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
-      <path d="M3 8h10M9 4l4 4-4 4"/>
-   </svg>
-</a>
-  </div>
-
-</div>
 </body>
 </html>

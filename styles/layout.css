@@ -1,0 +1,45 @@
+/* ============================================================
+   Layout — container, panels, section rhythm
+   ============================================================ */
+
+@layer layout {
+  .container {
+    inline-size: min(100% - 2 * var(--gutter), var(--container));
+    margin-inline: auto;
+  }
+
+  .section {
+    padding-block: var(--space-section);
+  }
+
+  /* Big rounded coloured sheet inset from the viewport edge (the "frame" look). */
+  .panel {
+    margin-inline: var(--frame);
+    padding-block: var(--space-section);
+    color: var(--color-on-panel);
+    background-color: var(--color-panel);
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-panel);
+    transition: background-color var(--duration-slow) var(--ease-out),
+      color var(--duration-slow) var(--ease-out);
+  }
+
+  .section-head {
+    display: grid;
+    gap: var(--space-s);
+    margin-block-end: var(--space-xl);
+  }
+
+  .section-head__title {
+    max-inline-size: 18ch;
+    font-size: var(--text-2xl);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .section-head__lead {
+    max-inline-size: var(--measure);
+    font-size: var(--text-l);
+    line-height: 1.4;
+  }
+}

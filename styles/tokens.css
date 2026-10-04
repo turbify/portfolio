@@ -1,0 +1,159 @@
+/* ============================================================
+   Tokens — the only place with raw values.
+   Components use semantic tokens (--color-*), never primitives.
+   Modes (html[data-mode]) swap semantic tokens only.
+   ============================================================ */
+
+/* Layer order for the whole site. tokens.css is linked first, so it owns this. */
+@layer reset, tokens, base, layout, components, sections, utilities;
+
+@layer tokens {
+  :root {
+    /* ── Primitives ─────────────────────────────────────────── */
+    --cream-50: #fdfcfa;
+    --cream-100: #f8f7f3;
+    --cream-200: #ebe8e1;
+    --ink-900: #151412;
+    --ink-600: #57534c;
+    --blue-500: #3f5be6;
+    --blue-600: #3149c4;
+    --crimson-500: #ff2140;
+    --crimson-400: #ff4d66;
+    --pink-300: #f6b3da;
+    --plum-600: #8e2a58;
+    --green-600: #1e7a58;
+    --green-400: #3ddc97;
+    --yellow-300: #ffd84d;
+    --yellow-400: #ffcc1a;
+    --white: #ffffff;
+    --red-500: #e5484d;
+
+    /* ── Semantic: page ─────────────────────────────────────── */
+    --color-page: var(--cream-100);
+    --color-surface: var(--cream-50);
+    --color-text: var(--ink-900);
+    --color-text-muted: var(--ink-600);
+    --color-border: color-mix(in srgb, var(--ink-900) 16%, transparent);
+    --color-border-strong: var(--ink-900);
+    --color-focus: var(--ink-900);
+    --color-invert: var(--ink-900);
+    --color-on-invert: var(--cream-50);
+    --color-scrim: color-mix(in srgb, var(--ink-900) 72%, transparent);
+    --color-hover-tint: color-mix(in srgb, var(--ink-900) 8%, transparent);
+
+    /* ── Semantic: sticker palette (decoration only) ────────── */
+    --color-sticker-edge: var(--cream-50);
+    --color-sticker-ink: var(--ink-900);
+    --color-sticker-crimson: var(--crimson-500);
+    --color-sticker-blue: var(--blue-500);
+    --color-sticker-pink: var(--pink-300);
+    --color-sticker-plum: var(--plum-600);
+    --color-sticker-green: var(--green-400);
+    --color-sticker-yellow: var(--yellow-300);
+    --color-sticker-red: var(--red-500);
+
+    /* ── Typography ─────────────────────────────────────────── */
+    --font-display: 'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif;
+    --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+    --text-2xs: 0.75rem;
+    --text-xs: 0.8125rem;
+    --text-s: 0.9375rem;
+    --text-m: 1.0625rem;
+    --text-l: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+    --text-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
+    --text-2xl: clamp(2.25rem, 1.5rem + 3.2vw, 4rem);
+    --text-3xl: clamp(3rem, 1.5rem + 6.4vw, 7rem);
+    --text-wordmark: clamp(8rem, 2rem + 30vw, 30rem);
+
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-bold: 700;
+    --weight-heavy: 800;
+
+    --leading-tight: 0.95;
+    --leading-snug: 1.15;
+    --leading-body: 1.6;
+    --tracking-tight: -0.03em;
+    --tracking-display: -0.045em;
+
+    /* ── Space ──────────────────────────────────────────────── */
+    --space-3xs: 0.25rem;
+    --space-2xs: 0.5rem;
+    --space-xs: 0.75rem;
+    --space-s: 1rem;
+    --space-m: 1.5rem;
+    --space-l: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 4.5rem;
+    --space-section: clamp(3.5rem, 2rem + 6vw, 7.5rem);
+    --gutter: clamp(1rem, 0.5rem + 2vw, 2.5rem);
+    --frame: clamp(0.5rem, 0.25rem + 0.8vw, 0.875rem);
+    --container: 78rem;
+    --measure: 38rem;
+    --header-height: 4.5rem;
+
+    /* ── Shape ──────────────────────────────────────────────── */
+    --radius-s: 0.5rem;
+    --radius-m: 1rem;
+    --radius-l: 1.5rem;
+    --radius-panel: clamp(1.25rem, 0.75rem + 1.5vw, 2.25rem);
+    --radius-pill: 999px;
+    --border-width: 1.5px;
+    --focus-width: 3px;
+    --sticker-edge: 5px;
+    --target-min: 2.75rem;
+    --icon-size: 1.25rem;
+    --tilt-s: 2deg;
+    --tilt-m: 6deg;
+    --tilt-l: 12deg;
+    --shape-burst: polygon(50% 0%, 61.6% 10.7%, 76.5% 8.8%, 79.5% 24.5%, 95.5% 29.2%, 91.6% 44%, 97.5% 56.8%, 86.4% 66.6%, 87.8% 82.7%, 72.2% 84.5%, 63.2% 95.1%, 50% 89%, 35.9% 98%, 27.3% 85.3%, 13% 82.1%, 13.6% 66.6%, 2.5% 56.8%, 9.4% 44.2%, 4.5% 29.2%, 20.5% 24.5%, 24.6% 10.5%, 38.2% 9.7%);
+    --sticker-size: clamp(3.5rem, 2rem + 6vw, 8.5rem);
+
+    /* ── Motion ─────────────────────────────────────────────── */
+    --duration-fast: 150ms;
+    --duration-base: 300ms;
+    --duration-slow: 600ms;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* ── Mode: game dev (default) — electric blue panels ──────── */
+  :root,
+  :root[data-mode='game'] {
+    --color-panel: var(--blue-500);
+    --color-on-panel: var(--cream-50);
+    --color-panel-line: color-mix(in srgb, var(--cream-50) 35%, transparent);
+    --color-panel-chip: var(--cream-50);
+    --color-on-panel-chip: var(--ink-900);
+    --shadow-panel: none;
+    --color-panel-edge: transparent;
+    --color-panel-halo: var(--color-page);
+    --color-wordmark: var(--cream-50);
+    --color-accent: var(--crimson-500);
+    --color-accent-hover: var(--crimson-400);
+    --color-on-accent: var(--ink-900);
+  }
+
+  /* ── Mode: graphic design — white paper sheets on the desk, yellow accent ── */
+  :root[data-mode='art'] {
+    --color-panel: var(--white);
+    --color-on-panel: var(--ink-900);
+    --color-panel-line: color-mix(in srgb, var(--ink-900) 22%, transparent);
+    --color-panel-chip: var(--ink-900);
+    --color-on-panel-chip: var(--cream-50);
+    --shadow-panel:
+      0 0 0 1px color-mix(in srgb, var(--ink-900) 5%, transparent),
+      0 1px 3px color-mix(in srgb, var(--ink-900) 5%, transparent),
+      /* Spread cancels the blur sideways: the soft shadow falls only below the sheet,
+         so the header corner masks never meet a side shadow band. */
+      0 20px 24px -24px color-mix(in srgb, var(--ink-900) 28%, transparent);
+    /* Opaque equivalents of the shadow's 1px ring and soft edge, used by the header corner masks. */
+    --color-panel-edge: color-mix(in srgb, var(--ink-900) 6%, var(--color-page));
+    --color-panel-halo: color-mix(in srgb, var(--ink-900) 3%, var(--color-page));
+    --color-wordmark: var(--yellow-400);
+    --color-accent: var(--yellow-400);
+    --color-accent-hover: var(--yellow-300);
+    --color-on-accent: var(--ink-900);
+  }
+}

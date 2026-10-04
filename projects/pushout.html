@@ -1,157 +1,93 @@
-<!DOCTYPE html>
-<html lang="pl">
+<!doctype html>
+<html lang="pl" data-mode="game">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pushout: Demolition Derby - Eryk Sobczak</title>
-<link rel="stylesheet" href="projects.css">
-<style>
-  body { background: #121212; }
-  :root {
-    --accent: #fbbf24;
-    --accent-dim: rgba(251, 191, 36, 0.12);
-    --ph:      rgba(251, 191, 36, 0.05);
-    --ph-b:    rgba(251, 191, 36, 0.18);
-    --ph-text: rgba(251, 191, 36, 0.32);
-    --bg:      #121212;
-    --bg-hero: #0a0a0a;
-  }
-  .hero-grid {
-    opacity: .07;
-    background-image:
-      linear-gradient(rgba(251, 191, 36, .15) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(251, 191, 36, .15) 1px,transparent 1px);
-    background-size: 36px 36px;
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pushout: Demolition Derby — Eryk Sobczak</title>
+  <meta name="description" content="Pushout: Demolition Derby, gra multiplayer na s&box (Source 2). Pełny cykl produkcji: Eryk Sobczak. 848 graczy w pierwszym miesiącu otwartej bety.">
+  <link rel="icon" href="../assets/favicon.ico">
+  <script>if (window.self !== window.top) document.documentElement.dataset.framed = '';</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="projects.css">
+  <link rel="stylesheet" href="../styles/utilities.css">
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-noise"></div>
-  <div class="hero-glow tl" style="width:480px;height:480px;top:-100px;left:-80px;background:radial-gradient(circle,rgba(251, 191, 36,0.1),transparent 65%);"></div>
-  <div class="hero-glow br" style="width:300px;height:300px;bottom:-80px;right:-40px;background:radial-gradient(circle,rgba(251, 191, 36,0.05),transparent 65%);"></div>
-  <div class="hero-content">
-    <div class="hero-tags">
-      <span class="tag">Source 2</span><span class="tag">C#</span>
-      <span class="tag n">2026 · welded · s&box</span>
-      <span class="tag award">Gra multiplayer • Beta</span>
-    </div>
-    <h1>Pushout: Demolition Derby</h1>
-    <p class="hero-sub">Dynamiczna gra multiplayer typu vehicle combat. Celem jest utrzymanie się na arenie przez 240 sekund i wypychanie przeciwników poza platformę. Inspiracją były klasyczne tryby Demolition Derby i Sumo z SA:MP oraz MTA.</p>
-    <div class="cta-row">
-    <a href="https://sbox.game/weld/pushout" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-   Strona s&box
-   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
-      <path d="M3 8h10M9 4l4 4-4 4"/>
-   </svg>
-</a>
-  </div>
-  </div>
-</div>
+<header class="case-bar container">
+  <a class="case-bar__back" href="../index.html#projekty" target="_top">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Wszystkie projekty
+  </a>
+</header>
 
-<div class="body">
-  <div class="img-section-label">Wyniki pierwszego tygodnia</div>
-  <div class="stats-row cols-4">
-    <div class="stat"><div class="stat-val">848</div><div class="stat-label">Graczy łącznie (w miesiąc)</div></div>
-    <div class="stat"><div class="stat-val">972</div><div class="stat-label">Sesji w ostatni tydzień</div></div>
-    <div class="stat"><div class="stat-val">189</div><div class="stat-label">Rekord graczy jednego dnia</div></div>
-    <div class="stat"><div class="stat-val">155</div><div class="stat-label">Godzin łącznego czasu gry graczy</div></div>
-  </div>
-
-  <!-- BANER -->
-  <div class="section">
-    <div class="img-section-label">Zrzut ekranu z rozgrywki</div>
-    <div class="slot img-banner">
-      <img src="gameimages/pushout1.png">
-    </div>
-    <div class="img-caption">Widok na dynamiczne starcie na arenie</div>
-  </div>
-
-  <div class="section">
-    <h2>O projekcie</h2>
-    <p>Pushout: Demolition Derby to autorski projekt dynamicznej gry zręcznościowej online nastawionej na fizykę i rywalizację. Gra wskrzesza mechanikę znaną z kultowych modyfikacji do GTA San Andreas (SA:MP/MTA), przenosząc ją w nowoczesne realia silnika Source 2. Projekt znajduje się w fazie otwartej bety, stale gromadząc zaangażowaną społeczność graczy na platformie s&box.</p>
-    <p>Byłem odpowiedzialny za pełny cykl produkcyjny - od projektu mechanik po architekturę kodu, sieciową synchronizację fizyki, wdrożenie UI oraz analitykę popularności tytułu.</p>
-  </div>
-
-  <div class="section">
-    <h2>Główne mechaniki i cechy gry</h2>
-    <div class="mechanic-list">
-      <div class="mechanic">
-        <div class="mechanic-dot"></div>
-        <div>
-          <div class="mechanic-name">Walka pojazdami oparta na zaawansowanej fizyce</div>
-          <div class="mechanic-desc">System naliczania pędu, masy i prędkości. Gracze eliminują się poprzez taranowanie i wypychanie z platformy, gdzie kluczowe jest wyczucie timingu.</div>
-        </div>
+<main>
+  <section class="panel case-hero" aria-labelledby="case-title">
+    <div class="container case-hero__inner">
+      <ul class="tag-list" role="list"><li>Source 2</li><li>s&amp;box</li><li>C#</li><li>2026</li><li>Multiplayer · otwarta beta</li></ul>
+      <h1 class="case-hero__title" id="case-title">Pushout: Demolition Derby</h1>
+      <p class="case-hero__lead">Dynamiczny vehicle combat online. Wytrzymaj na arenie 240 sekund i wypchnij rywali poza platformę. Inspiracja: klasyczne tryby Demolition Derby i Sumo z SA:MP i MTA.</p>
+      <div class="case-hero__actions">
+        <a class="button button--light" href="https://sbox.game/weld/pushout" target="_blank" rel="noopener">
+          Zagraj na s&amp;box<span class="visually-hidden"> (otwiera się w nowej karcie)</span>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
-      <div class="mechanic">
-        <div class="mechanic-dot"></div>
-        <div>
-          <div class="mechanic-name">Rozgrywka multiplayer w trybie "Sumo"</div>
-          <div class="mechanic-desc">Dynamiczne i nieprzewidywalne starcia z 16-minutowym limitem czasu meczu oraz systemem szybkiego odradzania się (respawn po 10 sekundach).</div>
-        </div>
-      </div>
-      <div class="mechanic">
-        <div class="mechanic-dot"></div>
-        <div>
-          <div class="mechanic-name">Skill-based gameplay</div>
-          <div class="mechanic-desc">Projekt premiuje taktyczne pozycjonowanie na arenie, świadomość otoczenia oraz kontrolowanie własnego pędu, rezygnując z bezmyślnej, szybkiej jazdy.</div>
-        </div>
-      </div>
+      <dl class="case-stats">
+        <div class="case-stats__item"><dt>Graczy w pierwszym miesiącu</dt><dd>848</dd></div>
+        <div class="case-stats__item"><dt>Sesji w ostatnim tygodniu</dt><dd>972</dd></div>
+        <div class="case-stats__item"><dt>Rekord graczy jednego dnia</dt><dd>189</dd></div>
+        <div class="case-stats__item"><dt>Godzin rozgrywki łącznie</dt><dd>155</dd></div>
+      </dl>
     </div>
-  </div>
+  </section>
 
-  <!-- GRID FEATURE -->
-  <div class="section">
-    <div class="img-section-label">Zrzuty ekranu z rozgrywki</div>
-    <div class="img-grid-feature">
-      <div class="slot-main">
-        <img src="gameimages/pushout2.png">
+  <div class="container case-body">
+    <figure class="case-media">
+      <img src="../assets/case/pushout1.jpg" width="1600" height="900" alt="Kilka samochodów zderza się na okrągłej arenie" fetchpriority="high">
+      <figcaption>Starcie na arenie.</figcaption>
+    </figure>
+
+    <section class="case-section">
+      <h2>O projekcie</h2>
+      <p>Autorska zręcznościówka online nastawiona na fizykę i rywalizację. Wskrzesza mechanikę znaną z kultowych modyfikacji GTA San Andreas (SA:MP/MTA) i przenosi ją na silnik Source 2. Gra jest w otwartej becie i stale zbiera społeczność na platformie s&amp;box.</p>
+      <p><strong>Odpowiadam za pełny cykl produkcji:</strong> projekt mechanik, architekturę kodu, sieciową synchronizację fizyki, UI i analitykę.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>Mechaniki</h2>
+      <ul class="feature-list" role="list">
+        <li class="feature-list__item"><strong>Walka pojazdami na fizyce</strong><span>Pęd, masa i prędkość decydują o zderzeniu. Eliminujesz rywali taranowaniem i wypychaniem, liczy się timing.</span></li>
+        <li class="feature-list__item"><strong>Multiplayer w trybie Sumo</strong><span>Mecze z 16-minutowym limitem czasu i szybkim respawnem po 10 sekundach.</span></li>
+        <li class="feature-list__item"><strong>Skill-based gameplay</strong><span>Wygrywa pozycjonowanie i kontrola pędu, a nie bezmyślna jazda na pełnym gazie.</span></li>
+      </ul>
+    </section>
+
+    <figure class="case-media">
+      <div class="case-media__grid case-media__grid--feature">
+        <img src="../assets/case/pushout2.jpg" width="1600" height="900" alt="Kadr z rozgrywki Pushout" loading="lazy">
+        <img src="../assets/case/pushout3.jpg" width="1600" height="900" alt="Kadr z rozgrywki Pushout" loading="lazy">
+        <img src="../assets/case/pushout4.jpg" width="1600" height="900" alt="Kadr z rozgrywki Pushout" loading="lazy">
       </div>
-      <div class="slot-stack">
-        <div class="slot">
-          <img src="gameimages/pushout3.png">
-        </div>
-        <div class="slot">
-          <img src="gameimages/pushout4.png">
-        </div>
-      </div>
-    </div>
-    <div class="img-caption">Wybrane klatki z dynamicznych starć w grze</div>
-  </div>
+      <figcaption>Wybrane kadry ze starć.</figcaption>
+    </figure>
 
-  <div class="section">
-    <h2>Stack technologiczny</h2>
-    <div class="tech-list">
-      <span class="tech">S&box</span>
-      <span class="tech">C#</span>
-      <span class="tech">Multiplayer Architecture</span>
-      <span class="tech">Rigidbody Physics</span>
-    </div>
-  </div>
+    <section class="case-section">
+      <h2>Stack</h2>
+      <ul class="tag-list tag-list--plain" role="list"><li>s&amp;box</li><li>C#</li><li>Multiplayer architecture</li><li>Rigidbody physics</li></ul>
+    </section>
 
-  <div class="section">
-    <h2>Czego się nauczyłem</h2>
-    <p>Projekt rozwinął moje umiejętności optymalizacji kodu pod kątem rozgrywki wieloosobowej oraz pracy z systemem fizyki silnika Source 2 i s&box. Ponad 1200 rozegranych sesji i setki unikalnych graczy w krótkim czasie pozwoliły mi na zbieranie feedbacku live, analizowanie błędów w środowisku produkcyjnym i wdrażanie szybkich zmian balansu (LiveOps), co udowodniło przydatność mojej architektury w realnych warunkach rynkowych.</p>
+    <section class="case-section">
+      <h2>Czego się nauczyłem</h2>
+      <p>Optymalizacji kodu pod rozgrywkę wieloosobową i pracy z fizyką Source 2 w s&amp;box. Ponad 1200 rozegranych sesji i setki unikalnych graczy dały mi feedback na żywo: analizę błędów na produkcji i szybkie zmiany balansu (LiveOps), które sprawdziły architekturę w realnych warunkach.</p>
+    </section>
   </div>
+</main>
 
-  <div class="cta-row">
-    <a href="https://sbox.game/weld/pushout" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-   Strona s&box
-   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
-      <path d="M3 8h10M9 4l4 4-4 4"/>
-   </svg>
-</a>
-  </div>
-
-</div>
 </body>
 </html>

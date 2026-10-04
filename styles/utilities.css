@@ -1,0 +1,37 @@
+/* ============================================================
+   Utilities — last layer, shared by every page
+   ============================================================ */
+
+@layer utilities {
+  /* Mode visibility: content for the other mode is removed from layout and a11y tree. */
+  :root[data-mode='game'] [data-show='art'],
+  :root[data-mode='art'] [data-show='game'] {
+    display: none;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .skip-link {
+    position: absolute;
+    inset-block-start: var(--space-s);
+    inset-inline-start: var(--space-s);
+    z-index: 100;
+    padding: var(--space-xs) var(--space-s);
+    font-weight: var(--weight-bold);
+    color: var(--color-on-invert);
+    background-color: var(--color-invert);
+    border-radius: var(--radius-m);
+    translate: 0 -200%;
+
+    &:focus-visible {
+      translate: 0;
+    }
+  }
+}

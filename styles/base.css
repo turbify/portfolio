@@ -1,0 +1,108 @@
+/* ============================================================
+   Reset + base element styles
+   ============================================================ */
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  img,
+  svg,
+  iframe {
+    display: block;
+    max-inline-size: 100%;
+  }
+
+  img {
+    block-size: auto;
+  }
+
+  button,
+  input {
+    font: inherit;
+    color: inherit;
+  }
+
+  ul[role='list'],
+  ol[role='list'] {
+    padding: 0;
+    list-style: none;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    scroll-padding-block-start: calc(var(--header-height) + var(--space-s));
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-block-size: 100dvh;
+    font-family: var(--font-body);
+    font-size: var(--text-m);
+    line-height: var(--leading-body);
+    color: var(--color-text);
+    background-color: var(--color-page);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: var(--weight-heavy);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1.5px;
+  }
+
+  strong {
+    font-weight: var(--weight-bold);
+  }
+
+  :focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-width);
+    border-radius: var(--radius-s);
+  }
+
+  ::selection {
+    color: var(--color-on-accent);
+    background-color: var(--color-accent);
+  }
+}

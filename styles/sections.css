@@ -1,0 +1,349 @@
+/* ============================================================
+   Sections — page-level blocks of index.html
+   ============================================================ */
+
+@layer sections {
+  /* ── site-header ──────────────────────────────────────── */
+  .site-header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 50;
+    background-color: var(--color-page);
+
+    /* Page-coloured corner masks under the header: a panel scrolling beneath it
+       keeps rounded top corners instead of being cut by a straight line. */
+    /* In art mode the arc also carries the paper's 1px edge and soft halo,
+       so the rounded corner matches the sheet's border and shadow. */
+    --corner-r: var(--radius-panel);
+    --corner-halo: var(--space-3xs);
+    --corner-mask:
+      transparent calc(var(--corner-r) - 0.5px),
+      var(--color-panel-edge) var(--corner-r),
+      var(--color-panel-edge) calc(var(--corner-r) + 1px),
+      var(--color-panel-halo) calc(var(--corner-r) + 1.5px),
+      var(--color-page) calc(var(--corner-r) + var(--corner-halo));
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset-block-start: 100%;
+      inline-size: calc(var(--corner-r) + var(--corner-halo));
+      block-size: var(--corner-r);
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    /* Set by initHeaderCorners() only while a panel passes under the header. */
+    &[data-over-panel]::before,
+    &[data-over-panel]::after {
+      opacity: 1;
+    }
+
+    &::before {
+      inset-inline-start: calc(var(--frame) - var(--corner-halo));
+      background: radial-gradient(circle at 100% 100%, var(--corner-mask));
+    }
+
+    &::after {
+      inset-inline-end: calc(var(--frame) - var(--corner-halo));
+      background: radial-gradient(circle at 0 100%, var(--corner-mask));
+    }
+  }
+
+  .site-header__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--space-s);
+    min-block-size: var(--header-height);
+    padding-inline: var(--gutter);
+    margin-inline: auto;
+    max-inline-size: calc(var(--container) + 2 * var(--gutter));
+
+    & .logo-burst {
+      justify-self: start;
+    }
+
+    & .nav-toggle {
+      justify-self: end;
+    }
+
+    @media (width >= 56em) {
+      & .site-nav {
+        justify-self: end;
+      }
+    }
+  }
+
+  /* ── hero ─────────────────────────────────────────────── */
+  .hero {
+    padding-block: var(--space-xl) var(--space-2xl);
+  }
+
+  .hero__grid {
+    display: grid;
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  .hero__copy {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-m);
+  }
+
+  .hero__title {
+    display: grid;
+    gap: var(--space-s);
+    margin-block-start: var(--space-xs);
+  }
+
+  .hero__name {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+  }
+
+  .hero__claim {
+    max-inline-size: 22ch;
+    font-size: var(--text-xl);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-snug);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .hero__copy .facts {
+    inline-size: 100%;
+    margin-block-start: var(--space-m);
+  }
+
+  .hero__media {
+    position: relative;
+    margin: 0;
+    margin-inline: var(--space-s);
+  }
+
+  .hero__media-link {
+    display: block;
+    overflow: hidden;
+    border-radius: var(--radius-l);
+    rotate: var(--tilt-s);
+    transition: rotate var(--duration-slow) var(--ease-spring);
+
+    & img {
+      inline-size: 100%;
+      aspect-ratio: 16 / 11;
+      object-fit: cover;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        rotate: 0deg;
+      }
+    }
+  }
+
+  .sticker--hero {
+    position: absolute;
+    inset-block-start: calc(var(--space-l) * -1);
+    inset-inline-start: calc(var(--space-l) * -1);
+    z-index: 1;
+    inline-size: calc(var(--sticker-size) * 1.25);
+    padding: var(--space-2xs);
+    font-size: var(--text-s);
+    white-space: normal;
+    rotate: calc(var(--tilt-l) * -1);
+    pointer-events: none;
+  }
+
+  .bubble--caption {
+    position: absolute;
+    inset-block-end: calc(var(--space-m) * -1);
+    inset-inline-end: var(--space-m);
+    z-index: 1;
+  }
+
+  @media (width >= 64em) {
+    .hero {
+      padding-block-start: var(--space-2xl);
+    }
+
+    .hero__grid {
+      grid-template-columns: 7fr 5fr;
+    }
+  }
+
+  /* ── about ────────────────────────────────────────────── */
+  .about__grid {
+    display: grid;
+    gap: var(--space-2xl);
+  }
+
+  .about__intro {
+    display: grid;
+    align-content: start;
+    justify-items: start;
+    gap: var(--space-m);
+  }
+
+  .about__text {
+    max-inline-size: var(--measure);
+    font-size: var(--text-l);
+    line-height: 1.45;
+  }
+
+  .about__intro .quote {
+    margin-block-start: var(--space-l);
+  }
+
+  .about__details {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .about__heading {
+    margin-block-end: var(--space-s);
+    font-size: var(--text-l);
+  }
+
+  @media (width >= 64em) {
+    .about__grid {
+      grid-template-columns: 5fr 6fr;
+      gap: var(--space-2xl) calc(var(--space-2xl) * 1.5);
+    }
+  }
+
+  /* ── site-footer (contact panel) ──────────────────────── */
+  .site-footer {
+    position: relative;
+    margin-block-end: var(--frame);
+    padding-block-end: 0;
+    overflow: hidden;
+  }
+
+  .site-footer__grid {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .site-footer__col {
+    display: grid;
+    align-content: start;
+    justify-items: start;
+    gap: var(--space-s);
+  }
+
+  .site-footer__big {
+    margin-block-start: var(--space-2xs);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-heavy);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .site-footer__mail {
+    text-decoration: none;
+    overflow-wrap: anywhere;
+
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &:focus-visible {
+      outline-color: currentColor;
+    }
+  }
+
+  .site-footer__note {
+    font-size: var(--text-xs);
+  }
+
+  .site-footer .scribble-link:focus-visible {
+    outline-color: currentColor;
+  }
+
+  .site-footer__credits {
+    position: absolute;
+    inset-block-end: var(--space-s);
+    inset-inline-end: var(--space-s);
+    z-index: 3;
+    padding: var(--space-3xs) var(--space-xs);
+    font-size: var(--text-xs);
+    color: var(--color-on-invert);
+    background-color: var(--color-invert);
+    border-radius: var(--radius-s);
+  }
+
+  @media (width >= 56em) {
+    .site-footer__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* ── wordmark with draggable stickers ─────────────────── */
+  .wordmark {
+    position: relative;
+    margin-block-start: var(--space-2xl);
+    padding-inline: var(--gutter);
+  }
+
+  .wordmark__text {
+    margin-block-end: -0.2em;
+    font-family: var(--font-display);
+    font-size: var(--text-wordmark);
+    font-weight: var(--weight-heavy);
+    line-height: 0.8;
+    letter-spacing: -0.06em;
+    color: var(--color-wordmark);
+    text-align: center;
+    user-select: none;
+    transition: color var(--duration-slow) var(--ease-out);
+  }
+
+  .sticker--float {
+    position: absolute;
+    inset-inline-start: var(--x);
+    inset-block-start: var(--y);
+    z-index: 2;
+    translate: var(--dx, 0) var(--dy, 0);
+    transition: scale var(--duration-base) var(--ease-spring),
+      rotate var(--duration-base) var(--ease-spring);
+
+    &.sticker--burst {
+      font-size: var(--text-xl);
+    }
+
+    /* Small screens: fewer stickers so the wordmark stays readable. */
+    &[data-crowd] {
+      @media (width < 40em) {
+        display: none;
+      }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      cursor: grab;
+      touch-action: none;
+
+      &:hover {
+        scale: 1.08;
+      }
+
+      &[data-state='dragging'] {
+        cursor: grabbing;
+        scale: 1.15;
+        rotate: 0deg;
+        z-index: 3;
+      }
+    }
+  }
+}
