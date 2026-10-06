@@ -181,6 +181,10 @@
     & dd {
       margin: 0;
       max-inline-size: var(--measure);
+
+      & p + p {
+        margin-block-start: var(--space-xs);
+      }
     }
   }
 

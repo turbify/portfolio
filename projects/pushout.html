@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pushout: Demolition Derby — Eryk Sobczak</title>
-  <meta name="description" content="Pushout: Demolition Derby, multiplayerowa walka samochodami na fizyce w s&box (Source 2). Pełny cykl produkcji: Eryk Sobczak. 848 graczy w pierwszym miesiącu bety.">
+  <meta name="description" content="Pushout: Demolition Derby, multiplayerowa walka samochodami na fizyce w s&box (Source 2). Zrobiona w pojedynkę przez Eryka Sobczaka. 1665 graczy, 25 pozytywnych recenzji.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../styles/components.css">
   <link rel="stylesheet" href="projects.css">
   <link rel="stylesheet" href="../styles/utilities.css">
+  <script src="../scripts/main.js" defer></script>
 </head>
 <body>
 
@@ -33,7 +34,7 @@
     <div class="container case-hero__inner">
       <ul class="tag-list" role="list"><li>C#</li><li>s&amp;box (Source 2)</li><li>Multiplayer</li><li>2026 · otwarta beta</li></ul>
       <h1 class="case-hero__title" id="case-title">Pushout: Demolition Derby</h1>
-      <p class="case-hero__lead">Multiplayerowa walka samochodami na fizyce. Wytrzymaj na arenie 240 sekund i zepchnij rywali, zanim oni zepchną ciebie. Cały cykl produkcji jest mój.</p>
+      <p class="case-hero__lead">Multiplayerowa walka samochodami na fizyce. Wytrzymaj na arenie 240 sekund i zepchnij rywali, zanim oni zepchną ciebie. Zrobiłem ją w pojedynkę, od pomysłu po LiveOps.</p>
       <div class="case-hero__actions">
         <a class="button button--light" href="https://sbox.game/weld/pushout" target="_blank" rel="noopener">
           Zagraj na s&amp;box<span class="visually-hidden"> (otwiera się w nowej karcie)</span>
@@ -41,32 +42,31 @@
         </a>
       </div>
       <dl class="case-stats">
-        <div class="case-stats__item"><dt>Graczy w 1. miesiącu bety</dt><dd>848</dd></div>
-        <div class="case-stats__item"><dt>Sesji w ostatnim tygodniu</dt><dd>972</dd></div>
-        <div class="case-stats__item"><dt>Rekord graczy jednego dnia</dt><dd>189</dd></div>
-        <div class="case-stats__item"><dt>Godzin rozgrywki łącznie</dt><dd>155</dd></div>
-        <div class="case-stats__item"><dt>Zespół</dt><dd><span class="todo">(z) solo?</span></dd></div>
+        <div class="case-stats__item"><dt>Graczy łącznie</dt><dd>1665</dd></div>
+        <div class="case-stats__item"><dt>Łączny czas gry</dt><dd>18 dni</dd></div>
+        <div class="case-stats__item"><dt>Średnio na gracza</dt><dd>16 min</dd></div>
+        <div class="case-stats__item"><dt>Pozytywne recenzje</dt><dd>25</dd></div>
+        <div class="case-stats__item"><dt>Zespół</dt><dd>Solo</dd></div>
       </dl>
     </div>
   </section>
 
   <div class="container case-body">
     <figure class="case-media">
-      <img src="../assets/case/pushout1.jpg" width="1600" height="900" alt="Kilka samochodów zderza się na okrągłej arenie" fetchpriority="high">
-      <figcaption>Starcie na arenie.</figcaption>
+      <a class="video" href="https://www.youtube.com/watch?v=_xiC1OUM8hQ" target="_blank" rel="noopener" data-video="_xiC1OUM8hQ" data-video-autoplay data-video-title="Pushout: Demolition Derby — gameplay">
+        <img src="../assets/video/_xiC1OUM8hQ.jpg" width="1280" height="720" alt="" fetchpriority="high">
+        <span class="video__play" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+        <span class="visually-hidden">Odtwórz gameplay Pushout: Demolition Derby (YouTube)</span>
+      </a>
+      <figcaption>Gameplay z otwartej bety.</figcaption>
     </figure>
-
-    <div class="todo-block" role="note">
-      (z) Wideo z rozgrywki, 30–60 s
-      <small>Najmocniejszy hook w gamedevie. Wklej link do YouTube albo nagranie MP4: kilka zderzeń, wypchnięcie z areny, ekran wyników.</small>
-    </div>
 
     <section class="case-section">
       <h2>Moja rola</h2>
       <ul class="feature-list" role="list">
         <li class="feature-list__item"><span class="feature-list__title">Projekt mechanik i balans</span><span class="feature-list__desc">Tryb Sumo, czas meczu, respawn po 10 sekundach, sterowanie pędem pojazdu.</span></li>
         <li class="feature-list__item"><span class="feature-list__title">Architektura kodu w C#</span><span class="feature-list__desc">Struktura projektu w s&amp;box, gotowa na szybkie zmiany po feedbacku graczy.</span></li>
-        <li class="feature-list__item"><span class="feature-list__title">Sieciowa synchronizacja fizyki</span><span class="feature-list__desc">Zderzenia, które działają tak samo u wszystkich graczy w meczu.</span></li>
+        <li class="feature-list__item"><span class="feature-list__title">Sieciowa synchronizacja fizyki</span><span class="feature-list__desc">Autorytatywny host, bufor historii stanów i kompensacja opóźnienia: zderzenia działają tak samo u wszystkich graczy.</span></li>
         <li class="feature-list__item"><span class="feature-list__title">UI, analityka i LiveOps</span><span class="feature-list__desc">Interfejs, zbieranie statystyk i poprawki balansu wdrażane na żywo.</span></li>
       </ul>
     </section>
@@ -80,11 +80,15 @@
         </div>
         <div class="challenge__step">
           <dt>Rozwiązanie</dt>
-          <dd><span class="todo">(z) Jak to zrobiłeś? Np. kto ma autorytet nad fizyką (serwer/host), czy jest predykcja albo interpolacja, jak liczysz trafienia przy taranowaniu.</span></dd>
+          <dd>
+            <p>Hostowany, autorytatywny system zderzeń. Każdy gracz symuluje fizykę własnego auta, a host co tick (50&nbsp;Hz) zapisuje stan każdego pojazdu w buforze historii z ostatnich 500&nbsp;ms.</p>
+            <p>Przy zderzeniu klient wysyła tylko lekkie zgłoszenie: ID obu aut i punkt styku. Host sprawdza, czy nadawca jest właścicielem jednego z nich, cofa się w historii o połowę jego pingu (kompensacja opóźnienia) i liczy symetryczny impuls z prędkości zbliżania wzdłuż normalnej styku, stosunku mas i kąta uderzenia. Blokada pilnuje, żeby ta sama para nie została przeliczona dwa razy.</p>
+            <p>Wynik trafia do wszystkich, a każdy klient przykłada go do własnego auta. Lokalna, ciągła siła „rozpychania” daje natychmiastową reakcję na kontakt, bez czekania na odpowiedź serwera.</p>
+          </dd>
         </div>
         <div class="challenge__step">
           <dt>Efekt</dt>
-          <dd>Ponad 1200 rozegranych sesji w otwartej becie. <span class="todo">(z) Czy coś jeszcze da się zmierzyć, np. liczba graczy w meczu, ping, zgłoszenia desyncu przed i po poprawce?</span></dd>
+          <dd>1665 graczy, 25 pozytywnych recenzji i średnio 16 minut gry na osobę. Mecze są na tyle stabilne, że gracze zostają na kolejne rundy.</dd>
         </div>
       </dl>
     </section>
@@ -100,12 +104,12 @@
 
     <section class="case-section">
       <h2>Stack</h2>
-      <ul class="tag-list tag-list--plain" role="list"><li>C#</li><li>s&amp;box / Source 2</li><li>Networking</li><li>Rigidbody physics</li></ul>
+      <ul class="tag-list tag-list--plain" role="list"><li>C#</li><li>s&amp;box / Source 2</li><li>Networking</li><li>Lag compensation</li><li>Rigidbody physics</li></ul>
     </section>
 
     <section class="case-section">
       <h2>Czego się nauczyłem</h2>
-      <p>Jak pisać kod pod multiplayer i jak pracować z żywą grą. Setki graczy dały mi feedback, którego nie zastąpi żaden playtest: błędy z produkcji, szybkie poprawki balansu i decyzje oparte na danych.</p>
+      <p>Jak pisać kod pod multiplayer i jak pracować z żywą grą. Ponad 1600 graczy dało mi feedback, którego nie zastąpi żaden playtest: błędy z produkcji, szybkie poprawki balansu i decyzje oparte na danych.</p>
     </section>
 
     <a class="case-next" href="hourglass.html">

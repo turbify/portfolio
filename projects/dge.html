@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../styles/components.css">
   <link rel="stylesheet" href="projects.css">
   <link rel="stylesheet" href="../styles/utilities.css">
+  <script src="../scripts/main.js" defer></script>
 </head>
 <body>
 
@@ -41,10 +42,10 @@
         </a>
       </div>
       <dl class="case-stats">
-        <div class="case-stats__item"><dt>Moja rola</dt><dd><span class="todo">(z) np. fizyka i sterowanie</span></dd></div>
+        <div class="case-stats__item"><dt>Moja rola</dt><dd>Programista Unity</dd></div>
         <div class="case-stats__item"><dt>Zespół</dt><dd>2 osoby</dd></div>
         <div class="case-stats__item"><dt>Produkcja</dt><dd>6 miesięcy</dd></div>
-        <div class="case-stats__item"><dt>Platforma</dt><dd>WebGL</dd></div>
+        <div class="case-stats__item"><dt>Ocena pracy</dt><dd>5</dd></div>
       </dl>
     </div>
   </section>
@@ -55,19 +56,14 @@
       <figcaption>Plansza z przeszkodami.</figcaption>
     </figure>
 
-    <div class="todo-block" role="note">
-      (z) GIF albo wideo, 10–30 s
-      <small>Ragdoll w ruchu sprzedaje ten projekt lepiej niż jakikolwiek opis. Wystarczy krótkie nagranie sterowania kończynami.</small>
-    </div>
-
     <section class="case-section">
       <h2>Moja rola</h2>
       <ul class="feature-list" role="list">
         <li class="feature-list__item"><span class="feature-list__title">System fizyki ragdoll</span><span class="feature-list__desc">Postać w pełni fizyczna, a mimo to sterowalna.</span></li>
         <li class="feature-list__item"><span class="feature-list__title">Sterowanie kończynami</span><span class="feature-list__desc">Precyzyjna kontrola każdej kończyny osobno.</span></li>
-        <li class="feature-list__item"><span class="feature-list__title">Poziomy oparte na fizyce</span><span class="feature-list__desc">Plansze i zagadki zbudowane wokół mechaniki ragdolla.</span></li>
+        <li class="feature-list__item"><span class="feature-list__title">Cały kod gry</span><span class="feature-list__desc">Wszystkie systemy i logika, od fizyki po interakcje z przeszkodami.</span></li>
       </ul>
-      <p><span class="todo">(z) Potwierdź podział pracy w duecie: co było Twoje, a co drugiej osoby?</span></p>
+      <p>Podział w duecie: ja odpowiadałem za całą fizykę i kod, druga osoba za modele, oprawę wizualną, level design i przeszkody.</p>
     </section>
 
     <section class="case-section">
@@ -79,11 +75,11 @@
         </div>
         <div class="challenge__step">
           <dt>Rozwiązanie</dt>
-          <dd><span class="todo">(z) Jak to zrobiłeś? Np. active ragdoll na ConfigurableJoint z docelowymi rotacjami, siły przykładane do konkretnych rigidbody, mapowanie wejścia na kończyny.</span></dd>
+          <dd>Zamiast sztywnego tułowia postać ma w miejscu brzucha joint, więc może się zginać jak prawdziwe ciało. Każdą kończyną sterujesz osobno: klawisz wybiera kończynę, np. lewą rękę, a strzałki przykładają do niej siłę.</dd>
         </div>
         <div class="challenge__step">
           <dt>Efekt</dt>
-          <dd>Gra, w której sterowanie jest wyzwaniem, a nie przeszkodą. Działa w przeglądarce dzięki WebGL. <span class="todo">(z) Opcjonalnie: ocena pracy inżynierskiej.</span></dd>
+          <dd>Gra, w której sterowanie jest wyzwaniem, a nie przeszkodą. Działa w przeglądarce dzięki WebGL, a praca inżynierska dostała ocenę 5.</dd>
         </div>
       </dl>
     </section>

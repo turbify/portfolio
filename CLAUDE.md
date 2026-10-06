@@ -18,7 +18,7 @@ Główny odbiorca to **rekruter, który ma 10–30 sekund**. Wygląd i czytelno�
 | Style   | Natywny CSS: custom properties, `@layer`, nesting, BEM                         |
 | Skrypty | Vanilla JS, jeden klasyczny skrypt `scripts/main.js` (`defer`, działa z file://) |
 | Fonty   | Bricolage Grotesque (nagłówki) + DM Sans (tekst), Google Fonts                 |
-| Podgląd | `.claude/launch.json` → `.claude/serve.ps1` (http://localhost:8080)            |
+| Podgląd | `.claude/podglad.cmd` (dwuklik) albo `.claude/launch.json` → `.claude/serve.ps1` (http://localhost:8080). Nie z `file://`: YouTube tam nie działa |
 
 **Świadomie NIE używamy:** frameworków, bundlera, Tailwinda, jQuery, three.js ani bibliotek UI. Nowe zależności tylko po uzgodnieniu.
 
@@ -33,7 +33,7 @@ styles/
   components.css          bloki BEM (button, bubble, sticker, project-card, gallery, viewer…)
   sections.css            site-header, hero, about, site-footer, wordmark + utilities
 scripts/
-  main.js                 IIFE: initModeSwitch, initHeaderCorners, initNav, initViewer (<dialog>), initStickers
+  main.js                 IIFE: initModeSwitch, initVideos, initHeaderCorners, initNav, initViewer, initStickers (ładowany też na podstronach projektów)
 projects/
   *.html                  case studies (ładowane też w <dialog> na stronie głównej)
   projects.css            style case studies (na bazie tych samych tokenów)
@@ -60,7 +60,7 @@ Zawsze:
 
 - kremowe tło strony, **duże zaokrąglone panele koloru** z ramką od krawędzi ekranu (kierunek: referencja „truus”)
 - tryb Grafika: biało-żółty, panele jako białe kartki z delikatnym cieniem (jedyny dozwolony cień), hero bez imienia („Daj się rozpoznać.”)
-- hero minimalne: h1 + jedno naturalne zdanie + CTA + zdjęcie wyróżnionego projektu (Pushout); bez listy faktów i bez dymka „dostępny do pracy”
+- hero minimalne: h1 + jedno naturalne zdanie + CTA + wideo wyróżnionego projektu (Pushout, YouTube facade); bez listy faktów i bez dymka „dostępny do pracy”
 - ciężka, zwarta typografia nagłówków i dymki-etykiety nad nimi
 - osobowość przez **naklejki** (kilka, celowo), mikrocopy z żartem i wordmark w stopce
 - treść rekrutacyjna w pierwszym ekranie: kim jestem, najlepszy projekt, kontakt; szczegóły (firmy, liczby) w kaflach i „O mnie”

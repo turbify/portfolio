@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hourglass Sanatorium — Eryk Sobczak</title>
-  <meta name="description" content="Hourglass Sanatorium: przygodowy horror w Unity wydany na Steam. Cała architektura gry, mechaniki i UI: Eryk Sobczak.">
+  <meta name="description" content="Hourglass Sanatorium: przygodowy horror w Unity, wkrótce na Steam. Cała architektura gry, mechaniki i UI: Eryk Sobczak.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../styles/components.css">
   <link rel="stylesheet" href="projects.css">
   <link rel="stylesheet" href="../styles/utilities.css">
+  <script src="../scripts/main.js" defer></script>
 </head>
 <body>
 
@@ -31,12 +32,12 @@
 <main>
   <section class="panel case-hero" aria-labelledby="case-title">
     <div class="container case-hero__inner">
-      <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Steam · 2025</li><li>TheBooke Studio</li><li>Wsparcie programu CRPK</li></ul>
+      <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Wkrótce na Steam</li><li>TheBooke Studio</li><li>Wsparcie programu CRPK</li></ul>
       <h1 class="case-hero__title" id="case-title">Hourglass Sanatorium</h1>
-      <p class="case-hero__lead">Przygodowy horror według Brunona Schulza: nieeuklidesowe labirynty, zagadki i podróż do alternatywnego świata. Architekturę gry napisałem od pierwszej linii kodu aż do premiery na Steam.</p>
+      <p class="case-hero__lead">Przygodowy horror według Brunona Schulza: nieeuklidesowe labirynty, zagadki i podróż do alternatywnego świata. Architekturę gry napisałem od pierwszej linii kodu. Gra ma już stronę na Steam i czeka na premierę.</p>
       <div class="case-hero__actions">
         <a class="button button--light" href="https://store.steampowered.com/app/4122420/Hourglass_Sanatorium/" target="_blank" rel="noopener">
-          Zobacz na Steam<span class="visually-hidden"> (otwiera się w nowej karcie)</span>
+          Dodaj do listy życzeń na Steam<span class="visually-hidden"> (otwiera się w nowej karcie)</span>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -44,7 +45,7 @@
         <div class="case-stats__item"><dt>Moja rola</dt><dd>Architektura</dd></div>
         <div class="case-stats__item"><dt>Zespół</dt><dd>6 osób</dd></div>
         <div class="case-stats__item"><dt>Produkcja</dt><dd>1 rok</dd></div>
-        <div class="case-stats__item"><dt>Odbiór na Steam</dt><dd><span class="todo">(z) recenzje / wishlisty</span></dd></div>
+        <div class="case-stats__item"><dt>Status</dt><dd>Przed premierą</dd></div>
       </dl>
     </div>
   </section>
@@ -55,15 +56,10 @@
       <figcaption>Pierwszy poziom: wnętrza starych wagonów.</figcaption>
     </figure>
 
-    <div class="todo-block" role="note">
-      (z) Trailer albo gameplay, 30–60 s
-      <small>Najlepiej fragment z przejściem przez nieeuklidesowy korytarz: to jest moment „wow”, którego nie pokażą zrzuty ekranu. Link do YouTube albo trailer ze Steam.</small>
-    </div>
-
     <section class="case-section">
       <h2>Moja rola</h2>
       <ul class="feature-list" role="list">
-        <li class="feature-list__item"><span class="feature-list__title">Architektura od zera</span><span class="feature-list__desc">Struktura projektu, systemy i przepływ danych, od pierwszej linii kodu do wydania.</span></li>
+        <li class="feature-list__item"><span class="feature-list__title">Architektura od zera</span><span class="feature-list__desc">Struktura projektu, systemy i przepływ danych, od pierwszej linii kodu po wersję gotową do premiery.</span></li>
         <li class="feature-list__item"><span class="feature-list__title">Pomieszczenia nieeuklidesowe</span><span class="feature-list__desc">Bezszwowe przenoszenie gracza razem z kamerą, z którego powstają niemożliwe labirynty.</span></li>
         <li class="feature-list__item"><span class="feature-list__title">Zagadki i minigry</span><span class="feature-list__desc">System łamigłówek wpiętych w świat gry, a nie doklejonych obok.</span></li>
         <li class="feature-list__item"><span class="feature-list__title">Systemy przygodowe i UI</span><span class="feature-list__desc">Dziennik, ekwipunek, dialogi i napisy.</span></li>
@@ -79,11 +75,11 @@
         </div>
         <div class="challenge__step">
           <dt>Rozwiązanie</dt>
-          <dd><span class="todo">(z) Jak to działa? Np. portale renderowane drugą kamerą do RenderTexture, teleport z zachowaniem offsetu pozycji i rotacji, podmiana segmentów poziomu poza polem widzenia.</span></dd>
+          <dd>Bezszwowy teleport: gracz razem z kamerą zostaje przeniesiony do bliźniaczego korytarza, identycznego w miejscu przejścia. Za jego rogiem czeka już zupełnie inna przestrzeń, więc labirynt zmienia się, a gracz nie widzi momentu podmiany.</dd>
         </div>
         <div class="challenge__step">
           <dt>Efekt</dt>
-          <dd>Bezszwowe, niemożliwe przestrzenie, które budują klimat prozy Schulza. <span class="todo">(z) Opcjonalnie: wpływ na wydajność albo reakcje graczy.</span></dd>
+          <dd>Niemożliwe, zapętlone przestrzenie, które budują oniryczny klimat prozy Schulza, bez ekranów ładowania i widocznych cięć.</dd>
         </div>
       </dl>
     </section>
@@ -109,7 +105,7 @@
 
     <section class="case-section">
       <h2>Czego się nauczyłem</h2>
-      <p>Jak zaprojektować architekturę, która przetrwa cały cykl produkcji: od prototypu, przez zmiany designu, po premierę. I jak dowieźć grę narracyjną w zespole, z dubbingiem i zewnętrznym finansowaniem.</p>
+      <p>Jak zaprojektować architekturę, która przetrwa cały cykl produkcji: od prototypu, przez zmiany designu, po wersję gotową do wydania. I jak dowieźć grę narracyjną w zespole, z dubbingiem i zewnętrznym finansowaniem.</p>
     </section>
 
     <a class="case-next" href="traverse.html">

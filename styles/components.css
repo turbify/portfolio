@@ -756,6 +756,58 @@
   .sticker__axis--y { stroke: var(--color-sticker-green); }
   .sticker__axis--z { stroke: var(--color-sticker-blue); }
 
+  /* ── video: YouTube facade (poster + play), iframe on click ─ */
+  .video {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    color: var(--color-on-invert);
+    background-color: var(--color-invert);
+    border-radius: var(--radius-l);
+
+    & img,
+    & iframe {
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+      border: 0;
+    }
+
+    & img {
+      transition: scale var(--duration-slow) var(--ease-out);
+    }
+
+    @media (hover: hover) {
+      &:hover img {
+        scale: 1.03;
+      }
+
+      &:hover .video__play {
+        scale: 1.1;
+      }
+    }
+  }
+
+  .video__play {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    inline-size: calc(var(--target-min) * 1.75);
+    block-size: calc(var(--target-min) * 1.75);
+    margin: auto;
+    color: var(--color-on-accent);
+    background-color: var(--color-accent);
+    border: var(--sticker-edge) solid var(--color-sticker-edge);
+    border-radius: var(--radius-pill);
+    transition: scale var(--duration-base) var(--ease-spring);
+
+    & .icon {
+      --icon-size: 2rem;
+    }
+  }
+
   /* ── feature-list: strengths, roles, mechanics ────────── */
   .feature-list {
     display: grid;

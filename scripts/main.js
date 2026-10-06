@@ -141,6 +141,8 @@
         media.alt = title;
       } else {
         media.title = title;
+        // Lets case pages autoplay their (muted) videos inside the dialog.
+        media.allow = 'autoplay; fullscreen; picture-in-picture';
       }
       media.addEventListener('load', function () {
         stage.dataset.state = 'ready';
@@ -251,7 +253,67 @@
     update();
   }
 
+  /**
+   * YouTube videos. The markup is a poster link (works without JS: opens YouTube).
+   * Over http(s) the link is swapped for an embedded player:
+   *  - [data-video-autoplay] on page load: muted, looped autoplay (browsers only allow muted autoplay),
+   *  - otherwise on click, with sound.
+   * Opened from disk (file://) YouTube refuses to embed (error 153: no referrer),
+   * so the link is left alone and opens the video on YouTube.
+   * Markup: a.video[data-video="<id>"][data-video-title][data-video-autoplay?]
+   */
+  function initVideos() {
+    var canEmbed = location.protocol === 'http:' || location.protocol === 'https:';
+    if (!canEmbed) return;
+
+    function embed(link, autoplay) {
+      var id = encodeURIComponent(link.dataset.video);
+      var params = autoplay
+        ? 'autoplay=1&mute=1&loop=1&playlist=' + id + '&playsinline=1&rel=0'
+        : 'autoplay=1&playsinline=1&rel=0';
+
+      var player = document.createElement('div');
+      player.className = link.className;
+      player.dataset.state = 'playing';
+
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?' + params;
+      iframe.title = link.dataset.videoTitle || 'Wideo';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+
+      player.append(iframe);
+      link.replaceWith(player);
+      return iframe;
+    }
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Only visible videos start; a video in the hidden mode starts when its mode is switched on.
+    function autoplayVisible() {
+      if (reduceMotion) return;
+      document.querySelectorAll('a[data-video][data-video-autoplay]').forEach(function (link) {
+        if (link.offsetParent !== null) embed(link, true);
+      });
+    }
+
+    autoplayVisible();
+    new MutationObserver(autoplayVisible).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-mode'],
+    });
+
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest('a[data-video]');
+      if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+      event.preventDefault();
+      embed(link, false).focus();
+    });
+  }
+
   initModeSwitch();
+  initVideos();
   initHeaderCorners();
   initNav();
   initViewer();

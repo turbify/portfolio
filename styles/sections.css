@@ -145,12 +145,28 @@
     }
   }
 
+  /* Video poster in the hero: tilted like a photo, straightened once it plays. */
+  .video--tilted {
+    rotate: var(--tilt-s);
+    transition: rotate var(--duration-slow) var(--ease-spring);
+
+    &[data-state='playing'] {
+      rotate: 0deg;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        rotate: 0deg;
+      }
+    }
+  }
+
   .sticker--hero {
     position: absolute;
-    inset-block-start: calc(var(--space-l) * -1);
-    inset-inline-start: calc(var(--space-l) * -1);
+    inset-block-start: calc(var(--space-m) * -1);
+    inset-inline-start: calc(var(--space-m) * -1);
     z-index: 1;
-    inline-size: calc(var(--sticker-size) * 1.25);
+    inline-size: var(--sticker-size-hero);
     padding: var(--space-2xs);
     font-size: var(--text-s);
     white-space: normal;
@@ -274,8 +290,7 @@
 
   .site-footer__credits {
     position: absolute;
-    /* Sits just above the visible part of the wordmark (0.8em box minus 0.2em bleed). */
-    inset-block-end: calc(var(--text-wordmark) * 0.6 + var(--space-s));
+    inset-block-end: var(--space-s);
     inset-inline-end: var(--space-s);
     z-index: 3;
     padding: var(--space-3xs) var(--space-xs);
@@ -329,7 +344,7 @@
 
     /* Small screens: fewer stickers so the wordmark stays readable. */
     &[data-crowd] {
-      @media (width < 40em) {
+      @media (width < 48em) {
         display: none;
       }
     }

@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../styles/components.css">
   <link rel="stylesheet" href="projects.css">
   <link rel="stylesheet" href="../styles/utilities.css">
+  <script src="../scripts/main.js" defer></script>
 </head>
 <body>
 
@@ -47,21 +48,20 @@
         <div class="case-stats__item"><dt>Moja rola</dt><dd>Gameplay</dd></div>
         <div class="case-stats__item"><dt>Zespół</dt><dd>6 osób</dd></div>
         <div class="case-stats__item"><dt>Produkcja</dt><dd>18 miesięcy</dd></div>
-        <div class="case-stats__item"><dt>Zasięg</dt><dd><span class="todo">(z) liczba graczy / odsłon?</span></dd></div>
+        <div class="case-stats__item"><dt>Platforma</dt><dd>PC</dd></div>
       </dl>
     </div>
   </section>
 
   <div class="container case-body">
     <figure class="case-media">
-      <img src="../assets/case/traverse_part2.jpg" width="1024" height="576" alt="Kryształowe góry, drugi biom gry" fetchpriority="high">
-      <figcaption>Część druga: Góry Kryształowe.</figcaption>
+      <a class="video" href="https://www.youtube.com/watch?v=X_uJprXWzBw" target="_blank" rel="noopener" data-video="X_uJprXWzBw" data-video-autoplay data-video-title="The Traverse — trailer">
+        <img src="../assets/video/X_uJprXWzBw.jpg" width="640" height="360" alt="" fetchpriority="high">
+        <span class="video__play" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+        <span class="visually-hidden">Odtwórz trailer The Traverse (YouTube)</span>
+      </a>
+      <figcaption>Trailer gry.</figcaption>
     </figure>
-
-    <div class="todo-block" role="note">
-      (z) Wideo z rozgrywki, 30–60 s
-      <small>Najlepiej walka z bossem albo zagadka, którą zaprojektowałeś. Link do YouTube.</small>
-    </div>
 
     <section class="case-section">
       <h2>Moja rola</h2>
@@ -74,19 +74,19 @@
     </section>
 
     <section class="case-section">
-      <h2>Wyzwanie</h2>
+      <h2>Wyzwanie: gra fabularna z najprostszych klocków</h2>
       <dl class="challenge">
         <div class="challenge__step">
           <dt>Problem</dt>
-          <dd><span class="todo">(z) Jedno konkretne wyzwanie, np. ograniczenia edytora The Sandbox przy walkach z bossami albo utrzymanie spójności fabuły w trzech częściach.</span></dd>
+          <dd>Wczesne wersje Sandbox Game Makera były mocno ograniczone. Praca była toporna, a do dyspozycji były głównie najprostsze moduły: platformy, przyciski, triggery. A gra miała mieć zagadki, walki z bossami i fabułę w trzech częściach.</dd>
         </div>
         <div class="challenge__step">
           <dt>Rozwiązanie</dt>
-          <dd><span class="todo">(z) Co zrobiłeś, żeby to obejść?</span></dd>
+          <dd>Złożone mechaniki składałem z tych prostych klocków: łańcuchy triggerów i przycisków budowały logikę zagadek, ruchome platformy i strefy obrażeń tworzyły fazy walk z bossami. Sprawdzone układy powtarzałem jako szablony, żeby kolejne poziomy szły szybciej.</dd>
         </div>
         <div class="challenge__step">
           <dt>Efekt</dt>
-          <dd><span class="todo">(z) Co to dało graczom albo zespołowi?</span></dd>
+          <dd>Pełnoprawna gra fabularna w trzech częściach, z zagadkami i bossami, mimo narzędzia, które na starcie nie było do tego stworzone.</dd>
         </div>
       </dl>
     </section>

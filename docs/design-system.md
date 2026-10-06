@@ -12,8 +12,8 @@ Przełożenie na portfolio:
 - **Typografia robi hierarchię.** Bricolage Grotesque 800 (nagłówki, wordmark) + DM Sans (tekst, UI).
 - **Osobowość z umiarem.** Naklejki: 1–2 na widok treści (hero, róg zdjęcia), więcej tylko w stopce.
 - **Rekruter najpierw, ale minimalnie.** Pierwszy ekran: h1 + jedno naturalne zdanie, CTA i zdjęcie wyróżnionego projektu
-  (Pushout, naklejka „848 graczy!”). Bez listy faktów i bez dymka „dostępny do pracy”. Pushout jest też pierwszym kaflem.
-- **Stopka** kończy się napisem „do usłyszenia!” (wordmark), naklejki tylko lekko zachodzą na jego górną krawędź.
+  (wideo Pushout z YouTube, naklejka „1665 graczy!”). Bez listy faktów i bez dymka „dostępny do pracy”. Pushout jest też pierwszym kaflem.
+- **Stopka** kończy się napisem „do zobaczenia!” (wordmark), naklejki tylko lekko zachodzą na jego górną krawędź.
 - **Favicon:** czerwona gwiazdka jak w logo (`assets/favicon.svg` + PNG 32 px i `apple-touch-icon.png`).
 - **Hero w trybie Grafika** nie pokazuje imienia i nazwiska: h1 to „Daj się rozpoznać.”.
 
@@ -56,7 +56,7 @@ Paleta naklejek (`--color-sticker-*`) jest wyłącznie dekoracyjna.
 
 | Token          | Rozmiar                  | Użycie                          |
 | -------------- | ------------------------ | ------------------------------- |
-| `--text-wordmark` | clamp 3rem–12vw–15rem | „do usłyszenia!” w stopce (1 linia) |
+| `--text-wordmark` | clamp 3rem–12vw–15rem | „do zobaczenia!” w stopce (1 linia; tekst bez liter z ogonkiem w dół: y, g, j, p, ą, ę, bo dół jest przycięty) |
 | `--text-3xl`   | clamp 3–7rem             | imię w hero                     |
 | `--text-2xl`   | clamp 2.25–4rem          | `h2` sekcji, tytuł featured     |
 | `--text-xl`    | clamp 1.5–2.125rem       | claim, tytuły kafli, stopka     |
@@ -107,6 +107,7 @@ Tylko `transform`-owe właściwości (`rotate`, `scale`, `translate`) i `opacity
 | `social`        | kwadratowe linki-ikony 44 px                                                           |
 | `scribble-link` | link z falistym podkreśleniem                                                          |
 | `viewer`        | natywny `<dialog>`: podstrona projektu w iframe albo grafika w pełnym rozmiarze; tytuł nadąża za nawigacją w iframe |
+| `video`         | link do YouTube z miniaturą z filmu (`assets/video/<id>.jpg`) i `video__play`. Przez http(s) `initVideos()` podmienia go na iframe youtube-nocookie: z `data-video-autoplay` od razu (wyciszony, w pętli), bez niego po kliknięciu. Z `file://` YouTube blokuje osadzanie (błąd 153), więc link otwiera film na YouTube. `video--tilted` w hero |
 | `project-group` | grupa kafli z nagłówkiem h3: „Wydane i komercyjne”, potem „Własne projekty, jamy i open source” |
 | `project-grid--compact` | mniejsze kafle (3 kolumny od 64em) dla jamów i projektów pobocznych          |
 | `project-card__role` | linia „Rola: … · Zespół: …” na kaflu (obowiązkowa dla projektów komercyjnych)     |
