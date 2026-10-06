@@ -60,10 +60,10 @@ Zawsze:
 
 - kremowe tło strony, **duże zaokrąglone panele koloru** z ramką od krawędzi ekranu (kierunek: referencja „truus”)
 - tryb Grafika: biało-żółty, panele jako białe kartki z delikatnym cieniem (jedyny dozwolony cień), hero bez imienia („Daj się rozpoznać.”)
-- hero krótkie: h1 + jedno zdanie + CTA + 3 dowody; bez dymka „dostępny do pracy”
+- hero minimalne: h1 + jedno naturalne zdanie + CTA + zdjęcie wyróżnionego projektu (Pushout); bez listy faktów i bez dymka „dostępny do pracy”
 - ciężka, zwarta typografia nagłówków i dymki-etykiety nad nimi
 - osobowość przez **naklejki** (kilka, celowo), mikrocopy z żartem i wordmark w stopce
-- treść rekrutacyjna w pierwszym ekranie: kim jestem, gdzie pracuję, najlepszy projekt, kontakt
+- treść rekrutacyjna w pierwszym ekranie: kim jestem, najlepszy projekt, kontakt; szczegóły (firmy, liczby) w kaflach i „O mnie”
 - zrzuty z gier zamiast ozdobników; konkret zamiast przymiotników
 
 **Element, który wygląda na klikalny, musi być klikalny.** Kafel projektu zawsze prowadzi do czegoś realnego (nigdy do „w budowie”).

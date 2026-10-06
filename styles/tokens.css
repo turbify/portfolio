@@ -64,7 +64,7 @@
     --text-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2.125rem);
     --text-2xl: clamp(2.25rem, 1.5rem + 3.2vw, 4rem);
     --text-3xl: clamp(3rem, 1.5rem + 6.4vw, 7rem);
-    --text-wordmark: clamp(8rem, 2rem + 30vw, 30rem);
+    --text-wordmark: clamp(3rem, 12vw, 15rem);
 
     --weight-regular: 400;
     --weight-medium: 500;

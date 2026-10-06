@@ -294,36 +294,6 @@
     }
   }
 
-  /* ── facts: short proof list for recruiters ───────────── */
-  .facts {
-    display: grid;
-    gap: var(--space-s);
-  }
-
-  .facts__item {
-    padding-block-start: var(--space-xs);
-    border-block-start: var(--border-width) solid var(--color-border-strong);
-
-    & dt {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-    }
-
-    & dd {
-      margin: 0;
-      font-size: var(--text-s);
-      font-weight: var(--weight-bold);
-      line-height: 1.35;
-    }
-  }
-
-  @media (width >= 40em) {
-    .facts {
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-m);
-    }
-  }
-
   /* ── tag-list: technology chips ───────────────────────── */
   .tag-list {
     display: flex;

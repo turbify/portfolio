@@ -11,7 +11,10 @@ Przełożenie na portfolio:
   koloru trybu z odstępem `--frame` od krawędzi i promieniem `--radius-panel`.
 - **Typografia robi hierarchię.** Bricolage Grotesque 800 (nagłówki, wordmark) + DM Sans (tekst, UI).
 - **Osobowość z umiarem.** Naklejki: 1–2 na widok treści (hero, róg zdjęcia), więcej tylko w stopce.
-- **Rekruter najpierw.** Pierwszy ekran bez zbędnego tekstu: h1 + jedno zdanie claimu, CTA, a pod nimi 3 dowody (`facts`). Bez dymka „dostępny do pracy”.
+- **Rekruter najpierw, ale minimalnie.** Pierwszy ekran: h1 + jedno naturalne zdanie, CTA i zdjęcie wyróżnionego projektu
+  (Pushout, naklejka „848 graczy!”). Bez listy faktów i bez dymka „dostępny do pracy”. Pushout jest też pierwszym kaflem.
+- **Stopka** kończy się napisem „do usłyszenia!” (wordmark), naklejki tylko lekko zachodzą na jego górną krawędź.
+- **Favicon:** czerwona gwiazdka jak w logo (`assets/favicon.svg` + PNG 32 px i `apple-touch-icon.png`).
 - **Hero w trybie Grafika** nie pokazuje imienia i nazwiska: h1 to „Daj się rozpoznać.”.
 
 ## 2. Tryby
@@ -53,7 +56,7 @@ Paleta naklejek (`--color-sticker-*`) jest wyłącznie dekoracyjna.
 
 | Token          | Rozmiar                  | Użycie                          |
 | -------------- | ------------------------ | ------------------------------- |
-| `--text-wordmark` | clamp 8–30rem         | wordmark w stopce               |
+| `--text-wordmark` | clamp 3rem–12vw–15rem | „do usłyszenia!” w stopce (1 linia) |
 | `--text-3xl`   | clamp 3–7rem             | imię w hero                     |
 | `--text-2xl`   | clamp 2.25–4rem          | `h2` sekcji, tytuł featured     |
 | `--text-xl`    | clamp 1.5–2.125rem       | claim, tytuły kafli, stopka     |
@@ -94,7 +97,6 @@ Tylko `transform`-owe właściwości (`rotate`, `scale`, `translate`) i `opacity
 | `logo-burst`    | znak „esob” na gwiazdce (`--shape-burst`), kolor akcentu trybu                         |
 | `mode-switch`   | segmentowy przełącznik Gry/Grafika, `aria-pressed`                                     |
 | `site-nav`      | menu; mobile: rozwijany panel (`data-state`), od 56em w linii                           |
-| `facts`         | 3 krótkie dowody dla rekrutera pod CTA                                                 |
 | `project-card`  | kafel projektu: jeden rozciągnięty link, strzałka, chipy; `--featured` poziomy od 64em  |
 | `gallery`       | kolumnowa galeria prac graficznych, podgląd w `viewer`                                 |
 | `tag-list`      | chipy technologii; `--plain` na kremowym tle                                           |

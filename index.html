@@ -10,7 +10,9 @@
   <meta property="og:image" content="projects/gameimages/hs1.jpg">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#f8f7f3">
-  <link rel="icon" href="assets/favicon.ico">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
   <!-- Resolve mode before first paint: #gry / #grafika in URL > saved choice > game. -->
   <script>
@@ -87,7 +89,7 @@
       <div class="hero__copy">
         <h1 class="hero__title" id="hero-title">
           <span class="hero__name" data-show="game">Eryk Sobczak</span>
-          <span class="hero__claim" data-show="game">Unity developer, który dowozi gry od prototypu do&nbsp;premiery.</span>
+          <span class="hero__claim" data-show="game">Robię gry w Unity, od pierwszego prototypu po&nbsp;premierę.</span>
           <span class="hero__name" data-show="art">Daj się rozpoznać.</span>
           <span class="hero__claim" data-show="art">Zaprojektuję identyfikację, która przyciągnie Twoich klientów.</span>
         </h1>
@@ -102,26 +104,15 @@
           </a>
           <a class="button button--outline" href="mailto:esobczk@gmail.com">Napisz do mnie</a>
         </div>
-
-        <dl class="facts" data-show="game">
-          <div class="facts__item"><dt>Teraz</dt><dd>Unity Developer w Komputronik Biznes</dd></div>
-          <div class="facts__item"><dt>Na Steam</dt><dd>Hourglass Sanatorium: cała architektura moja</dd></div>
-          <div class="facts__item"><dt>Własny multiplayer</dt><dd>Pushout: 848 graczy w&nbsp;1. miesiąc</dd></div>
-        </dl>
-        <dl class="facts" data-show="art">
-          <div class="facts__item"><dt>Doświadczenie</dt><dd>Projektuję od 2017 roku</dd></div>
-          <div class="facts__item"><dt>Specjalizacja</dt><dd>Branding, logo, social media</dd></div>
-          <div class="facts__item"><dt>Klienci</dt><dd>Firmy z całej Polski</dd></div>
-        </dl>
       </div>
 
       <figure class="hero__media" data-show="game">
-        <a class="hero__media-link" href="projects/hourglass.html" data-viewer="page">
-          <img src="assets/thumbs/hs2.jpg" srcset="assets/thumbs/hs2.jpg 1200w, projects/gameimages/hs2.jpg 1920w" sizes="(width >= 64em) 42vw, 100vw" width="1200" height="675" alt="Hourglass Sanatorium: bohater w cylindrze idzie korytarzem starego wagonu oświetlonego lampami" fetchpriority="high">
-          <span class="visually-hidden">Hourglass Sanatorium — szczegóły projektu</span>
+        <a class="hero__media-link" href="projects/pushout.html" data-viewer="page" data-viewer-title="Pushout: Demolition Derby">
+          <img src="assets/case/pushout1.jpg" srcset="assets/case/pushout1.jpg 1600w, projects/gameimages/pushout1.png 1920w" sizes="(width >= 64em) 42vw, 100vw" width="1600" height="900" alt="Pushout: samochody zderzają się na okrągłej arenie" fetchpriority="high">
+          <span class="visually-hidden">Pushout: Demolition Derby — szczegóły projektu</span>
         </a>
-        <span class="sticker sticker--burst sticker--hero" aria-hidden="true">na Steam!</span>
-        <figcaption class="bubble bubble--caption">Hourglass Sanatorium · 2025</figcaption>
+        <span class="sticker sticker--burst sticker--hero" aria-hidden="true">848 graczy!</span>
+        <figcaption class="bubble bubble--caption">Pushout: Demolition Derby · 2026</figcaption>
       </figure>
       <figure class="hero__media" data-show="art">
         <a class="hero__media-link" href="projects/gfximages/turbify.png" data-viewer="image" data-viewer-title="Turbify — branding">
@@ -146,6 +137,20 @@
       <ul class="project-grid" role="list" data-show="game">
         <li class="project-card project-card--featured">
           <div class="project-card__media">
+            <img src="assets/thumbs/pushout.jpg" width="1200" height="675" alt="" loading="lazy">
+            <span class="sticker sticker--tag sticker--yellow" aria-hidden="true">otwarta beta</span>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__meta">2026 · Otwarta beta · s&amp;box</p>
+            <h3 class="project-card__title"><a class="project-card__link" href="projects/pushout.html" data-viewer="page">Pushout: Demolition Derby</a></h3>
+            <p class="project-card__desc">Multiplayerowy vehicle combat: spychasz rywali z areny, zanim oni zepchną ciebie. <strong>Cały cykl produkcji jest mój: mechaniki, sieciowa fizyka, UI i analityka.</strong> 848 graczy w pierwszym miesiącu bety.</p>
+            <ul class="tag-list" role="list"><li>Source 2</li><li>s&amp;box</li><li>C#</li></ul>
+          </div>
+          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
+        </li>
+
+        <li class="project-card project-card--featured">
+          <div class="project-card__media">
             <img src="assets/thumbs/hs1.jpg" width="1200" height="675" alt="" loading="lazy">
             <span class="sticker sticker--tag sticker--crimson" aria-hidden="true">Steam</span>
           </div>
@@ -154,20 +159,6 @@
             <h3 class="project-card__title"><a class="project-card__link" href="projects/hourglass.html" data-viewer="page">Hourglass Sanatorium</a></h3>
             <p class="project-card__desc">Przygodowy horror inspirowany twórczością Brunona Schulza: nieeuklidesowe labirynty, zagadki i podróż do alternatywnego świata. <strong>Zbudowałem całą architekturę gry od pierwszej linii kodu, mechaniki i UI.</strong></p>
             <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Steam</li></ul>
-          </div>
-          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
-        </li>
-
-        <li class="project-card project-card--featured">
-          <div class="project-card__media">
-            <img src="assets/thumbs/pushout.jpg" width="1200" height="675" alt="" loading="lazy">
-            <span class="sticker sticker--tag sticker--yellow" aria-hidden="true">848 graczy!</span>
-          </div>
-          <div class="project-card__body">
-            <p class="project-card__meta">2026 · Otwarta beta · s&amp;box</p>
-            <h3 class="project-card__title"><a class="project-card__link" href="projects/pushout.html" data-viewer="page">Pushout: Demolition Derby</a></h3>
-            <p class="project-card__desc">Multiplayerowy vehicle combat: spychasz rywali z areny, zanim oni zepchną ciebie. <strong>Cały cykl produkcji jest mój: mechaniki, sieciowa fizyka, UI i analityka.</strong> 848 graczy w pierwszym miesiącu bety.</p>
-            <ul class="tag-list" role="list"><li>Source 2</li><li>s&amp;box</li><li>C#</li></ul>
           </div>
           <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
         </li>
@@ -428,23 +419,23 @@
   </div>
 
   <div class="wordmark" data-stickers>
-    <p class="wordmark__text" aria-hidden="true">esob</p>
+    <p class="wordmark__text" aria-hidden="true">do usłyszenia!</p>
 
     <!-- Decorative, draggable stickers -->
-    <span class="sticker sticker--float sticker--gizmo" style="--x: 6%; --y: 12%; --r: -8deg" data-sticker data-show="game" aria-hidden="true">
+    <span class="sticker sticker--float sticker--gizmo" style="--x: 6%; --y: 4%; --r: -8deg" data-sticker data-show="game" aria-hidden="true">
       <svg viewBox="0 0 100 100"><circle class="sticker__edge" cx="50" cy="50" r="44"/><circle class="sticker__fill-ink" cx="50" cy="50" r="44"/><path class="sticker__axis sticker__axis--y" d="M50 56V20"/><path class="sticker__axis sticker__axis--x" d="M50 56l30 14"/><path class="sticker__axis sticker__axis--z" d="M50 56 21 71"/><rect class="sticker__fill-cream" x="45" y="51" width="10" height="10" rx="2"/></svg>
     </span>
-    <span class="sticker sticker--float sticker--burst" style="--x: 28%; --y: 2%; --r: 10deg" data-sticker data-show="game" aria-hidden="true">C#</span>
-    <span class="sticker sticker--float sticker--bubble" style="--x: 52%; --y: 30%; --r: -6deg" data-sticker data-crowd data-show="game" aria-hidden="true">GG!</span>
-    <span class="sticker sticker--float sticker--burst" style="--x: 30%; --y: 8%; --r: -10deg" data-sticker data-show="art" aria-hidden="true">Aa</span>
-    <span class="sticker sticker--float sticker--bubble" style="--x: 55%; --y: 28%; --r: 7deg" data-sticker data-crowd data-show="art" aria-hidden="true">BAM!</span>
-    <span class="sticker sticker--float sticker--swatch" style="--x: 8%; --y: 18%; --r: -12deg" data-sticker data-show="art" aria-hidden="true">
+    <span class="sticker sticker--float sticker--burst" style="--x: 28%; --y: 0%; --r: 10deg" data-sticker data-show="game" aria-hidden="true">C#</span>
+    <span class="sticker sticker--float sticker--bubble" style="--x: 44%; --y: 8%; --r: -6deg" data-sticker data-crowd data-show="game" aria-hidden="true">GG!</span>
+    <span class="sticker sticker--float sticker--burst" style="--x: 30%; --y: 2%; --r: -10deg" data-sticker data-show="art" aria-hidden="true">Aa</span>
+    <span class="sticker sticker--float sticker--bubble" style="--x: 46%; --y: 7%; --r: 7deg" data-sticker data-crowd data-show="art" aria-hidden="true">BAM!</span>
+    <span class="sticker sticker--float sticker--swatch" style="--x: 8%; --y: 5%; --r: -12deg" data-sticker data-show="art" aria-hidden="true">
       <svg viewBox="0 0 100 100"><rect class="sticker__edge" x="8" y="8" width="84" height="84" rx="18"/><rect class="sticker__fill-crimson" x="8" y="8" width="84" height="28" rx="18"/><rect class="sticker__fill-pink" x="8" y="36" width="84" height="28"/><rect class="sticker__fill-blue" x="8" y="64" width="84" height="28" rx="18"/></svg>
     </span>
-    <span class="sticker sticker--float sticker--heart" style="--x: 72%; --y: 6%; --r: 12deg" data-sticker data-crowd aria-hidden="true">
+    <span class="sticker sticker--float sticker--heart" style="--x: 60%; --y: 2%; --r: 12deg" data-sticker data-crowd aria-hidden="true">
       <svg viewBox="0 0 100 100"><path class="sticker__edge" d="M50 86 14 50a20 20 0 0 1 36-28 20 20 0 0 1 36 28Z"/><path class="sticker__fill-plum" d="M50 86 14 50a20 20 0 0 1 36-28 20 20 0 0 1 36 28Z"/><path class="sticker__shine" d="M28 36a8 8 0 0 1 10-5"/></svg>
     </span>
-    <span class="sticker sticker--float sticker--smiley" style="--x: 86%; --y: 34%; --r: -4deg" data-sticker data-crowd aria-hidden="true">
+    <span class="sticker sticker--float sticker--smiley" style="--x: 73%; --y: 9%; --r: -4deg" data-sticker data-crowd aria-hidden="true">
       <svg viewBox="0 0 100 100"><circle class="sticker__edge" cx="50" cy="50" r="42"/><circle class="sticker__fill-yellow" cx="50" cy="50" r="42"/><circle class="sticker__fill-ink" cx="38" cy="42" r="5"/><circle class="sticker__fill-ink" cx="62" cy="42" r="5"/><path class="sticker__line" d="M32 58q18 18 36 0"/></svg>
     </span>
   </div>
