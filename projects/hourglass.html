@@ -31,9 +31,9 @@
 <main>
   <section class="panel case-hero" aria-labelledby="case-title">
     <div class="container case-hero__inner">
-      <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>2025</li><li>TheBooke Studio</li><li>Wsparcie programu CRPK</li></ul>
+      <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Steam · 2025</li><li>TheBooke Studio</li><li>Wsparcie programu CRPK</li></ul>
       <h1 class="case-hero__title" id="case-title">Hourglass Sanatorium</h1>
-      <p class="case-hero__lead">Przygodowy horror inspirowany twórczością Brunona Schulza: nawiedzone labirynty, dziwne postacie i podróż do alternatywnego świata na spotkanie ze zmarłym ojcem.</p>
+      <p class="case-hero__lead">Przygodowy horror według Brunona Schulza: nieeuklidesowe labirynty, zagadki i podróż do alternatywnego świata. Architekturę gry napisałem od pierwszej linii kodu aż do premiery na Steam.</p>
       <div class="case-hero__actions">
         <a class="button button--light" href="https://store.steampowered.com/app/4122420/Hourglass_Sanatorium/" target="_blank" rel="noopener">
           Zobacz na Steam<span class="visually-hidden"> (otwiera się w nowej karcie)</span>
@@ -42,8 +42,9 @@
       </div>
       <dl class="case-stats">
         <div class="case-stats__item"><dt>Moja rola</dt><dd>Architektura</dd></div>
-        <div class="case-stats__item"><dt>Produkcja</dt><dd>1 rok</dd></div>
         <div class="case-stats__item"><dt>Zespół</dt><dd>6 osób</dd></div>
+        <div class="case-stats__item"><dt>Produkcja</dt><dd>1 rok</dd></div>
+        <div class="case-stats__item"><dt>Odbiór na Steam</dt><dd><span class="todo">(z) recenzje / wishlisty</span></dd></div>
       </dl>
     </div>
   </section>
@@ -54,19 +55,42 @@
       <figcaption>Pierwszy poziom: wnętrza starych wagonów.</figcaption>
     </figure>
 
+    <div class="todo-block" role="note">
+      (z) Trailer albo gameplay, 30–60 s
+      <small>Najlepiej fragment z przejściem przez nieeuklidesowy korytarz: to jest moment „wow”, którego nie pokażą zrzuty ekranu. Link do YouTube albo trailer ze Steam.</small>
+    </div>
+
     <section class="case-section">
-      <h2>O projekcie</h2>
-      <p><strong>Odpowiadałem za całą architekturę gry od pierwszej linii kodu:</strong> strukturę projektu, mechaniki rozgrywki i UI.</p>
-      <p>W grze usłyszysz dwa rozpoznawalne głosy polskiego dubbingu: Tomasza Grochoczyńskiego (Ojciec; m.in. Arktos z „Tabalugi”, Torbjörn z „Overwatch”) i Jarosława Domina (Józef; m.in. Obi-Wan z „Gwiezdnych wojen”, Pinokio ze „Shreka”).</p>
+      <h2>Moja rola</h2>
+      <ul class="feature-list" role="list">
+        <li class="feature-list__item"><span class="feature-list__title">Architektura od zera</span><span class="feature-list__desc">Struktura projektu, systemy i przepływ danych, od pierwszej linii kodu do wydania.</span></li>
+        <li class="feature-list__item"><span class="feature-list__title">Pomieszczenia nieeuklidesowe</span><span class="feature-list__desc">Bezszwowe przenoszenie gracza razem z kamerą, z którego powstają niemożliwe labirynty.</span></li>
+        <li class="feature-list__item"><span class="feature-list__title">Zagadki i minigry</span><span class="feature-list__desc">System łamigłówek wpiętych w świat gry, a nie doklejonych obok.</span></li>
+        <li class="feature-list__item"><span class="feature-list__title">Systemy przygodowe i UI</span><span class="feature-list__desc">Dziennik, ekwipunek, dialogi i napisy.</span></li>
+      </ul>
     </section>
 
     <section class="case-section">
-      <h2>Mechaniki</h2>
-      <ul class="feature-list" role="list">
-        <li class="feature-list__item"><strong>Pomieszczenia nieeuklidesowe</strong><span>Bezszwowe przenoszenie gracza razem z widokiem kamery, które buduje niemożliwe labirynty.</span></li>
-        <li class="feature-list__item"><strong>Zagadki</strong><span>System minigier i łamigłówek wpiętych w świat gry.</span></li>
-        <li class="feature-list__item"><strong>System gry przygodowej</strong><span>Dziennik, ekwipunek, dialogi i napisy.</span></li>
-      </ul>
+      <h2>Wyzwanie: korytarz, który nie powinien istnieć</h2>
+      <dl class="challenge">
+        <div class="challenge__step">
+          <dt>Problem</dt>
+          <dd>Labirynty miały się zapętlać i zmieniać za plecami gracza, a gracz nie mógł zauważyć żadnego przeskoku obrazu ani kamery.</dd>
+        </div>
+        <div class="challenge__step">
+          <dt>Rozwiązanie</dt>
+          <dd><span class="todo">(z) Jak to działa? Np. portale renderowane drugą kamerą do RenderTexture, teleport z zachowaniem offsetu pozycji i rotacji, podmiana segmentów poziomu poza polem widzenia.</span></dd>
+        </div>
+        <div class="challenge__step">
+          <dt>Efekt</dt>
+          <dd>Bezszwowe, niemożliwe przestrzenie, które budują klimat prozy Schulza. <span class="todo">(z) Opcjonalnie: wpływ na wydajność albo reakcje graczy.</span></dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="case-section">
+      <h2>O projekcie</h2>
+      <p>W grze słychać dwa rozpoznawalne głosy polskiego dubbingu: Tomasza Grochoczyńskiego (Ojciec; m.in. Arktos z „Tabalugi”, Torbjörn z „Overwatch”) i Jarosława Domina (Józef; m.in. Obi-Wan z „Gwiezdnych wojen”, Pinokio ze „Shreka”).</p>
     </section>
 
     <figure class="case-media">
@@ -85,8 +109,13 @@
 
     <section class="case-section">
       <h2>Czego się nauczyłem</h2>
-      <p>Projektowania architektury gry w Unity (C#) od zera, budowy złożonych mechanik (w tym systemów nieeuklidesowych i zagadek), systemów UI oraz pracy w zespole przy produkcji narracyjnej z dubbingiem.</p>
+      <p>Jak zaprojektować architekturę, która przetrwa cały cykl produkcji: od prototypu, przez zmiany designu, po premierę. I jak dowieźć grę narracyjną w zespole, z dubbingiem i zewnętrznym finansowaniem.</p>
     </section>
+
+    <a class="case-next" href="traverse.html">
+      <small>Następny projekt</small>
+      <strong>The Traverse <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></strong>
+    </a>
   </div>
 </main>
 

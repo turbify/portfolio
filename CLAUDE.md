@@ -66,6 +66,9 @@ Zawsze:
 - treść rekrutacyjna w pierwszym ekranie: kim jestem, najlepszy projekt, kontakt; szczegóły (firmy, liczby) w kaflach i „O mnie”
 - zrzuty z gier zamiast ozdobników; konkret zamiast przymiotników
 
+**Treść do uzupełnienia** oznaczamy `<span class="todo">(z) …</span>` (albo `.todo-block`) i dopisujemy do `docs/do-uzupelnienia.md`.
+Nie wymyślamy faktów (ról, liczb, rozwiązań technicznych), których nie podał właściciel portfolio.
+
 **Element, który wygląda na klikalny, musi być klikalny.** Kafel projektu zawsze prowadzi do czegoś realnego (nigdy do „w budowie”).
 
 ## Zasady kodu

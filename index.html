@@ -133,124 +133,132 @@
         <h2 class="section-head__title" id="projects-title">Projekty, z których jestem dumny.</h2>
       </header>
 
-      <!-- Game dev -->
-      <ul class="project-grid" role="list" data-show="game">
-        <li class="project-card project-card--featured">
-          <div class="project-card__media">
-            <img src="assets/thumbs/pushout.jpg" width="1200" height="675" alt="" loading="lazy">
-            <span class="sticker sticker--tag sticker--yellow" aria-hidden="true">otwarta beta</span>
-          </div>
-          <div class="project-card__body">
-            <p class="project-card__meta">2026 · Otwarta beta · s&amp;box</p>
-            <h3 class="project-card__title"><a class="project-card__link" href="projects/pushout.html" data-viewer="page">Pushout: Demolition Derby</a></h3>
-            <p class="project-card__desc">Multiplayerowy vehicle combat: spychasz rywali z areny, zanim oni zepchną ciebie. <strong>Cały cykl produkcji jest mój: mechaniki, sieciowa fizyka, UI i analityka.</strong> 848 graczy w pierwszym miesiącu bety.</p>
-            <ul class="tag-list" role="list"><li>Source 2</li><li>s&amp;box</li><li>C#</li></ul>
-          </div>
-          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
-        </li>
+      <!-- Game dev: shipped/commercial first, then jams and side projects -->
+      <div data-show="game">
+        <section class="project-group" aria-labelledby="group-shipped">
+          <h3 class="project-group__title" id="group-shipped">Wydane i komercyjne</h3>
+          <ul class="project-grid" role="list">
+            <li class="project-card project-card--featured">
+              <div class="project-card__media">
+                <img src="assets/thumbs/pushout.jpg" width="1200" height="675" alt="" loading="lazy">
+                <span class="sticker sticker--tag sticker--yellow" aria-hidden="true">otwarta beta</span>
+              </div>
+              <div class="project-card__body">
+                <p class="project-card__meta">2026 · s&amp;box (Source 2) · otwarta beta</p>
+                <h4 class="project-card__title"><a class="project-card__link" href="projects/pushout.html" data-viewer="page">Pushout: Demolition Derby</a></h4>
+                <p class="project-card__desc">Walka samochodami na fizyce w multiplayerze: zepchnij rywali z areny, zanim oni zepchną ciebie. <strong>848 graczy w pierwszym miesiącu bety.</strong></p>
+                <p class="project-card__role">Rola: <b>cały cykl produkcji, od mechanik po sieciową fizykę i analitykę</b> · Zespół: <span class="todo">(z) solo / ile osób?</span></p>
+                <ul class="tag-list" role="list"><li>C#</li><li>s&amp;box</li><li>Networking</li><li>Fizyka</li></ul>
+              </div>
+              <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
+            </li>
 
-        <li class="project-card project-card--featured">
-          <div class="project-card__media">
-            <img src="assets/thumbs/hs1.jpg" width="1200" height="675" alt="" loading="lazy">
-            <span class="sticker sticker--tag sticker--crimson" aria-hidden="true">Steam</span>
-          </div>
-          <div class="project-card__body">
-            <p class="project-card__meta">2025 · TheBooke Studio · Steam</p>
-            <h3 class="project-card__title"><a class="project-card__link" href="projects/hourglass.html" data-viewer="page">Hourglass Sanatorium</a></h3>
-            <p class="project-card__desc">Przygodowy horror inspirowany twórczością Brunona Schulza: nieeuklidesowe labirynty, zagadki i podróż do alternatywnego świata. <strong>Zbudowałem całą architekturę gry od pierwszej linii kodu, mechaniki i UI.</strong></p>
-            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Steam</li></ul>
-          </div>
-          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
-        </li>
+            <li class="project-card project-card--featured">
+              <div class="project-card__media">
+                <img src="assets/thumbs/hs1.jpg" width="1200" height="675" alt="" loading="lazy">
+                <span class="sticker sticker--tag sticker--crimson" aria-hidden="true">na Steam</span>
+              </div>
+              <div class="project-card__body">
+                <p class="project-card__meta">2025 · TheBooke Studio · Steam</p>
+                <h4 class="project-card__title"><a class="project-card__link" href="projects/hourglass.html" data-viewer="page">Hourglass Sanatorium</a></h4>
+                <p class="project-card__desc">Przygodowy horror według Brunona Schulza, z nieeuklidesowymi labiryntami i dubbingiem znanych głosów polskiego voice actingu. <strong>Architekturę gry napisałem od pierwszej linii kodu aż do premiery.</strong></p>
+                <p class="project-card__role">Rola: <b>architektura, mechaniki, UI</b> · Zespół: 6 osób</p>
+                <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Steam</li></ul>
+              </div>
+              <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
+            </li>
 
-        <li class="project-card">
-          <div class="project-card__media"><img src="assets/thumbs/dge4.jpg" width="960" height="540" alt="" loading="lazy"></div>
-          <div class="project-card__body">
-            <p class="project-card__meta">2024 · Praca inżynierska · itch.io</p>
-            <h3 class="project-card__title"><a class="project-card__link" href="projects/dge.html" data-viewer="page">Dummy's Great Escape</a></h3>
-            <p class="project-card__desc">Gra fizyczna, w której sterujesz każdą kończyną ragdolla osobno. Precyzja i strategia w duchu Human Fall Flat.</p>
-            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>WebGL</li></ul>
-          </div>
-          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
-        </li>
+            <li class="project-card">
+              <div class="project-card__media"><img src="assets/thumbs/traverse_part1_2.jpg" width="963" height="540" alt="" loading="lazy"></div>
+              <div class="project-card__body">
+                <p class="project-card__meta">2023–2024 · GamerHash · The Sandbox</p>
+                <h4 class="project-card__title"><a class="project-card__link" href="projects/traverse.html" data-viewer="page">The Traverse</a></h4>
+                <p class="project-card__desc">Fabularna platformówka w trzech częściach o rozbitku na Marsie, tworzona przez 18 miesięcy.</p>
+                <p class="project-card__role">Rola: <b>mechaniki, zagadki, walki z bossami, fabuła</b> · Zespół: 6 osób</p>
+                <ul class="tag-list" role="list"><li>Sandbox Game Maker</li><li>Gameplay</li><li>Level design</li></ul>
+              </div>
+              <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
+            </li>
 
-        <li class="project-card">
-          <div class="project-card__media"><img src="assets/thumbs/traverse_part1_2.jpg" width="963" height="540" alt="" loading="lazy"></div>
-          <div class="project-card__body">
-            <p class="project-card__meta">2024 · GamerHash · The Sandbox</p>
-            <h3 class="project-card__title"><a class="project-card__link" href="projects/traverse.html" data-viewer="page">The Traverse</a></h3>
-            <p class="project-card__desc">Fabularna platformówka o rozbitku na Marsie. Zrobiłem mechaniki interakcji, zagadki, walki z bossami oraz fabułę z dialogami.</p>
-            <ul class="tag-list" role="list"><li>The Sandbox</li><li>Web3</li></ul>
-          </div>
-          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
-        </li>
+            <li class="project-card">
+              <div class="project-card__media"><img src="assets/thumbs/cube1.jpg" width="1200" height="675" alt="" loading="lazy"></div>
+              <div class="project-card__body">
+                <p class="project-card__meta">2024 · GamerHash · The Sandbox</p>
+                <h4 class="project-card__title"><a class="project-card__link" href="https://www.sandbox.game/en/users/gamercoin/?tab=Experiences" target="_blank" rel="noopener">C.U.B.E<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h4>
+                <p class="project-card__desc">Kosmiczny obóz szkoleniowy w uniwersum The Sandbox: seria zadań, które trzeba zaliczyć, żeby przejść dalej.</p>
+                <p class="project-card__role">Rola: <b>mechaniki i efekty wizualne</b> · Zespół: <span class="todo">(z) ile osób?</span></p>
+                <ul class="tag-list" role="list"><li>Sandbox Game Maker</li><li>Gameplay</li><li>VFX</li></ul>
+              </div>
+              <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
+            </li>
+          </ul>
+        </section>
 
-        <li class="project-card">
-          <div class="project-card__media"><img src="assets/thumbs/cube1.jpg" width="1200" height="675" alt="" loading="lazy"></div>
-          <div class="project-card__body">
-            <p class="project-card__meta">2024 · GamerHash · The Sandbox</p>
-            <h3 class="project-card__title"><a class="project-card__link" href="https://www.sandbox.game/en/users/gamercoin/?tab=Experiences" target="_blank" rel="noopener">C.U.B.E<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h3>
-            <p class="project-card__desc">Kosmiczny obóz szkoleniowy w uniwersum The Sandbox: seria różnorodnych zadań, które trzeba zaliczyć, żeby przejść dalej.</p>
-            <ul class="tag-list" role="list"><li>The Sandbox</li><li>Web3</li></ul>
-          </div>
-          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
-        </li>
+        <section class="project-group" aria-labelledby="group-side">
+          <h3 class="project-group__title" id="group-side">Własne projekty, jamy i open source</h3>
+          <ul class="project-grid project-grid--compact" role="list">
+            <li class="project-card">
+              <div class="project-card__media"><img src="assets/thumbs/dge4.jpg" width="960" height="540" alt="" loading="lazy"></div>
+              <div class="project-card__body">
+                <p class="project-card__meta">2024 · praca inżynierska · 2 osoby</p>
+                <h4 class="project-card__title"><a class="project-card__link" href="projects/dge.html" data-viewer="page">Dummy's Great Escape</a></h4>
+                <p class="project-card__desc">Ragdoll, którym sterujesz każdą kończyną osobno. Fizyka i sterowanie od zera.</p>
+              </div>
+              <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
+            </li>
 
-        <li class="project-card">
-          <div class="project-card__media"><img src="assets/thumbs/movement.jpg" width="632" height="350" alt="" loading="lazy"></div>
-          <div class="project-card__body">
-            <p class="project-card__meta">2026 · Open source · GitHub</p>
-            <h3 class="project-card__title"><a class="project-card__link" href="https://github.com/turbify/unity-character-controller-demo" target="_blank" rel="noopener">Physics-Based FPP Movement<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h3>
-            <p class="project-card__desc">Kontroler postaci z perspektywy pierwszej osoby oparty na fizyce, zbudowany na czytelnej maszynie stanów.</p>
-            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>State machine</li></ul>
-          </div>
-          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
-        </li>
+            <li class="project-card">
+              <div class="project-card__media"><img src="assets/thumbs/movement.jpg" width="632" height="350" alt="" loading="lazy"></div>
+              <div class="project-card__body">
+                <p class="project-card__meta">2026 · open source · solo</p>
+                <h4 class="project-card__title"><a class="project-card__link" href="https://github.com/turbify/unity-character-controller-demo" target="_blank" rel="noopener">Physics-Based FPP Movement<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h4>
+                <p class="project-card__desc">Kontroler postaci FPP na fizyce i czytelnej maszynie stanów. Kod do wglądu na GitHubie.</p>
+              </div>
+              <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
+            </li>
 
-        <li class="project-card">
-          <div class="project-card__media"><img src="assets/thumbs/nopain2.jpg" width="960" height="540" alt="" loading="lazy"></div>
-          <div class="project-card__body">
-            <p class="project-card__meta">2023 · GMTK Game Jam · itch.io</p>
-            <h3 class="project-card__title"><a class="project-card__link" href="https://esmg-games.itch.io/no-pain-no-gain" target="_blank" rel="noopener">No Pain No Gain<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h3>
-            <p class="project-card__desc">Platformówka na temat „Odwrócone role”, zrobiona z ekipą, która wcześniej nie pracowała w Unity.</p>
-            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Game jam</li></ul>
-          </div>
-          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
-        </li>
+            <li class="project-card">
+              <div class="project-card__media"><img src="assets/thumbs/blockbench4.jpg" width="1200" height="673" alt="" loading="lazy"></div>
+              <div class="project-card__body">
+                <p class="project-card__meta">2020 — dziś · różne projekty</p>
+                <h4 class="project-card__title"><a class="project-card__link" href="projects/assets.html" data-viewer="page">Assety do gier</a></h4>
+                <p class="project-card__desc">Modele low-poly i naklejki do Counter-Strike 2. Ogarniam też grafikę, nie tylko kod.</p>
+              </div>
+              <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
+            </li>
 
-        <li class="project-card">
-          <div class="project-card__media"><img src="assets/thumbs/deadlock4.jpg" width="960" height="540" alt="" loading="lazy"></div>
-          <div class="project-card__body">
-            <p class="project-card__meta">2022 · 32 bit Game Jam · itch.io</p>
-            <h3 class="project-card__title"><a class="project-card__link" href="https://esmg-games.itch.io/deadlock" target="_blank" rel="noopener">Deadlock<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h3>
-            <p class="project-card__desc">Retro FPS w stylistyce pierwszego PlayStation, zrobiony w duecie z Mikołajem Górowskim.</p>
-            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Game jam</li></ul>
-          </div>
-          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
-        </li>
+            <li class="project-card">
+              <div class="project-card__media"><img src="assets/thumbs/nopain2.jpg" width="960" height="540" alt="" loading="lazy"></div>
+              <div class="project-card__body">
+                <p class="project-card__meta">2023 · GMTK Game Jam</p>
+                <h4 class="project-card__title"><a class="project-card__link" href="https://esmg-games.itch.io/no-pain-no-gain" target="_blank" rel="noopener">No Pain No Gain<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h4>
+                <p class="project-card__desc">Platformówka na temat „Odwrócone role”, z ekipą, która pierwszy raz pracowała w Unity.</p>
+              </div>
+              <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
+            </li>
 
-        <li class="project-card">
-          <div class="project-card__media"><img src="assets/thumbs/dicemaster.jpg" width="960" height="540" alt="" loading="lazy"></div>
-          <div class="project-card__body">
-            <p class="project-card__meta">2022 · GMTK Game Jam · itch.io</p>
-            <h3 class="project-card__title"><a class="project-card__link" href="https://mikosusek.itch.io/dicemaster" target="_blank" rel="noopener">Dice Master<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h3>
-            <p class="project-card__desc">Gra logiczna na temat „rzut kostką”: zajmujesz pola na planszy, niszczysz wrogie kostki i zbierasz punkty.</p>
-            <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>Game jam</li></ul>
-          </div>
-          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
-        </li>
+            <li class="project-card">
+              <div class="project-card__media"><img src="assets/thumbs/deadlock4.jpg" width="960" height="540" alt="" loading="lazy"></div>
+              <div class="project-card__body">
+                <p class="project-card__meta">2022 · 32 bit Game Jam · duet</p>
+                <h4 class="project-card__title"><a class="project-card__link" href="https://esmg-games.itch.io/deadlock" target="_blank" rel="noopener">Deadlock<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h4>
+                <p class="project-card__desc">Retro FPS w stylu pierwszego PlayStation, zrobiony z Mikołajem Górowskim.</p>
+              </div>
+              <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
+            </li>
 
-        <li class="project-card">
-          <div class="project-card__media"><img src="assets/thumbs/blockbench4.jpg" width="1200" height="673" alt="" loading="lazy"></div>
-          <div class="project-card__body">
-            <p class="project-card__meta">2020 — dziś · różne projekty</p>
-            <h3 class="project-card__title"><a class="project-card__link" href="projects/assets.html" data-viewer="page">Assety do gier</a></h3>
-            <p class="project-card__desc">Wybrane modele, tekstury i grafiki, które zrobiłem do własnych i cudzych gier.</p>
-            <ul class="tag-list" role="list"><li>Blockbench</li><li>Photoshop</li><li>Illustrator</li><li>CS Workshop</li></ul>
-          </div>
-          <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
-        </li>
-      </ul>
+            <li class="project-card">
+              <div class="project-card__media"><img src="assets/thumbs/dicemaster.jpg" width="960" height="540" alt="" loading="lazy"></div>
+              <div class="project-card__body">
+                <p class="project-card__meta">2022 · GMTK Game Jam</p>
+                <h4 class="project-card__title"><a class="project-card__link" href="https://mikosusek.itch.io/dicemaster" target="_blank" rel="noopener">Dice Master<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></h4>
+                <p class="project-card__desc">Logiczna gra o rzucie kostką: zajmujesz pola, niszczysz wrogie kostki, zbierasz punkty.</p>
+              </div>
+              <span class="project-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-external"/></svg></span>
+            </li>
+          </ul>
+        </section>
+      </div>
 
       <!-- Graphic design -->
       <ul class="gallery" role="list" data-show="art">
@@ -319,15 +327,33 @@
         <p class="bubble">o mnie</p>
         <h2 class="section-head__title" id="about-title">Człowiek za projektami.</h2>
         <p class="about__text" data-show="game">
-          Cześć, jestem Eryk, <strong>Unity developer z Wielkopolski</strong>. Robię gry od 2015 roku,
-          od game jamów po premierę na Steam. W zespole biorę na siebie architekturę kodu, mechaniki
-          i UI, które dobrze leżą w rękach gracza.
+          Cześć, jestem Eryk, <strong>Unity developer z Wielkopolski</strong>. Gry robię od 2015 roku.
+          Zaczynałem od jamów, dziś mam za sobą premierę na Steam i własny multiplayer z setkami graczy.
+          Najlepiej czuję się tam, gdzie kod spotyka się z tym, co czuje gracz.
         </p>
+        <ul class="feature-list about__strengths" role="list" data-show="game">
+          <li class="feature-list__item">
+            <span class="feature-list__title">Architektura gry od zera</span>
+            <span class="feature-list__desc">Hourglass Sanatorium: struktura projektu, systemy i UI od pierwszej linii kodu do premiery na Steam.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__title">Fizyka i multiplayer</span>
+            <span class="feature-list__desc">Pushout: walka samochodami z synchronizacją fizyki przez sieć, 848 graczy w pierwszym miesiącu.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__title">Gameplay i zagadki</span>
+            <span class="feature-list__desc">The Traverse: mechaniki interakcji, łamigłówki i walki z bossami w 18-miesięcznej produkcji.</span>
+          </li>
+          <li class="feature-list__item">
+            <span class="feature-list__title">Czytelny, utrzymywalny kod</span>
+            <span class="feature-list__desc">Maszyny stanów, <span class="todo">(z) wzorce, których używasz na co dzień, np. ScriptableObjects, eventy, DI, testy</span>.</span>
+          </li>
+        </ul>
         <p class="about__text" data-show="art">
           Cześć, jestem Eryk, <strong>graphic designer i ilustrator</strong> z Ostrowa Wielkopolskiego.
           Projektuję od 2017 roku: od małych zleceń po długoterminowe współprace z firmami z całej Polski.
         </p>
-        <blockquote class="quote">
+        <blockquote class="quote" data-show="art">
           <p>Najlepsze projekty rodzą się na przecięciu <mark class="quote__mark">technologii</mark> i&nbsp;<mark class="quote__mark">estetyki</mark>.</p>
         </blockquote>
       </div>
@@ -340,7 +366,7 @@
               <p class="timeline__when">2025 — dziś</p>
               <div>
                 <p class="timeline__role">Unity Developer <span class="timeline__where">Komputronik Biznes</span></p>
-                <p class="timeline__desc">Rozwijam aplikację w Unity dla totemu stojącego: interfejs, optymalizacja i testy jakościowe zgodnie z wymaganiami klienta.</p>
+                <p class="timeline__desc">Rozwijam aplikację w Unity dla totemu stojącego: interfejs, optymalizacja i testy jakościowe zgodnie z wymaganiami klienta. <span class="todo">(z) jeden mierzalny efekt, np. „skróciłem ładowanie o X%” albo „wdrożone w N sklepach”</span></p>
               </div>
             </li>
             <li class="timeline__item">
@@ -363,12 +389,12 @@
         <section class="about__block" aria-labelledby="tools-title">
           <h3 class="about__heading" id="tools-title">Narzędzia</h3>
           <dl class="skills" data-show="game">
-            <div class="skills__row"><dt>Unity</dt><dd>7+ lat, zaawansowany</dd></div>
+            <div class="skills__row"><dt>Unity</dt><dd>7+ lat, zaawansowany · <span class="todo">(z) URP / HDRP / Input System?</span></dd></div>
             <div class="skills__row"><dt>C#</dt><dd>zaawansowany</dd></div>
-            <div class="skills__row"><dt>GitHub, Azure DevOps</dt><dd>kontrola wersji</dd></div>
-            <div class="skills__row"><dt>Blockbench</dt><dd>modelowanie</dd></div>
-            <div class="skills__row"><dt>Adobe Creative Cloud</dt><dd>grafika do gier</dd></div>
-            <div class="skills__row"><dt>Reaper</dt><dd>obróbka dźwięku</dd></div>
+            <div class="skills__row"><dt>s&amp;box / Source 2</dt><dd>multiplayer, fizyka sieciowa</dd></div>
+            <div class="skills__row"><dt>Git (GitHub, Azure DevOps)</dt><dd>kontrola wersji w zespole</dd></div>
+            <div class="skills__row"><dt>Język angielski</dt><dd><span class="todo">(z) poziom, np. B2 / C1</span></dd></div>
+            <div class="skills__row"><dt>Blockbench, Adobe CC, Reaper</dt><dd>modele, grafika i dźwięk do prototypów</dd></div>
           </dl>
           <dl class="skills" data-show="art">
             <div class="skills__row"><dt>Illustrator</dt><dd>wektory, branding</dd></div>

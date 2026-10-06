@@ -194,6 +194,11 @@
     line-height: 1.45;
   }
 
+  .about__strengths {
+    inline-size: 100%;
+    margin-block-start: var(--space-s);
+  }
+
   .about__intro .quote {
     margin-block-start: var(--space-l);
   }

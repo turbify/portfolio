@@ -40,6 +40,9 @@
     --color-on-invert: var(--cream-50);
     --color-scrim: color-mix(in srgb, var(--ink-900) 72%, transparent);
     --color-hover-tint: color-mix(in srgb, var(--ink-900) 8%, transparent);
+    /* Unfinished content marked "(z)" — must be impossible to miss before publishing. */
+    --color-todo-bg: var(--yellow-300);
+    --color-todo-fg: var(--ink-900);
 
     /* ── Semantic: sticker palette (decoration only) ────────── */
     --color-sticker-edge: var(--cream-50);

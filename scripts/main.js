@@ -144,6 +144,14 @@
       }
       media.addEventListener('load', function () {
         stage.dataset.state = 'ready';
+        if (isImage) return;
+        // Case pages link to the next project inside the iframe: keep the bar in sync.
+        try {
+          heading.textContent = media.contentDocument.title.replace(/\s+—\s+Eryk Sobczak$/, '');
+          openLink.href = media.contentWindow.location.href;
+        } catch (e) {
+          // Cross-origin or file:// — keep the original title.
+        }
       });
       media.src = url;
       stage.append(media);

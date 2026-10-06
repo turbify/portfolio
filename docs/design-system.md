@@ -106,10 +106,19 @@ Tylko `transform`-owe właściwości (`rotate`, `scale`, `translate`) i `opacity
 | `sticker`       | `--tag` (róg zdjęcia), `--burst`, `--bubble`, SVG (gizmo, serce, buźka, próbnik), `--float` (przeciągalne) |
 | `social`        | kwadratowe linki-ikony 44 px                                                           |
 | `scribble-link` | link z falistym podkreśleniem                                                          |
-| `viewer`        | natywny `<dialog>`: podstrona projektu w iframe albo grafika w pełnym rozmiarze         |
+| `viewer`        | natywny `<dialog>`: podstrona projektu w iframe albo grafika w pełnym rozmiarze; tytuł nadąża za nawigacją w iframe |
+| `project-group` | grupa kafli z nagłówkiem h3: „Wydane i komercyjne”, potem „Własne projekty, jamy i open source” |
+| `project-grid--compact` | mniejsze kafle (3 kolumny od 64em) dla jamów i projektów pobocznych          |
+| `project-card__role` | linia „Rola: … · Zespół: …” na kaflu (obowiązkowa dla projektów komercyjnych)     |
+| `feature-list`  | lista „tytuł + opis” (`__title`, `__desc`): mocne strony w „O mnie”, rola i mechaniki w case studies |
+| `todo`, `todo-block` | treść do uzupełnienia oznaczona **(z)**; żółte tło + przerywana ramka. Lista: `docs/do-uzupelnienia.md` |
 
 Case studies (`projects/projects.css`): `case-bar`, `case-hero` (panel), `case-stats`, `case-section`,
-`case-media` (+ `__grid--2`, `__grid--feature`), `feature-list`.
+`case-media` (+ `__grid--2`, `__grid--feature`), `challenge` (problem → rozwiązanie → efekt), `case-next`.
+
+**Układ case study (stały):** hero z liczbami (rola, zespół, czas, wynik) → główny zrzut → wideo → „Moja rola”
+→ „Wyzwanie” (problem → rozwiązanie → efekt) → galeria → stack → „Czego się nauczyłem” → „Następny projekt”.
+Kolejność „Następny projekt”: Pushout → Hourglass → Traverse → DGE → Assety → Pushout.
 
 ## 8. Obrazy
 

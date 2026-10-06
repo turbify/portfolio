@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dummy's Great Escape — Eryk Sobczak</title>
-  <meta name="description" content="Dummy's Great Escape: gra fizyczna z postacią ragdoll w Unity (WebGL), projekt inżynierski.">
+  <meta name="description" content="Dummy's Great Escape: gra fizyczna z postacią ragdoll w Unity (WebGL), praca inżynierska.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -33,45 +33,78 @@
     <div class="container case-hero__inner">
       <ul class="tag-list" role="list"><li>Unity</li><li>C#</li><li>WebGL</li><li>2024</li><li>Praca inżynierska</li></ul>
       <h1 class="case-hero__title" id="case-title">Dummy's Great Escape</h1>
-      <p class="case-hero__lead">Gra oparta na fizyce, w której sterujesz każdą kończyną ragdolla osobno. Powstała jako projekt pracy inżynierskiej.</p>
+      <p class="case-hero__lead">Ragdoll, którym sterujesz każdą kończyną osobno. Lepkie powierzchnie, podstępne przeszkody i łamigłówki w duchu Human Fall Flat i Chained Together. Działa w przeglądarce.</p>
       <div class="case-hero__actions">
         <a class="button button--light" href="https://mikosusek.itch.io/dummys-great-escape" target="_blank" rel="noopener">
-          Zagraj na itch.io<span class="visually-hidden"> (otwiera się w nowej karcie)</span>
+          Zagraj w przeglądarce<span class="visually-hidden"> (itch.io, otwiera się w nowej karcie)</span>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
       <dl class="case-stats">
-        <div class="case-stats__item"><dt>Produkcja</dt><dd>6 miesięcy</dd></div>
+        <div class="case-stats__item"><dt>Moja rola</dt><dd><span class="todo">(z) np. fizyka i sterowanie</span></dd></div>
         <div class="case-stats__item"><dt>Zespół</dt><dd>2 osoby</dd></div>
+        <div class="case-stats__item"><dt>Produkcja</dt><dd>6 miesięcy</dd></div>
         <div class="case-stats__item"><dt>Platforma</dt><dd>WebGL</dd></div>
       </dl>
     </div>
   </section>
 
   <div class="container case-body">
+    <figure class="case-media">
+      <img src="../assets/case/dge3.jpg" width="956" height="597" alt="Plansza z przeszkodami i postacią ragdoll" fetchpriority="high">
+      <figcaption>Plansza z przeszkodami.</figcaption>
+    </figure>
+
+    <div class="todo-block" role="note">
+      (z) GIF albo wideo, 10–30 s
+      <small>Ragdoll w ruchu sprzedaje ten projekt lepiej niż jakikolwiek opis. Wystarczy krótkie nagranie sterowania kończynami.</small>
+    </div>
+
     <section class="case-section">
-      <h2>O projekcie</h2>
-      <p>Wciel się w Dummy'ego, ekscentryczną postać typu ragdoll, i pokonuj lepkie powierzchnie, podstępne przeszkody i łamigłówki, sterując każdą kończyną osobno. Gra w Unity z obsługą WebGL stawia na precyzję i strategię, w duchu Human Fall Flat i Chained Together.</p>
+      <h2>Moja rola</h2>
+      <ul class="feature-list" role="list">
+        <li class="feature-list__item"><span class="feature-list__title">System fizyki ragdoll</span><span class="feature-list__desc">Postać w pełni fizyczna, a mimo to sterowalna.</span></li>
+        <li class="feature-list__item"><span class="feature-list__title">Sterowanie kończynami</span><span class="feature-list__desc">Precyzyjna kontrola każdej kończyny osobno.</span></li>
+        <li class="feature-list__item"><span class="feature-list__title">Poziomy oparte na fizyce</span><span class="feature-list__desc">Plansze i zagadki zbudowane wokół mechaniki ragdolla.</span></li>
+      </ul>
+      <p><span class="todo">(z) Potwierdź podział pracy w duecie: co było Twoje, a co drugiej osoby?</span></p>
+    </section>
+
+    <section class="case-section">
+      <h2>Wyzwanie: sterowalny ragdoll</h2>
+      <dl class="challenge">
+        <div class="challenge__step">
+          <dt>Problem</dt>
+          <dd>Ragdoll z natury robi, co chce fizyka. Gra wymagała, żeby gracz mógł nim precyzyjnie sterować, kończyna po kończynie.</dd>
+        </div>
+        <div class="challenge__step">
+          <dt>Rozwiązanie</dt>
+          <dd><span class="todo">(z) Jak to zrobiłeś? Np. active ragdoll na ConfigurableJoint z docelowymi rotacjami, siły przykładane do konkretnych rigidbody, mapowanie wejścia na kończyny.</span></dd>
+        </div>
+        <div class="challenge__step">
+          <dt>Efekt</dt>
+          <dd>Gra, w której sterowanie jest wyzwaniem, a nie przeszkodą. Działa w przeglądarce dzięki WebGL. <span class="todo">(z) Opcjonalnie: ocena pracy inżynierskiej.</span></dd>
+        </div>
+      </dl>
     </section>
 
     <figure class="case-media">
-      <div class="case-media__grid case-media__grid--feature">
-        <img src="../assets/case/dge3.jpg" width="956" height="597" alt="Plansza z przeszkodami i postacią ragdoll" loading="lazy">
+      <div class="case-media__grid case-media__grid--2">
         <img src="../assets/case/dge2.jpg" width="957" height="599" alt="Kadr z rozgrywki Dummy's Great Escape" loading="lazy">
         <img src="../assets/case/dge1.jpg" width="957" height="597" alt="Kadr z rozgrywki Dummy's Great Escape" loading="lazy">
       </div>
-      <figcaption>Plansze i gracz pokonujący przeszkody.</figcaption>
+      <figcaption>Gracz pokonuje przeszkody.</figcaption>
     </figure>
 
     <section class="case-section">
       <h2>Stack</h2>
-      <ul class="tag-list tag-list--plain" role="list"><li>Unity</li><li>C#</li><li>WebGL</li></ul>
+      <ul class="tag-list tag-list--plain" role="list"><li>Unity</li><li>C#</li><li>Fizyka / joints</li><li>WebGL</li></ul>
     </section>
 
-    <section class="case-section">
-      <h2>Czego się nauczyłem</h2>
-      <p>Projektowania i implementacji systemu fizyki ragdoll w Unity, precyzyjnego sterowania postacią przez kontrolę poszczególnych kończyn, optymalizacji interakcji fizycznych i projektowania poziomów opartych na fizyce i zagadkach.</p>
-    </section>
+    <a class="case-next" href="assets.html">
+      <small>Następny projekt</small>
+      <strong>Assety do gier <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></strong>
+    </a>
   </div>
 </main>
 

@@ -756,6 +756,115 @@
   .sticker__axis--y { stroke: var(--color-sticker-green); }
   .sticker__axis--z { stroke: var(--color-sticker-blue); }
 
+  /* ── feature-list: strengths, roles, mechanics ────────── */
+  .feature-list {
+    display: grid;
+    padding: 0;
+    list-style: none;
+  }
+
+  .feature-list__item {
+    display: grid;
+    gap: var(--space-3xs);
+    padding-block: var(--space-s);
+    border-block-start: var(--border-width) solid var(--color-border-strong);
+  }
+
+  .feature-list__title {
+    font-family: var(--font-display);
+    font-size: var(--text-l);
+    font-weight: var(--weight-heavy);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .feature-list__desc {
+    font-size: var(--text-s);
+    color: var(--color-text-muted);
+  }
+
+  /* ── todo: content still to be filled in, marked "(z)" ─ */
+  .todo {
+    padding-inline: var(--space-3xs);
+    font-weight: var(--weight-bold);
+    color: var(--color-todo-fg);
+    background-color: var(--color-todo-bg);
+    border-radius: var(--radius-s);
+    outline: var(--border-width) dashed var(--color-todo-fg);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .todo-block {
+    display: grid;
+    place-content: center;
+    gap: var(--space-2xs);
+    min-block-size: 12rem;
+    padding: var(--space-l);
+    font-weight: var(--weight-bold);
+    text-align: center;
+    color: var(--color-todo-fg);
+    background-color: var(--color-todo-bg);
+    border: var(--border-width) dashed var(--color-todo-fg);
+    border-radius: var(--radius-l);
+
+    & small {
+      font-size: var(--text-s);
+      font-weight: var(--weight-regular);
+    }
+  }
+
+  /* ── project-group: shipped vs. jams/side projects ────── */
+  .project-group + .project-group {
+    margin-block-start: var(--space-2xl);
+  }
+
+  .project-group__title {
+    margin-block-end: var(--space-m);
+    padding-block-end: var(--space-xs);
+    font-size: var(--text-l);
+    border-block-end: var(--border-width) solid var(--color-panel-line);
+  }
+
+  .project-card__role {
+    font-size: var(--text-s);
+
+    & b {
+      font-weight: var(--weight-bold);
+    }
+  }
+
+  /* Smaller cards for jams and side projects: less weight, same click target. */
+  .project-grid--compact {
+    gap: var(--space-xl) var(--space-l);
+
+    & .project-card {
+      gap: var(--space-s);
+    }
+
+    & .project-card__title {
+      font-size: var(--text-l);
+    }
+
+    & .project-card__body {
+      gap: var(--space-2xs);
+      padding-inline-end: 0;
+    }
+
+    & .project-card__arrow {
+      inline-size: var(--space-xl);
+      block-size: var(--space-xl);
+      inset-block-start: var(--space-xs);
+      inset-inline-end: var(--space-xs);
+    }
+  }
+
+  @media (width >= 64em) {
+    .project-grid--compact {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
   /* ── viewer: project preview dialog ───────────────────── */
   .viewer {
     inline-size: min(100% - 2 * var(--frame), var(--container));
