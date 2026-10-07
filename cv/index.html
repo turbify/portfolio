@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
 
-/* ── DRUKOWANIE ── */
+/* DRUKOWANIE */
 @media print {
   * {
     -webkit-print-color-adjust: exact !important;
@@ -17,9 +17,8 @@
   }
 }
 
-/* ─────────────────────────────────────────────
-   TOKENS
-───────────────────────────────────────────── */
+/* TOKENS
+ */
 :root {
   --font:      'DM Sans', sans-serif;
   --font-mono: 'DM Mono', monospace;
@@ -29,16 +28,15 @@
   --border:    #ddd;
   --bg-pill:   #f2f2f2;
 
-  /* ✏️ Główny akcent — zmień tutaj */
+  /* Główny akcent: zmień tutaj */
   --yellow:       #fcd34d;
   --yellow-dark:  #111;   /* tekst na żółtym tle */
   --yellow-bg:    #fffbeb;   /* bardzo jasne żółte tło */
   --yellow-border:#f5c300;
 }
 
-/* ─────────────────────────────────────────────
-   RESET
-───────────────────────────────────────────── */
+/* RESET
+ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -52,9 +50,8 @@ body {
   min-height: 100vh;
 }
 
-/* ─────────────────────────────────────────────
-   STRONA A4
-───────────────────────────────────────────── */
+/* STRONA A4
+ */
 .page {
   width: 210mm;
   min-height: 297mm;
@@ -65,9 +62,8 @@ body {
   box-shadow: 0 4px 40px rgba(0,0,0,.2);
 }
 
-/* ─────────────────────────────────────────────
-   HEADER
-───────────────────────────────────────────── */
+/* HEADER
+ */
 .cv-header {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -122,9 +118,8 @@ body {
 }
 .cv-contact-item .ci { color: var(--ink3); font-size: 10px; }
 
-/* ─────────────────────────────────────────────
-   BODY — dwie kolumny
-───────────────────────────────────────────── */
+/* BODY: dwie kolumny
+ */
 .cv-body {
   display: grid;
   grid-template-columns: 1fr 57mm;
@@ -132,9 +127,8 @@ body {
   flex: 1;
 }
 
-/* ─────────────────────────────────────────────
-   SEKCJA
-───────────────────────────────────────────── */
+/* SEKCJA
+ */
 .cv-section { margin-bottom: 11px; }
 
 .section-label {
@@ -148,9 +142,8 @@ body {
   margin-bottom: 8px;
 }
 
-/* ─────────────────────────────────────────────
-   DOŚWIADCZENIE / EDUKACJA
-───────────────────────────────────────────── */
+/* DOŚWIADCZENIE / EDUKACJA
+ */
 .exp-list { display: flex; flex-direction: column; gap: 9px; }
 
 .exp-item {
@@ -165,7 +158,7 @@ body {
   background: #ccc;
 }
 
-/* Akcent na pasku — aktualny lub wyróżniony wpis */
+/* Akcent na pasku: aktualny lub wyróżniony wpis */
 .exp-item.current .exp-bar { background: var(--yellow); }
 
 .exp-header {
@@ -211,9 +204,8 @@ body {
   line-height: 1.6;
 }
 
-/* ─────────────────────────────────────────────
-   PILLS / TAGI
-───────────────────────────────────────────── */
+/* PILLS / TAGI
+ */
 .tag-row {
   display: flex;
   flex-wrap: wrap;
@@ -221,7 +213,7 @@ body {
   margin-top: 5px;
 }
 
-/* Szare — drugoplanowe */
+/* Szare: drugoplanowe */
 .pill {
   font-size: 9.5px;
   font-weight: 600;
@@ -232,23 +224,22 @@ body {
   background: var(--bg-pill);
 }
 
-/* Żółte — kluczowe technologie */
+/* Żółte: kluczowe technologie */
 .pill.hi {
   background: var(--yellow);
   border-color: var(--yellow-border);
   color: var(--yellow-dark);
 }
 
-/* Czarne — ważne, ale nie żółte */
+/* Czarne: ważne, ale nie żółte */
 .pill.bold {
   background: var(--ink);
   border-color: var(--ink);
   color: #fff;
 }
 
-/* ─────────────────────────────────────────────
-   PROJEKTY
-───────────────────────────────────────────── */
+/* PROJEKTY
+ */
 .proj-list { display: flex; flex-direction: column; gap: 8px; }
 
 .proj-item-header {
@@ -285,9 +276,8 @@ body {
   border-radius: 4px;
 }
 
-/* ─────────────────────────────────────────────
-   UMIEJĘTNOŚCI
-───────────────────────────────────────────── */
+/* UMIEJĘTNOŚCI
+ */
 .skill-group { margin-bottom: 8px; }
 .skill-group:last-child { margin-bottom: 0; }
 
@@ -302,9 +292,8 @@ body {
 
 .pill-list { display: flex; flex-wrap: wrap; gap: 4px; }
 
-/* ─────────────────────────────────────────────
-   JĘZYKI
-───────────────────────────────────────────── */
+/* JĘZYKI
+ */
 .lang-list { display: flex; flex-direction: column; gap: 4px; }
 .lang-item {
   display: flex;
@@ -314,9 +303,8 @@ body {
 .lang-name { font-size: 11px; font-weight: 700; color: var(--ink); }
 .lang-level { font-size: 10px; font-family: var(--font-mono); color: var(--ink3); }
 
-/* ─────────────────────────────────────────────
-   OSIĄGNIĘCIA
-───────────────────────────────────────────── */
+/* OSIĄGNIĘCIA
+ */
 .ach-list { display: flex; flex-direction: column; gap: 6px; }
 .ach-item { font-size: 10.5px; color: var(--ink2); line-height: 1.5; }
 .ach-item strong { color: var(--ink); font-weight: 700; }
@@ -336,9 +324,8 @@ body {
   vertical-align: middle;
 }
 
-/* ─────────────────────────────────────────────
-   CTA — Sprawdź portfolio
-───────────────────────────────────────────── */
+/* CTA: Sprawdź portfolio
+ */
 .cta-box {
   background: var(--yellow-bg);
   border: 1.5px solid var(--yellow);
@@ -385,9 +372,8 @@ body {
   border: 1px solid var(--yellow-border);
 }
 
-/* ─────────────────────────────────────────────
-   RODO — sticky footer
-───────────────────────────────────────────── */
+/* RODO: sticky footer
+ */
 .rodo {
   margin-top: auto;
   border-top: 1px solid var(--border);
@@ -397,23 +383,21 @@ body {
   line-height: 1.5;
 }
 
-/* ─────────────────────────────────────────────
-   DRUK
-───────────────────────────────────────────── */
+/* DRUK
+ */
 @media print {
   @page { size: A4; margin: 0; }
   body { background: #fff; padding: 0; }
   .page { box-shadow: none; width: 100%; min-height: auto; }
-  /* Żółty działa w druku — jeśli nie chcesz koloru odkomentuj: */
+  /* Żółty działa w druku: jeśli nie chcesz koloru odkomentuj: */
   /* .pill.hi, .cta-url, .ach-badge, .stat, .exp-item.current .exp-date {
     background: #eee !important; color: #333 !important; border-color: #ccc !important;
   }
   .cta-box { background: #f9f9f9 !important; border-color: #ccc !important; } */
 }
 
-/* ─────────────────────────────────────────────
-   MOBILE
-───────────────────────────────────────────── */
+/* MOBILE
+ */
 @media (max-width: 640px) {
   body { padding: 0; }
   .page { width: 100%; min-height: auto; box-shadow: none; padding: 6mm 5mm 0; }
@@ -428,15 +412,15 @@ body {
 <body>
 <div class="page">
 
-  <!-- ═══ HEADER ═══ -->
+  <!-- HEADER -->
   <header class="cv-header">
 
     <div>
       <h1 class="cv-name">Eryk Sobczak</h1>
-      <!-- ✏️ imię + nazwisko -->
+      <!-- imię + nazwisko -->
 
       <p class="cv-role">Unity .NET Developer &amp; Graphic designer</p>
-      <!-- ✏️ tytuł zawodowy -->
+      <!-- tytuł zawodowy -->
 
       <p class="cv-tagline">
         Tworzę <strong>gry i aplikacje</strong>, oparte o C# i architekturę obiektową. Działam w projektach od 2015 roku - od małych dodatków do gier, po aplikacje i tytuły dostępne na Steamie.
@@ -444,7 +428,7 @@ body {
     </div>
 
     <div class="cv-contacts">
-      <!-- ✏️ dane kontaktowe -->
+      <!-- dane kontaktowe -->
       <div class="cv-contact-item">
         <span class="ci">✉</span> <span>esobczk@gmail.com</span>
       </div>
@@ -464,10 +448,10 @@ body {
 
   </header>
 
-  <!-- ═══ BODY ═══ -->
+  <!-- BODY -->
   <div class="cv-body">
 
-    <!-- ── LEWA ── -->
+    <!-- LEWA -->
     <div>
 
       <!-- DOŚWIADCZENIE -->
@@ -475,15 +459,15 @@ body {
         <div class="section-label">Doświadczenie</div>
         <div class="exp-list">
 
-          <!-- ✏️ dodaj klasę "current" do aktualnego stanowiska -->
+          <!-- dodaj klasę "current" do aktualnego stanowiska -->
           <div class="exp-item current">
             <div class="exp-bar"></div>
             <div>
               <div class="exp-header">
                 <span class="exp-title">Unity .NET Developer</span>
-                <span class="exp-date">2025 — dziś</span>
+                <span class="exp-date">2025 - dziś</span>
               </div>
-              <div class="exp-company">Komputronik Biznes · Polska</div>
+              <div class="exp-company">Komputronik Biznes, Polska</div>
               <p class="exp-desc">
                 Rozwijam aplikację w Unity dla totemu stojącego. Implementuję i optymalizuję interfejs użytkownika zgodnie z wymaganiami klienta oraz prowadzę testy jakościowe. Działam na styku programowania i UX oraz integrację z API opartym o technologie .NET dbając o spójność i niezawodność produktu.
               </p>
@@ -507,7 +491,7 @@ body {
                 <span class="exp-title">Unity Developer</span>
                 <span class="exp-date">2023 i 2025</span>
               </div>
-              <div class="exp-company">TheBooke Studio · Polska</div>
+              <div class="exp-company">TheBooke Studio, Polska</div>
               <p class="exp-desc">
                 Byłem odpowiedzialny za projekt i implementację architektury gry Hourglass Sanatorium od pierwszej linii kodu. Tworzyłem modułową strukturę systemów gameplayowych oraz interfejs użytkownika, wykorzystując zasady programowania obiektowego. Tytuł finansowany z programu wsparcia CRPK.
               </p>
@@ -530,7 +514,7 @@ body {
                 <span class="exp-title">Game Developer</span>
                 <span class="exp-date">2023 - 2024</span>
               </div>
-              <div class="exp-company">GamerHash · Poznań</div>
+              <div class="exp-company">GamerHash, Poznań</div>
               <p class="exp-desc">
                 Implementowałem mechaniki rozgrywki i efekty wizualne w platformie Sandbox Game Maker opartej na Unity. Współpracowałem z artystami przy integracji modeli 3D oraz brałem udział w projektowaniu doświadczeń dla graczy. Wydane projekty: C.U.B.E i The Traverse.
               </p>
@@ -550,7 +534,7 @@ body {
                 <span class="exp-title">Graphic designer</span>
                 <span class="exp-date">2018 - teraz</span>
               </div>
-              <div class="exp-company">Freelance · Polska</div>
+              <div class="exp-company">Freelance, Polska</div>
               <p class="exp-desc">
                 Kompleksowa obsługa wizualna lokalnych firm. Od identyfikacji marki i logotypów, przez materiały reklamowe i grafikę do mediów społecznościowych, po budowę stron na WordPress. Samodzielne prowadzenie projektów od briefu po wdrożenie.
               </p>
@@ -579,7 +563,7 @@ body {
        projektowanie gier i animacji - Studia Magisterskie</span>
                 <span class="exp-date">2025 - teraz</span>
               </div>
-              <div class="exp-company">Uniwersytet Dolnośląski DSW · Wrocław</div>
+              <div class="exp-company">Uniwersytet Dolnośląski DSW, Wrocław</div>
               <p class="exp-desc">
                 Specjalizacja: Game art i concept design.
               </p>
@@ -593,7 +577,7 @@ body {
                 <span class="exp-title">Informatyka - Studia Inżynierskie</span>
                 <span class="exp-date">2021 - 2025</span>
               </div>
-              <div class="exp-company">Uniwersytet WSB Merito · Poznań</div>
+              <div class="exp-company">Uniwersytet WSB Merito, Poznań</div>
               <p class="exp-desc">
                 Specjalizacja: grafika komputerowa.
                 Dyplom: <em>Projekt i implementacja gry wykorzystującej unikalną mechanikę sterowania oraz fizykę kleistości</em>.
@@ -608,7 +592,7 @@ body {
                 <span class="exp-title">Technik grafiki i poligrafii cyfrowej</span>
                 <span class="exp-date">2019 - 2023</span>
               </div>
-              <div class="exp-company">Zespół Szkół Technicznych · Ostrów Wielkopolski</div>
+              <div class="exp-company">Zespół Szkół Technicznych, Ostrów Wielkopolski</div>
               <p class="exp-desc">
                 Kwalifikacje zawodowe: <em>AU.54 - Przygotowywanie oraz wykonywanie prac graficznych i publikacji cyfrowych oraz AU.55 - Drukowanie cyfrowe i obróbka druków</em>.
               </p>
@@ -620,7 +604,7 @@ body {
 
     </div><!-- /lewa -->
 
-    <!-- ── PRAWA ── -->
+    <!-- PRAWA -->
     <div>
 
       <!-- UMIEJĘTNOŚCI -->
@@ -679,7 +663,7 @@ body {
       <div class="cv-section">
         <div class="section-label">Języki</div>
         <div class="lang-list">
-          <!-- ✏️ dodaj / zmień -->
+          <!-- dodaj / zmień -->
           <div class="lang-item">
             <span class="lang-name">Polski</span>
             <span class="lang-level">Natywny</span>
@@ -695,7 +679,7 @@ body {
       <div class="cv-section">
         <div class="section-label">Osiągnięcia</div>
         <div class="ach-list">
-          <!-- ✏️ użyj .ach-badge na etykietach nagród -->
+          <!-- użyj .ach-badge na etykietach nagród -->
           <div class="ach-item">
             <span class="ach-badge">WYDANIA</span><strong>Wydane projekty komercyjne</strong><br>
             Pomyślnie zrealizowana i zapowiedziana gra "Hourglass Sanatorium", wydane gry "The Traverse", "C.U.B.E" oraz aplikacja we współpracy z Komputronik Biznes.
@@ -716,7 +700,7 @@ body {
         <div class="section-label">Wybrane projekty</div>
         <div class="proj-list">
 
-          <!-- ✏️ użyj klasy .stat na liczbach / nagrodach żeby je wyróżnić -->
+          <!-- użyj klasy .stat na liczbach / nagrodach żeby je wyróżnić -->
           <div>
             <div class="proj-item-header">
               <span class="proj-name">Hourglass Sanatorium</span>
@@ -736,8 +720,8 @@ body {
 
   </div><!-- /cv-body -->
 
-  <!-- ═══ CTA — PORTFOLIO ═══ -->
-  <!-- ✏️ zmień URL i tekst -->
+  <!-- CTA: PORTFOLIO -->
+  <!-- zmień URL i tekst -->
   <div class="cta-box">
     <div class="cta-left">
       <div class="cta-eyebrow">🎮 Sprawdź moje portfolio</div>
@@ -746,7 +730,7 @@ body {
     <a href="https://esob.pl/#game" class="cta-url" target="_blank">esob.pl ↗</a>
   </div>
 
-  <!-- ═══ RODO ═══ -->
+  <!-- RODO -->
   <div class="rodo">
     Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych 
 osobowych )(Dz. Ustaw z 2018, poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób 

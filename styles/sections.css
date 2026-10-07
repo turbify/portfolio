@@ -1,9 +1,9 @@
 /* ============================================================
-   Sections — page-level blocks of index.html
+   Sections: page-level blocks of index.html
    ============================================================ */
 
 @layer sections {
-  /* ── site-header ──────────────────────────────────────── */
+  /* site-header */
   .site-header {
     position: sticky;
     inset-block-start: 0;
@@ -77,7 +77,7 @@
     }
   }
 
-  /* ── hero ─────────────────────────────────────────────── */
+  /* hero */
   .hero {
     padding-block: var(--space-xl) var(--space-2xl);
   }
@@ -101,13 +101,14 @@
   }
 
   .hero__name {
-    font-size: var(--text-3xl);
+    font-size: var(--text-2xl);
     line-height: var(--leading-tight);
     letter-spacing: var(--tracking-display);
   }
 
   .hero__claim {
-    max-inline-size: 22ch;
+    max-inline-size: 24ch;
+    font-family: var(--font-body);
     font-size: var(--text-xl);
     font-weight: var(--weight-medium);
     line-height: var(--leading-snug);
@@ -168,7 +169,7 @@
     z-index: 1;
     inline-size: var(--sticker-size-hero);
     padding: var(--space-2xs);
-    font-size: var(--text-s);
+    font-size: var(--text-xs);
     white-space: normal;
     rotate: calc(var(--tilt-l) * -1);
     pointer-events: none;
@@ -191,7 +192,7 @@
     }
   }
 
-  /* ── about ────────────────────────────────────────────── */
+  /* about */
   .about__grid {
     display: grid;
     gap: var(--space-2xl);
@@ -236,7 +237,7 @@
     }
   }
 
-  /* ── site-footer (contact panel) ──────────────────────── */
+  /* site-footer (contact panel) */
   .site-footer {
     position: relative;
     margin-block-end: var(--frame);
@@ -306,7 +307,7 @@
     }
   }
 
-  /* ── wordmark with draggable stickers ─────────────────── */
+  /* wordmark with draggable stickers */
   .wordmark {
     position: relative;
     margin-block-start: var(--space-l);

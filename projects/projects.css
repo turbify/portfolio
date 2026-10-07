@@ -68,7 +68,7 @@
 
   .case-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
     gap: var(--space-m);
     inline-size: 100%;
     margin-block-start: var(--space-s);
@@ -111,7 +111,7 @@
     }
   }
 
-  /* ── media ────────────────────────────────────────────── */
+  /* media */
   .case-media {
     display: grid;
     gap: var(--space-xs);
@@ -159,7 +159,7 @@
     border-color: var(--color-border-strong);
   }
 
-  /* ── challenge: problem → solution → result ───────────── */
+  /* challenge: problem -> solution -> result */
   .challenge {
     display: grid;
     gap: var(--space-m);
@@ -188,7 +188,7 @@
     }
   }
 
-  /* ── case-next: keeps the reader moving through projects ─ */
+  /* case-next: keeps the reader moving through projects */
   .case-next {
     display: grid;
     gap: var(--space-3xs);

@@ -10,7 +10,7 @@
    * Game dev / graphic design switch.
    * Markup: [data-mode-set="game|art"] buttons. State lives on <html data-mode>.
    * The initial mode is resolved by an inline script in <head> (no flash).
-   */
+ */
   function initModeSwitch() {
     var buttons = document.querySelectorAll('[data-mode-set]');
     if (!buttons.length) return;
@@ -109,7 +109,7 @@
    * Links with [data-viewer="page"] open in an iframe, [data-viewer="image"] as an image.
    * Without JS the links simply navigate, so content stays reachable.
    * Markup: [data-viewer-dialog] > [data-viewer-heading] [data-viewer-open] [data-viewer-close] [data-viewer-stage]
-   */
+ */
   function initViewer() {
     var dialog = document.querySelector('[data-viewer-dialog]');
     if (!dialog || typeof dialog.showModal !== 'function') return;
@@ -149,10 +149,10 @@
         if (isImage) return;
         // Case pages link to the next project inside the iframe: keep the bar in sync.
         try {
-          heading.textContent = media.contentDocument.title.replace(/\s+—\s+Eryk Sobczak$/, '');
+          heading.textContent = media.contentDocument.title.replace(/\s+\|\s+Eryk Sobczak$/, '');
           openLink.href = media.contentWindow.location.href;
         } catch (e) {
-          // Cross-origin or file:// — keep the original title.
+          // Cross-origin or file://: keep the original title.
         }
       });
       media.src = url;
@@ -188,7 +188,7 @@
   /**
    * Draggable decorative stickers (mouse / pen only; touch keeps normal scrolling).
    * Markup: [data-stickers] > [data-sticker]. Offset is stored in --dx / --dy.
-   */
+ */
   function initStickers() {
     var area = document.querySelector('[data-stickers]');
     if (!area || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
@@ -224,7 +224,7 @@
    * Rounded panel corners under the sticky header.
    * Marks the header with [data-over-panel] only while a .panel crosses its bottom edge,
    * so the corner masks (CSS) never show over the plain page background.
-   */
+ */
   function initHeaderCorners() {
     var header = document.querySelector('.site-header');
     var panels = document.querySelectorAll('.panel');
@@ -261,7 +261,7 @@
    * Opened from disk (file://) YouTube refuses to embed (error 153: no referrer),
    * so the link is left alone and opens the video on YouTube.
    * Markup: a.video[data-video="<id>"][data-video-title][data-video-autoplay?]
-   */
+ */
   function initVideos() {
     var canEmbed = location.protocol === 'http:' || location.protocol === 'https:';
     if (!canEmbed) return;
