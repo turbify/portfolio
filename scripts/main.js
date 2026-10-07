@@ -16,8 +16,8 @@
     if (!buttons.length) return;
 
     var STORAGE_KEY = 'portfolio-mode';
-    var HASHES = { game: '#gry', art: '#grafika' };
-    var HASH_TO_MODE = { '#gry': 'game', '#game': 'game', '#grafika': 'art', '#art': 'art', '#graphics': 'art' };
+    var HASHES = { game: '#game', art: '#art' };
+    var HASH_TO_MODE = { '#game': 'game', '#art': 'art' };
     var root = document.documentElement;
 
     function syncButtons() {

@@ -14,13 +14,13 @@
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-  <!-- Resolve mode before first paint: #gry / #grafika in URL > saved choice > game. -->
+  <!-- Resolve mode before first paint: #game / #art in URL > saved choice > game. -->
   <script>
     (function () {
       var hash = location.hash;
       var mode = null;
-      if (/^#(grafika|art|graphics)$/.test(hash)) mode = 'art';
-      else if (/^#(gry|game)$/.test(hash)) mode = 'game';
+      if (hash === '#art') mode = 'art';
+      else if (hash === '#game') mode = 'game';
       else { try { mode = localStorage.getItem('portfolio-mode'); } catch (e) {} }
       document.documentElement.dataset.mode = mode === 'art' ? 'art' : 'game';
     })();
