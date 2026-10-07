@@ -107,7 +107,7 @@ Tylko `transform`-owe właściwości (`rotate`, `scale`, `translate`) i `opacity
 | `social`        | kwadratowe linki-ikony 44 px                                                           |
 | `scribble-link` | link z falistym podkreśleniem                                                          |
 | `viewer`        | natywny `<dialog>`: podstrona projektu w iframe albo grafika w pełnym rozmiarze; tytuł nadąża za nawigacją w iframe |
-| `video`         | link do YouTube z miniaturą z filmu (`assets/video/<id>.jpg`) i `video__play`. Przez http(s) `initVideos()` podmienia go na iframe youtube-nocookie: z `data-video-autoplay` od razu (wyciszony, w pętli), bez niego po kliknięciu. Z `file://` YouTube blokuje osadzanie (błąd 153), więc link otwiera film na YouTube. `video--tilted` w hero |
+| `video`         | link do YouTube z miniaturą z filmu (`assets/video/<id>.jpg`) i `video__play`. Przez http(s) `initVideos()` podmienia go na iframe youtube-nocookie: z `data-video-autoplay` od razu (wyciszony, w pętli), bez niego po kliknięciu. Z `file://` YouTube blokuje osadzanie (błąd 153), więc link otwiera film na YouTube. `video--tilted` w hero. Hero: film startuje od razu (wyciszony, w pętli, ze zwykłymi kontrolkami YouTube) |
 | `project-group` | grupa kafli z nagłówkiem h3: „Wydane i komercyjne”, potem „Własne projekty, jamy i open source” |
 | `project-grid--compact` | mniejsze kafle (3 kolumny od 64em) dla jamów i projektów pobocznych          |
 | `project-card__role` | linia „Rola: … · Zespół: …” na kaflu (obowiązkowa dla projektów komercyjnych)     |
