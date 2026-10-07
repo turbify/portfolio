@@ -1,0 +1,20 @@
+# The repo is public and published 1:1 to GitHub Pages.
+# Keep out everything a recruiter should not see: notes, docs, tooling, unused drafts.
+
+# Notes and documentation (CLAUDE.md, docs/, skill files)
+*.md
+docs/
+
+# Local tooling: Claude Code skills, preview server
+.claude/
+
+# Unused drafts
+projects/templates/
+projects/wip.html
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
